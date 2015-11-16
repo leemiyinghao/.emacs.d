@@ -1,0 +1,31 @@
+;; Object leemiyinghao/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "leemiyinghao/"
+  :tables
+  (list
+    (semanticdb-table "test.java"
+      :major-mode 'jde-mode
+      :tags 
+        '( ("aaa.test" package nil nil [1 18])
+            ("test" type
+               (:typemodifiers ("public" "final")
+                :members 
+                  ( ("main" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("args" variable
+                               (:dereference 1
+                                :type "String")
+                                (reparse-symbol formal_parameters) [73 86]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [49 130]))                  
+                :type "class")
+                nil [20 132]))          
+      :file "test.java"
+      :pointmax 133
+      :fsize 132
+      :lastmodtime '(21683 59091 531017 103000)
+      :unmatched-syntax nil))
+  :file "!home!leemiyinghao!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")
