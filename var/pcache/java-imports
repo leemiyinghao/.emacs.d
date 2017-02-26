@@ -1,0 +1,7 @@
+;; Object java-imports
+;; EIEIO PERSISTENT OBJECT
+(pcache-repository "java-imports"
+  :file "java-imports"
+  :version "24.5.1/0.4"
+  :entries #s(hash-table size 65 test eql rehash-size 1.5 rehash-threshold 0.8 data (Threads [object pcache-entry "pcache-entry" 1478171419.7839384 nil "" nil]))
+  :timestamp 1478172068.3587806)

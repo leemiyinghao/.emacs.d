@@ -1,7 +1,14 @@
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+
 ;Auto-Complete
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
 (add-to-list 'load-path "~/.emacs.d/popup")
 (add-to-list 'load-path "~/.emacs.d/fuzzy")
+(add-to-list 'load-path "~/.emacs.d/nginx-mode")
+(require 'nginx-mode)
 (require 'auto-complete-config)
 (ac-config-default)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
@@ -12,8 +19,14 @@
 (add-to-list 'package-archives
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (custom-set-variables
- '(ansi-color-names-vector ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#ad7fa8" "#8cc4ff" "#eeeeec"])
- '(custom-enabled-themes (quote (deeper-blue)))
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#ad7fa8" "#8cc4ff" "#eeeeec"])
+ '(custom-enabled-themes (quote (zenburn)))
+ '(custom-safe-themes
+   (quote
+    ("ba3c5da197000aaf2f5514bef814b4d8bf1b6de7309b9fcd682ec26aa6a16fd2" default)))
  '(font-use-system-font t)
  '(inhibit-startup-screen t))
 (custom-set-faces
@@ -32,9 +45,6 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/auto-install"))
 (require 'auto-install)
 (setq auto-install-directory "~/.emacs.d/auto-install/")
-
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(require 'el-get)
 
 (add-to-list 'load-path "~/.emacs.d/el-get/auto-complete-etags")
 (defun my-c-mode-common-hook-func ()
@@ -59,19 +69,9 @@
 
 
 (defun my-java-mode-common-hook-func ()
-;; JDEE
-  (add-to-list 'load-path "~/.emacs.d/jdee-2.4.1/lisp")
-  (load "jde"))
+  (custom-set-variables
+   '(eclim-eclipse-dirs '("~/usr/bin/eclipse"))
+   '(eclim-executable "~/nonStandard/eclipse/eclim"))
+  (require 'eclim)
+  (global-eclim-mode))
 (add-hook 'java-mode-common-hook 'my-java-mode-common-hook-func)
-
-;; MozRepl Hook
-;(defun auto-reload-firefox-on-after-save-hook ()
-;  (add-hook 'after-save-hook
-;	    '(lambda ()
-;	       (interactive)
-;	       (comint-send-string (inferior-moz-process)
-;				   "setTimeout(BrowserReload(), \"1000\");"))
-;	    'append 'local))
-;(add-hook 'html-mode-hook 'auto-reload-firefox-on-after-save-hook)
-;(add-hook 'css-mode-hook 'auto-reload-firefox-on-after-save-hook)
-;)
