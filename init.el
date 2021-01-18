@@ -3,18 +3,6 @@
 (toggle-scroll-bar -1)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
-;Auto-Complete
-;(add-to-list 'load-path "~/.emacs.d/auto-complete")
-;(add-to-list 'load-path "~/.emacs.d/popup")
-;(add-to-list 'load-path "~/.emacs.d/fuzzy")
-
-
-;(add-to-list 'load-path "~/.emacs.d/nginx-mode")
-;(require 'nginx-mode)
-;(require 'auto-complete-config)
-;(ac-config-default)
-;(add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
-
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
@@ -36,7 +24,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (company-fuzzy company company-jedi magit py-isort elpy elpl wiki twittering-mode ssh smooth-scrolling rust-mode ox-ioslide nyan-mode multiple-cursors moz markdown-preview-eww markdown-mode+ kivy-mode jdee java-snippets java-imports enh-ruby-mode edbi-sqlite circe auto-install auto-complete-nxml ac-html-bootstrap ac-emacs-eclim 2048-game))))
+    (flycheck json-mode flymake-json bash-completion company-fuzzy company company-jedi magit py-isort elpy elpl wiki twittering-mode ssh smooth-scrolling rust-mode ox-ioslide nyan-mode multiple-cursors moz markdown-preview-eww markdown-mode+ kivy-mode jdee java-snippets java-imports enh-ruby-mode edbi-sqlite circe auto-install auto-complete-nxml ac-html-bootstrap ac-emacs-eclim 2048-game))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -45,57 +33,13 @@
  )
 (setq default-frame-alist '((background-color . "black")(foreground-color . "gray")))
 
-;(add-to-list 'load-path "~/.emacs.d/php-mode")
-;(require 'php-mode)
-
-
-;(setq tags-file-name "~/.emacs.d/TAGS")
-
-;(add-to-list 'ac-sources 'ac-source-etags)
-
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/auto-install"))
 (require 'auto-install)
 (setq auto-install-directory "~/.emacs.d/auto-install/")
 
-;(add-to-list 'load-path "~/.emacs.d/el-get/auto-complete-etags")
-;; (defun my-c-mode-common-hook-func ()
-;;   (interactive)
-;;   "Function to be called when entering into c-mode."
-;;   (when (and (require 'auto-complete nil t) (require 'auto-complete-config nil t))
-;;     (auto-complete-mode t)
-;;     (make-local-variable 'ac-sources)
-;;     (setq ac-auto-start 2)
-;;     (setq ac-sources '(ac-source-words-in-same-mode-buffers
-;; 		       ac-source-dictionary))
-;;     (when (require 'auto-complete-etags nil t)
-;;       (add-to-list 'ac-sources 'ac-source-etags)
-;;       (setq ac-etags-use-document t))))
-;; (defun quick-compile ()
-;;   "A quick compile funciton for C++"
-;;   (interactive)
-;;   (compile (concat "g++ " (buffer-name (current-buffer)) " -g -pg")))
-;; (global-set-key [(f9)] 'quick-compile)
-;; (global-set-key [(f10)] 'gdb)
-;; (add-hook 'c-mode-common-hook 'my-c-mode-common-hook-func)
-
-
-;; (defun my-java-mode-common-hook-func ()
-;;   (custom-set-variables
-;;    '(eclim-eclipse-dirs '("~/usr/bin/eclipse"))
-;;    '(eclim-executable "~/nonStandard/eclipse/eclim"))
-;;   (require 'eclim)
-;;   (global-eclim-mode))
-;; (add-hook 'java-mode-common-hook 'my-java-mode-common-hook-func)
 
 "python settings"
-;(use-package company-jedi
-;  :ensure t
-;  :config
-;  (add-hook 'python-mode-hook 'jedi:setup)
-;  (add-hook 'python-mode-hook (lambda ()
-;                                (add-to-list (make-local-variable 'company-backends)                                             'company-jedi)))
-;  )
 
 (use-package elpy
   :ensure t
@@ -121,3 +65,13 @@
   (defun track-mouse (e))
   (setq mouse-sel-mode t)
 )
+
+        (autoload 'bash-completion-dynamic-complete
+          "bash-completion"
+          "BASH completion hook")
+        (add-hook 'shell-dynamic-complete-functions
+          'bash-completion-dynamic-complete)
+
+
+"json setting"
+(add-hook 'json-mode-hook 'flycheck-mode)
