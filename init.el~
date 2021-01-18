@@ -4,9 +4,14 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 ;Auto-Complete
-(add-to-list 'load-path "~/.emacs.d/auto-complete")
-(add-to-list 'load-path "~/.emacs.d/popup")
-(add-to-list 'load-path "~/.emacs.d/fuzzy")
+;(add-to-list 'load-path "~/.emacs.d/auto-complete")
+;(add-to-list 'load-path "~/.emacs.d/popup")
+;(add-to-list 'load-path "~/.emacs.d/fuzzy")
+
+;company-mode
+
+
+
 (add-to-list 'load-path "~/.emacs.d/nginx-mode")
 (require 'nginx-mode)
 (require 'auto-complete-config)
@@ -34,7 +39,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (py-isort elpy elpl wiki twittering-mode ssh smooth-scrolling rust-mode ox-ioslide nyan-mode multiple-cursors moz markdown-preview-eww markdown-mode+ kivy-mode jdee java-snippets java-imports enh-ruby-mode edbi-sqlite circe auto-install auto-complete-nxml ac-html-bootstrap ac-emacs-eclim 2048-game))))
+    (company-fuzzy company company-jedi magit py-isort elpy elpl wiki twittering-mode ssh smooth-scrolling rust-mode ox-ioslide nyan-mode multiple-cursors moz markdown-preview-eww markdown-mode+ kivy-mode jdee java-snippets java-imports enh-ruby-mode edbi-sqlite circe auto-install auto-complete-nxml ac-html-bootstrap ac-emacs-eclim 2048-game))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -95,3 +100,19 @@
 (add-hook 'elpy-mode-hook (lambda ()
                             (add-hook 'before-save-hook
                                       'elpy-black-fix-code nil t)))
+(require 'py-isort)
+(add-hook 'before-save-hook 'py-isort-before-save)
+
+;; Enable mouse support
+(unless window-system
+  (require 'mouse)
+  (xterm-mouse-mode t)
+  (global-set-key [mouse-4] (lambda ()
+                              (interactive)
+                              (scroll-down 1)))
+  (global-set-key [mouse-5] (lambda ()
+                              (interactive)
+                              (scroll-up 1)))
+  (defun track-mouse (e))
+  (setq mouse-sel-mode t)
+)
