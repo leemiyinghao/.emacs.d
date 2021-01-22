@@ -24,7 +24,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (flycheck json-mode flymake-json bash-completion company-fuzzy company company-jedi magit py-isort elpy elpl wiki twittering-mode ssh smooth-scrolling rust-mode ox-ioslide nyan-mode multiple-cursors moz markdown-preview-eww markdown-mode+ kivy-mode jdee java-snippets java-imports enh-ruby-mode edbi-sqlite circe auto-install auto-complete-nxml ac-html-bootstrap ac-emacs-eclim 2048-game))))
+    (company-web web-mode flycheck json-mode flymake-json bash-completion company-fuzzy company company-jedi magit py-isort elpy elpl wiki twittering-mode ssh smooth-scrolling rust-mode ox-ioslide nyan-mode multiple-cursors moz markdown-preview-eww markdown-mode+ kivy-mode jdee java-snippets java-imports enh-ruby-mode edbi-sqlite circe auto-install auto-complete-nxml ac-html-bootstrap ac-emacs-eclim 2048-game))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -75,3 +75,48 @@
 
 "json setting"
 (add-hook 'json-mode-hook 'flycheck-mode)
+
+
+;; web relative
+(use-package web-mode
+  :ensure t
+  :mode ("\\.html\\'" "\\.vue\\'")
+  :config
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-enable-current-element-highlight t)
+  (setq web-mode-enable-css-colorization t)
+  (setq web-mode-content-types-alist
+        '(("vue" . "\\.vue\\'")))
+  (use-package company-web
+    :ensure t)
+  (add-hook 'web-mode-hook (lambda()
+                             (cond ((equal web-mode-content-type "html")
+                                    (my/web-html-setup))
+                                   ((member web-mode-content-type '("vue"))
+                                    (my/web-vue-setup))
+                                   )))
+  )
+(defun my/web-vue-setup()
+  "Setup for js related."
+  (message "web-mode use vue related setup")
+  (setup-tide-mode)
+  (prettier-js-mode)
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
+  (flycheck-select-checker 'javascript-eslint)
+  (my/use-eslint-from-node-modules)
+  (add-to-list (make-local-variable 'company-backends)
+               '(comany-tide company-web-html company-css company-files))
+  )
+(defun my/use-eslint-from-node-modules ()
+  "Use local eslint from node_modules before global."
+  (let* ((root (locate-dominating-file
+                (or (buffer-file-name) default-directory)
+                "node_modules"))
+         (eslint (and root
+                      (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                        root))))
+    (when (and eslint (file-executable-p eslint))
+      (setq-local flycheck-javascript-eslint-executable eslint))))(add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+
