@@ -34,7 +34,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(setq default-frame-alist '((background-color . "black")(foreground-color . "gray")))
+;(setq default-frame-alist '((background-color . "black")(foreground-color . "gray")))
 
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/auto-install"))
