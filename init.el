@@ -3,9 +3,14 @@
 (toggle-scroll-bar -1)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 (require 'use-package)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -24,7 +29,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (ivy company-web web-mode flycheck json-mode flymake-json bash-completion company-fuzzy company company-jedi magit py-isort elpy elpl wiki twittering-mode ssh smooth-scrolling rust-mode ox-ioslide nyan-mode multiple-cursors moz markdown-preview-eww markdown-mode+ kivy-mode jdee java-snippets java-imports enh-ruby-mode edbi-sqlite circe auto-install auto-complete-nxml ac-html-bootstrap ac-emacs-eclim 2048-game))))
+    (js2-mode react-snippets emmet-mode rjsx-mode ivy company-web web-mode flycheck json-mode flymake-json bash-completion company-fuzzy company company-jedi magit py-isort elpy elpl wiki twittering-mode ssh smooth-scrolling rust-mode ox-ioslide nyan-mode multiple-cursors moz markdown-preview-eww markdown-mode+ kivy-mode jdee java-snippets java-imports enh-ruby-mode edbi-sqlite circe auto-install auto-complete-nxml ac-html-bootstrap ac-emacs-eclim 2048-game))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -135,3 +140,28 @@
     (when (and eslint (file-executable-p eslint))
       (setq-local flycheck-javascript-eslint-executable eslint))))(add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
 
+;; react jsx
+(use-package rjsx-mode
+  :ensure t
+  :mode ("\\.js\\'")
+  :config
+  (add-hook 'rjsx-mode-hook (lambda()
+			      (flycheck-add-mode 'javascript-eslint 'rjsx-mode)
+			      (my/use-eslint-from-node-modules)
+			      (flycheck-select-checker 'javascript-eslint)))
+  )
+(use-package emmet-mode
+  :ensure t
+  :hook (web-mode css-mode scss-mode sgml-mode rjsx-mode)
+  :config
+  (add-hook 'emmet-mode-hook (lambda()
+			       (setq emmet-indent-after-insert t))))
+(use-package mode-local
+      :ensure t
+      :config
+      (setq-mode-local rjsx-mode emmet-expand-jsx-className? t)
+      (setq-mode-local web-mode emmet-expand-jsx-className? nil)
+)
+(use-package react-snippets
+  :ensure t)
+(add-hook 'rjsx-mode-hook #'setup-tide-mode)

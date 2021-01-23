@@ -1,0 +1,10 @@
+ls
+cd ../
+cd ~/.emacs.d/
+ls
+wget https://melpa.org/packages/js2-mode-20201220.1718.tar
+sudo apt update
+sudo apt upgrade
+wget http://melpa.org/packages/js2-mode-20201220.1718.tar
+rm js2-mode-20201220.1718.tar.1
+rm js2-mode-20201220.1718.tar
