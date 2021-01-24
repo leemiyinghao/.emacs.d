@@ -1,7 +1,9 @@
 (tool-bar-mode -1)
-(menu-bar-mode -1)
-(toggle-scroll-bar -1)
+;(menu-bar-mode -1)
+;(toggle-scroll-bar -1)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(add-to-list 'default-frame-alist '(font . "Fira Code" ))
+(set-face-attribute 'default t :font "Fira Code" :height 90 )
 
 (package-initialize)
 (require 'package)
@@ -44,6 +46,11 @@
 "autopair"
 (use-package autopair)
 (autopair-global-mode)
+
+"golden-ratio-scroll-screen"
+(use-package golden-ratio-scroll-screen)
+(global-set-key [remap scroll-down-command] 'golden-ratio-scroll-screen-down)
+(global-set-key [remap scroll-up-command] 'golden-ratio-scroll-screen-up)
 
 "ivy"
 (use-package ivy

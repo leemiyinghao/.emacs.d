@@ -8,3 +8,23 @@ sudo apt upgrade
 wget http://melpa.org/packages/js2-mode-20201220.1718.tar
 rm js2-mode-20201220.1718.tar.1
 rm js2-mode-20201220.1718.tar
+mkdir ~/.fonts
+cd ..
+wget https://github.com/tonsky/FiraCode/releases/download/5.2/Fira_Code_v5.2.zip
+unzip Fira_Code_v5.2.zip 
+sudo apt install unzip
+unzip Fira_Code_v5.2.zip 
+cd ttf/
+ls
+cp * ../.fonts/
+rm -R ttf woff*
+ls
+cd ../
+rm -R ttf woff*
+ls
+rm fira_code.css releases specimen.html variable_ttf/
+rm fira_code.css releases specimen.html
+rm -R variable_ttf/
+ls -al
+ll
+fc-list
