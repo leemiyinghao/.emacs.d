@@ -1,7 +1,11 @@
 (tool-bar-mode -1)
-(menu-bar-mode -1)
-(toggle-scroll-bar -1)
+;(menu-bar-mode -1)
+;(toggle-scroll-bar -1)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(add-to-list 'default-frame-alist '(font . "Fira Code" ))
+(set-face-attribute 'default t :font "Fira Code")
+
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3") 
 
 (package-initialize)
 (require 'package)
@@ -27,7 +31,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (counsel js2-mode react-snippets emmet-mode rjsx-mode ivy company-web web-mode flycheck json-mode flymake-json bash-completion company-fuzzy company company-jedi magit py-isort elpy elpl wiki twittering-mode ssh smooth-scrolling rust-mode ox-ioslide nyan-mode multiple-cursors moz markdown-preview-eww markdown-mode+ kivy-mode jdee java-snippets java-imports enh-ruby-mode edbi-sqlite circe auto-install auto-complete-nxml ac-html-bootstrap ac-emacs-eclim 2048-game))))
+    (material-theme swiper golden-ratio-scroll-screen adaptive-wrap autopair counsel js2-mode react-snippets emmet-mode rjsx-mode ivy company-web web-mode flycheck json-mode flymake-json bash-completion company-fuzzy company company-jedi magit py-isort elpy elpl wiki twittering-mode ssh smooth-scrolling rust-mode ox-ioslide nyan-mode multiple-cursors moz markdown-preview-eww markdown-mode+ kivy-mode jdee java-snippets java-imports enh-ruby-mode edbi-sqlite circe auto-install auto-complete-nxml ac-html-bootstrap ac-emacs-eclim 2048-game))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -44,6 +48,11 @@
 "autopair"
 (use-package autopair)
 (autopair-global-mode)
+
+"golden-ratio-scroll-screen"
+(use-package golden-ratio-scroll-screen)
+(global-set-key [remap scroll-down-command] 'golden-ratio-scroll-screen-down)
+(global-set-key [remap scroll-up-command] 'golden-ratio-scroll-screen-up)
 
 "ivy"
 (use-package ivy
@@ -67,7 +76,6 @@
   :ensure t
   :bind (("C-s" . swiper))
   )
-
 
 
 "python settings"

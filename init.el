@@ -3,7 +3,9 @@
 ;(toggle-scroll-bar -1)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (add-to-list 'default-frame-alist '(font . "Fira Code" ))
-(set-face-attribute 'default t :font "Fira Code" :height 90 )
+(set-face-attribute 'default t :font "Fira Code")
+
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3") 
 
 (package-initialize)
 (require 'package)
@@ -19,8 +21,6 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#ad7fa8" "#8cc4ff" "#eeeeec"])
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
@@ -29,7 +29,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (golden-ratio-scroll-screen adaptive-wrap autopair counsel js2-mode react-snippets emmet-mode rjsx-mode ivy company-web web-mode flycheck json-mode flymake-json bash-completion company-fuzzy company company-jedi magit py-isort elpy elpl wiki twittering-mode ssh smooth-scrolling rust-mode ox-ioslide nyan-mode multiple-cursors moz markdown-preview-eww markdown-mode+ kivy-mode jdee java-snippets java-imports enh-ruby-mode edbi-sqlite circe auto-install auto-complete-nxml ac-html-bootstrap ac-emacs-eclim 2048-game))))
+    (material-theme swiper golden-ratio-scroll-screen adaptive-wrap autopair counsel js2-mode react-snippets emmet-mode rjsx-mode ivy company-web web-mode flycheck json-mode flymake-json bash-completion company-fuzzy company company-jedi magit py-isort elpy elpl wiki twittering-mode ssh smooth-scrolling rust-mode ox-ioslide nyan-mode multiple-cursors moz markdown-preview-eww markdown-mode+ kivy-mode jdee java-snippets java-imports enh-ruby-mode edbi-sqlite circe auto-install auto-complete-nxml ac-html-bootstrap ac-emacs-eclim 2048-game))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -74,7 +74,6 @@
   :ensure t
   :bind (("C-s" . swiper))
   )
-
 
 
 "python settings"
@@ -179,7 +178,7 @@
       :config
       (setq-mode-local rjsx-mode emmet-expand-jsx-className? t)
       (setq-mode-local web-mode emmet-expand-jsx-className? nil)
-)
-(use-package react-snippets
-  :ensure t)
+);
+;(use-package react-snippets
+;  :ensure t)
 (add-hook 'rjsx-mode-hook #'setup-tide-mode)
