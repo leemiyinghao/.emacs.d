@@ -28,3 +28,6 @@ rm -R variable_ttf/
 ls -al
 ll
 fc-list
+cd ../../
+make server
+nvm use 15
