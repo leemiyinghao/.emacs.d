@@ -86,6 +86,11 @@
 ;; Reduce the number of characters before company kicks in
 (setq company-minimum-prefix-length 1)
 
+
+;; flycheck section
+(use-package flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 "python settings"
 
 (use-package elpy
@@ -118,10 +123,6 @@
           "BASH completion hook")
         (add-hook 'shell-dynamic-complete-functions
           'bash-completion-dynamic-complete)
-
-
-"json setting"
-(add-hook 'json-mode-hook 'flycheck-mode)
 
 
 ;; web relative
@@ -165,7 +166,9 @@
                       (expand-file-name "node_modules/eslint/bin/eslint.js"
                                         root))))
     (when (and eslint (file-executable-p eslint))
-      (setq-local flycheck-javascript-eslint-executable eslint))))(add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+      (setq-local flycheck-javascript-eslint-executable eslint))
+    ))
+(add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
 
 ;; react jsx
 (use-package rjsx-mode
@@ -175,7 +178,8 @@
   (add-hook 'rjsx-mode-hook (lambda()
 			      (flycheck-add-mode 'javascript-eslint 'rjsx-mode)
 			      (my/use-eslint-from-node-modules)
-			      (flycheck-select-checker 'javascript-eslint)))
+			      (flycheck-select-checker 'javascript-eslint)
+			      ))
   )
 (use-package emmet-mode
   :ensure t
@@ -228,3 +232,5 @@
 (add-hook 'yaml-mode-hook
 	  '(lambda ()
 	     (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+
+

@@ -1,6 +1,5 @@
 ((magit-blame
   ("-w"))
- (magit-branch nil)
  (magit-cherry-pick
   ("--ff"))
  (magit-commit nil
