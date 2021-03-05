@@ -234,7 +234,7 @@
 	     (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
 ; nginx-mode
-(use-package nginx-mode)
+(require 'nginx-mode)
 
 ; sudo-edit
 (defun sudo-edit (&optional arg)
@@ -244,4 +244,8 @@
                          (ido-read-file-name "Find file(as root): ")))
     (find-alternate-file (concat "/sudo:root@localhost:"
                                  buffer-file-name))))
+
+(use-package neotree)
+(global-set-key [f8] 'neotree-toggle)
+
 
