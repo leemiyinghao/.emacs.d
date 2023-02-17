@@ -1,0 +1,37 @@
+"lsp"
+
+(setq lsp-keymap-prefix "C-c l")
+
+(use-package lsp-mode
+  :ensure t
+  :defer t
+  :config
+  (setq lsp-idle-delay 0.5
+        lsp-enable-symbol-highlighting t
+        lsp-enable-snippet nil
+	gc-cons-threshold 100000000
+	read-process-output-max (* 4096 4096)
+	lsp-log-io nil)
+  :hook
+  ((lsp-mode . (lambda ()
+                      (let ((lsp-keymap-prefix "C-c l"))
+                        (lsp-enable-which-key-integration))))
+  (python-mode . lsp)
+  (rust-mode . lsp)
+  ))
+(add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+
+(use-package lsp-ui
+  :ensure t
+  :config (setq lsp-ui-sideline-show-hover t
+                lsp-ui-sideline-delay 0.5
+		lsp-ui-peek-always-show t
+		lsp-ui-doc-enable t
+                lsp-ui-doc-delay 5
+                lsp-ui-doc-position 'bottom
+                lsp-ui-doc-alignment 'frame
+                lsp-ui-doc-header nil
+                lsp-ui-doc-include-signature t
+                lsp-ui-doc-use-childframe t)
+  :commands lsp-ui-mode)
+
