@@ -3,3 +3,5 @@ elpa/
 auto-save-list/
 .lsp-session*
 eln-cache/
+eshell/
+transient/
