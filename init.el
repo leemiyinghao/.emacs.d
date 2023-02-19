@@ -7,6 +7,7 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+(setq use-package-always-ensure t)
 
 ;; load ui stuff
 (load (expand-file-name "ui.el" user-emacs-directory))

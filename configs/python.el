@@ -6,3 +6,5 @@
                     :activation-fn (lsp-activate-on "python")
                     :server-id 'pylsp)))
 (add-hook 'python-mode 'python-hook)
+
+(use-package jupyter)
