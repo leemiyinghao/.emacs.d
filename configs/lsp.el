@@ -12,6 +12,10 @@
 	gc-cons-threshold 100000000
 	read-process-output-max (* 4096 4096)
 	lsp-log-io nil)
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection "pylsp")
+                    :activation-fn (lsp-activate-on "python")
+                    :server-id 'pylsp))
   :hook
   ((lsp-mode . (lambda ()
                       (let ((lsp-keymap-prefix "C-c l"))
@@ -19,7 +23,7 @@
   (python-mode . lsp)
   (rust-mode . lsp)
   ))
-(add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+; (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
 
 (use-package lsp-ui
   :ensure t
