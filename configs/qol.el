@@ -54,8 +54,13 @@
 (setq guru-warn-only t)
 
 ;; TRAMP remote development
-(use-package tramp :ensure t)
-(setq tramp-default-method "ssh")
+(use-package tramp
+  :ensure t
+  :config
+  (setq enable-remote-dir-locals t)
+  (let ((process-environment tramp-remote-process-environment))
+    (setenv "ENV" "$HOME/.profile")
+    (setq tramp-remote-process-environment process-environment)))
 
 ;; nyan-mode
 (use-package nyan-mode
