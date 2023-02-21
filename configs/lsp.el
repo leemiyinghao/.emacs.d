@@ -43,17 +43,16 @@
   :defer t
   :hook ((python-mode . eglot-ensure))
   :bind (("C-c l = =" . eglot-format)
-	 ("C-c l r" . eglot-rename)))
+	 ("C-c l r" . eglot-rename))
+  :config (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio"))))
 
 (use-package flymake-diagnostic-at-point
   :after flymake
   :config
   (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode)
   (setq flymake-diagnostic-at-point-display-diagnostic-function 'flymake-diagnostic-at-point-display-minibuffer))
+
 (use-package eldoc-overlay
   :init (eldoc-overlay-mode 1)
   :config
-  (setq eldoc-overlay-backend 'inline-docs))
-;; (use-package eldoc-box
-;;   :hook
-;;   ('eglot-managed-mode-hook #'eldoc-box-hover-mode t))
+  (setq eldoc-overlay-backend 'quick-peek))
