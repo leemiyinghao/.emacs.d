@@ -52,7 +52,7 @@
   (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode)
   (setq flymake-diagnostic-at-point-display-diagnostic-function 'flymake-diagnostic-at-point-display-minibuffer))
 
-(use-package eldoc-overlay
-  :init (eldoc-overlay-mode 1)
-  :config
-  (setq eldoc-overlay-backend 'quick-peek))
+;; (use-package eldoc-overlay
+;;   :init (eldoc-overlay-mode 1)
+;;   :config
+;;   (setq eldoc-overlay-backend 'quick-peek))
