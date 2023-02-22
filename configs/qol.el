@@ -86,3 +86,7 @@
 
 ;; multiple-cursors
 (use-package multiple-cursors :ensure t)
+
+
+;; autopair
+(electric-pair-mode 1)
