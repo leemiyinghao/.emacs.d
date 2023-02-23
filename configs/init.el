@@ -5,8 +5,8 @@
 (load (expand-file-name "configs/lsp.el" user-emacs-directory))
 (load (expand-file-name "configs/rust.el" user-emacs-directory))
 (load (expand-file-name "configs/python.el" user-emacs-directory))
-(load (expand-file-name "configs/flycheck.el" user-emacs-directory))
 (load (expand-file-name "configs/magit.el" user-emacs-directory))
+(load (expand-file-name "configs/compleseus.el" user-emacs-directory))
 
 
 ;; lang misc

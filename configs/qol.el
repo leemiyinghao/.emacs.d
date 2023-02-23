@@ -1,28 +1,3 @@
-;; ivy
-(use-package ivy
-  :ensure t
-  :diminish (ivy-mode . "")
-  :config
-  (ivy-mode 1)
-  (setq ivy-use-virutal-buffers t)
-  (setq enable-recursive-minibuffers t)
-  (setq ivy-height 6)
-  (setq ivy-initial-inputs-alist nil)
-  (setq ivy-count-format "%d/%d")
-  (setq ivy-re-builders-alist
-        `((t . ivy--regex-ignore-order)))
-  )
-
-(use-package counsel
-  :ensure t
-  :bind (("M-x" . counsel-M-x)
-	 ("C-x C-f" . counsel-find-file)))
-(use-package swiper
-  :ensure t
-  :bind (("C-s" . swiper))
-  )
-
-
 ;; company
 (use-package company :ensure t)
 (global-company-mode)
