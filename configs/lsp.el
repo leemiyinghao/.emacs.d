@@ -41,7 +41,6 @@
 
 (use-package eglot
   :defer t
-  :after yasnippet
   :hook ((python-mode . eglot-ensure))
   :bind (("C-c l = =" . eglot-format)
 	 ("C-c l r" . eglot-rename))
