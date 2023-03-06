@@ -3,9 +3,29 @@
   (vertico-mode)
   (setq vertico-resize t)
   (setq vertico-cycle t)
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy) ; Correct file path when changed
   :config
   (custom-set-faces
    '(vertico-current ((t (:inherit highlight :underline t :weight semi-bold))))))
+)
+(advice-add #'vertico--format-candidate :around
+                                        (lambda (orig cand prefix suffix index _start)
+                                          (setq cand (funcall orig cand prefix suffix index _start))
+                                          (concat
+                                           (if (= vertico--index index)
+                                               (propertize "» " 'face 'vertico-current)
+                                             "  ")
+                                           cand)))
+
+(defun kb/basic-remote-try-completion (string table pred point)
+  (and (vertico--remote-p string)
+       (completion-basic-try-completion string table pred point)))
+(defun kb/basic-remote-all-completions (string table pred point)
+  (and (vertico--remote-p string)
+       (completion-basic-all-completions string table pred point)))
+(add-to-list 'completion-styles-alist
+             '(basic-remote           ; Name of `completion-style'
+               kb/basic-remote-try-completion kb/basic-remote-all-completions nil))
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist

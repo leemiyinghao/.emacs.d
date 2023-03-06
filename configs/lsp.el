@@ -41,7 +41,8 @@
 
 (use-package eglot
   :defer t
-  :hook ((python-mode . eglot-ensure))
+  :hook ((python-mode . eglot-ensure)
+	 (rust-mode . eglot-ensure))
   :bind (("C-c l = =" . eglot-format)
 	 ("C-c l r" . eglot-rename))
   :config (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio"))))
