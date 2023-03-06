@@ -7,7 +7,7 @@
   :config
   (custom-set-faces
    '(vertico-current ((t (:inherit highlight :underline t :weight semi-bold))))))
-)
+
 (advice-add #'vertico--format-candidate :around
                                         (lambda (orig cand prefix suffix index _start)
                                           (setq cand (funcall orig cand prefix suffix index _start))
