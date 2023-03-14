@@ -70,3 +70,5 @@
 ;; autopair
 (electric-pair-mode 1)
 
+;; auto save desktop.el
+(desktop-save-mode 1)
