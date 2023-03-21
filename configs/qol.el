@@ -1,8 +1,11 @@
 ;; company
-(use-package company :ensure t)
+(use-package company
+  :config (setq company-show-numbers t
+		company-selection-wrap-around t
+		company-idle-delay 0
+		company-minimum-prefix-length 1
+		))
 (global-company-mode)
-(setq company-idle-delay 0.0)
-(setq company-minimum-prefix-length 1)
 
 (use-package company-tabnine
   :ensure t
@@ -50,6 +53,7 @@
 ;; neotree
 (use-package neotree :ensure t)
 (global-set-key [f8] 'neotree-toggle)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
 ; sudo-edit
 (defun sudo-edit (&optional arg)
