@@ -17,3 +17,4 @@
 (use-package markdown-mode :ensure t)
 (use-package kivy-mode :ensure t)
 (use-package yaml-mode :ensure t)
+(use-package lua-mode :ensure t)
