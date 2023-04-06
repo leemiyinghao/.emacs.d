@@ -7,6 +7,7 @@
 (load (expand-file-name "configs/python.el" user-emacs-directory))
 (load (expand-file-name "configs/magit.el" user-emacs-directory))
 (load (expand-file-name "configs/compleseus.el" user-emacs-directory))
+(load (expand-file-name "configs/org-mode" user-emacs-directory))
 
 
 ;; lang misc

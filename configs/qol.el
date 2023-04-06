@@ -7,9 +7,21 @@
 		))
 (global-company-mode)
 
+(defun toggle-tabnine ()
+  (interactive)
+  (if (member #'company-tabnine company-backends)
+      (progn
+	(setq company-backends (remove #'company-tabnine company-backends))
+	(message "Disabled company-tabnine."))
+    (progn
+      (add-to-list 'company-backends #'company-tabnine)
+      (message "Enabled company-tabnine."))))
+
+;; tabnine, enable by M-t
 (use-package company-tabnine
   :ensure t
-  :init (add-to-list 'company-backends #'company-tabnine))
+  ;; :init (add-to-list 'company-backends #'company-tabnine)
+  :bind ("M-t" . 'toggle-tabnine))
 
 ;; Enable mouse support
 (unless window-system
