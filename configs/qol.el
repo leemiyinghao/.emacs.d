@@ -88,3 +88,8 @@
 
 ;; auto save desktop.el
 ;; (desktop-save-mode 1)
+
+
+;; try for trying new packages
+
+(use-package try :ensure t)
