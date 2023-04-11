@@ -80,7 +80,9 @@
 (use-package ripgrep :ensure t)
 
 ;; multiple-cursors
-(use-package multiple-cursors :ensure t)
+(use-package multiple-cursors
+  :ensure t
+  :bind ("C-c m" . 'mc/edit-lines))
 
 
 ;; autopair
@@ -91,5 +93,4 @@
 
 
 ;; try for trying new packages
-
 (use-package try :ensure t)
