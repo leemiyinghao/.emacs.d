@@ -1,26 +1,18 @@
-;; company
-(use-package company
-  :config (setq company-show-numbers t
-		company-selection-wrap-around t
-		company-idle-delay 0
-		company-minimum-prefix-length 1
-		))
-(global-company-mode)
-
 (defun toggle-tabnine ()
   (interactive)
-  (if (member #'company-tabnine company-backends)
+  (if (member #'tabnine-completion-at-point completion-at-point-functions)
       (progn
-	(setq company-backends (remove #'company-tabnine company-backends))
-	(message "Disabled company-tabnine."))
+	(setq completion-at-point-functions (remove #'tabnine-completion-at-point completion-at-point-functions))
+	(message "Disabled tabnine-capf."))
     (progn
-      (add-to-list 'company-backends #'company-tabnine)
-      (message "Enabled company-tabnine."))))
+      (add-to-list 'completion-at-point-functions #'tabnine-completion-at-point)
+      (message "Enabled tabnine-capf."))))
+
 
 ;; tabnine, enable by M-t
-(use-package company-tabnine
-  :ensure t
-  ;; :init (add-to-list 'company-backends #'company-tabnine)
+(use-package tabnine-capf
+  :straight (:host github :repo "50ways2sayhard/tabnine-capf" :files ("*.el" "*.sh"))
+  :hook (kill-emacs . tabnine-capf-kill-process)
   :bind ("M-t" . 'toggle-tabnine))
 
 ;; Enable mouse support
@@ -87,10 +79,6 @@
 
 ;; autopair
 (electric-pair-mode 1)
-
-;; auto save desktop.el
-;; (desktop-save-mode 1)
-
 
 ;; try for trying new packages
 (use-package try :ensure t)
