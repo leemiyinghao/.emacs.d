@@ -5,7 +5,7 @@
 	(setq completion-at-point-functions (remove #'tabnine-completion-at-point completion-at-point-functions))
 	(message "Disabled tabnine-capf."))
     (progn
-      (add-to-list 'completion-at-point-functions #'tabnine-completion-at-point)
+      (add-to-list 'completion-at-point-functions #'tabnine-completion-at-point t)
       (message "Enabled tabnine-capf."))))
 
 
@@ -82,3 +82,7 @@
 
 ;; try for trying new packages
 (use-package try :ensure t)
+
+
+;; EAT, Emulate A Terminal
+(use-package eat :ensure t)
