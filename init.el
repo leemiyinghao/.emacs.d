@@ -29,8 +29,8 @@
 (setq use-package-always-ensure t)
 
 ;; load ui stuff
-(load (expand-file-name "ui.el" user-emacs-directory))
 (load (expand-file-name "theme.el" user-emacs-directory))
+(load (expand-file-name "ui.el" user-emacs-directory))
 
 ;; setup backup directory
 (setq backup-directory-alist
