@@ -21,3 +21,6 @@
 (use-package kivy-mode :ensure t)
 (use-package yaml-mode :ensure t)
 (use-package lua-mode :ensure t)
+
+;; TRAMP remote PATH config
+(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
