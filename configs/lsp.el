@@ -42,11 +42,13 @@
 (use-package eglot
   :defer t
   :hook ((python-mode . eglot-ensure)
-	 (rust-mode . eglot-ensure))
+	 (rust-mode . eglot-ensure)
+	 (vue-mode-reparse . eglot-ensure))
   :bind (("C-c l = =" . eglot-format)
 	 ("C-c l r" . eglot-rename))
   :config
   (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
+  (add-to-list 'eglot-server-programs '(vue-mode . ("vue-language-server" "--stdio")))
   (add-to-list 'eglot-stay-out-of 'company))
 
 (use-package flymake-diagnostic-at-point
