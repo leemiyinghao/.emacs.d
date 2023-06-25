@@ -7,6 +7,7 @@
         '(:left (sort symlink) :right (omit yank index)))
   (setq dirvish-attributes
         '(all-the-icons file-time file-size collapse subtree-state vc-state git-msg))
+  (setq dirvish-use-mode-line nil)
   :bind ; Bind `dirvish|dirvish-side|dirvish-dwim' as you see fit
   (("C-c f" . dirvish-fd)
    :map dirvish-mode-map ; Dirvish inherits `dired-mode-map'
