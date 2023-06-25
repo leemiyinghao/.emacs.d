@@ -48,17 +48,6 @@
     (setenv "ENV" "$HOME/.profile")
     (setq tramp-remote-process-environment process-environment)))
 
-;; nyan-mode
-(use-package nyan-mode
-  :ensure t
-  :config
-  (nyan-mode 1))
-
-;; neotree
-(use-package neotree :ensure t)
-(global-set-key [f8] 'neotree-toggle)
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-
 ; sudo-edit
 (defun sudo-edit (&optional arg)
   (interactive "P")
