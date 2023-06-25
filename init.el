@@ -47,5 +47,7 @@
 
 (when (string= system-type "darwin")
   (load (expand-file-name "macos.el" user-emacs-directory)))
+(when (string= system-type "linux")
+  (load (expand-file-name "linux.el" user-emacs-directory)))
 
 (load (expand-file-name "keybind.el" user-emacs-directory))
