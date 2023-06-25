@@ -11,3 +11,6 @@
 (use-package minions
   :config
   (minions-mode))
+
+;; prefer horizontal split on new window
+(setq split-width-threshold 1 )
