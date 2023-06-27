@@ -13,4 +13,4 @@
   (minions-mode))
 
 ;; prefer horizontal split on new window
-(setq split-width-threshold 1 )
+;; (setq split-width-threshold 1 )
