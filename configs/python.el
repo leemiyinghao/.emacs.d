@@ -18,6 +18,10 @@
 
 (use-package ein)
 
+(use-package python-pytest
+  :demand t
+  :after python
+  :bind (("C-c t" . python-pytest-dispatch)))
 
 (use-package python-black
   :demand t

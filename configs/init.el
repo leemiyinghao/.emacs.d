@@ -10,6 +10,7 @@
 (load (expand-file-name "configs/org-mode.el" user-emacs-directory))
 (load (expand-file-name "configs/frontend.el" user-emacs-directory))
 (load (expand-file-name "configs/dirvish.el" user-emacs-directory))
+(load (expand-file-name "configs/projectile.el" user-emacs-directory))
 
 
 ;; lang misc
@@ -24,3 +25,4 @@
 
 ;; TRAMP remote PATH config
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+(setq enable-remote-dir-locals t)
