@@ -73,5 +73,8 @@
 (use-package try :ensure t)
 
 ;; emacs-libvterm
-
 (use-package vterm :ensure t)
+(use-package multi-vterm)
+
+;; restart-emacs
+(use-package restart-emacs)
