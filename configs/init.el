@@ -26,3 +26,6 @@
 ;; TRAMP remote PATH config
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 (setq enable-remote-dir-locals t)
+
+;; TRAMP patch for magit, see https://github.com/magit/magit/issues/4720
+(load (expand-file-name "configs/tramp-patch.el" user-emacs-directory))
