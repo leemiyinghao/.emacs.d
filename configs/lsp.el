@@ -62,3 +62,11 @@
 ;;   :config
 ;;   (setq eldoc-overlay-backend 'quick-peek))
 
+
+;; Grammarly for eglot
+(use-package eglot-grammarly
+  :straight (:host github :repo "emacs-grammarly/eglot-grammarly")
+  :defer t  ; defer package loading
+  :hook ((text-mode markdown-mode). (lambda ()
+                                      (require 'eglot-grammarly)
+                                      (eglot-ensure))))
