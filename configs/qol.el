@@ -72,6 +72,6 @@
 ;; try for trying new packages
 (use-package try :ensure t)
 
+;; emacs-libvterm
 
-;; EAT, Emulate A Terminal
-(use-package eat :ensure t)
+(use-package vterm :ensure t)
