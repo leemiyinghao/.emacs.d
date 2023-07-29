@@ -12,8 +12,7 @@
 	 (markdown-mode . eglot-ensure)
 	 (org-mode . eglot-ensure)
 	 (rst-mode . eglot-ensure))
-  :bind (("C-c l = =" . eglot-format)
-	 ("C-c l r" . eglot-rename)
+  :bind (("C-c l r" . eglot-rename)
 	 ("C-<tab>" . eglot-code-actions))
   :config
   (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))

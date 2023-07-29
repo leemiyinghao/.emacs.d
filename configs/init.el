@@ -1,6 +1,7 @@
 ;; load packages
 
 (load (expand-file-name "configs/qol.el" user-emacs-directory))
+(load (expand-file-name "configs/formatter.el" user-emacs-directory))
 (load (expand-file-name "configs/xah-block.el" user-emacs-directory))
 (load (expand-file-name "configs/lsp.el" user-emacs-directory))
 (load (expand-file-name "configs/rust.el" user-emacs-directory))

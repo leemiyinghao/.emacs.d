@@ -22,12 +22,3 @@
   :demand t
   :after python
   :bind (("C-c t" . python-pytest-dispatch)))
-
-(use-package python-black
-  :demand t
-  :after python
-  :bind (("C-c l = =" . python-black-buffer)
-	 ("C-c l = r" . python-black-region)))
-(use-package python-isort
-  :after python
-  :bind (("C-c i =" . python-isort-buffer)))

@@ -8,3 +8,4 @@
 (use-package magit-todos
   :defer t
   :after magit)
+(global-git-commit-mode 1)
