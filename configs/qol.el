@@ -26,8 +26,7 @@
                               (interactive)
                               (scroll-up 1)))
   (defun track-mouse (e))
-  (setq mouse-sel-mode t)
-)
+  (setq mouse-sel-mode t))
 
 
 ;; which key
@@ -46,9 +45,17 @@
   (setq enable-remote-dir-locals t)
   (let ((process-environment tramp-remote-process-environment))
     (setenv "ENV" "$HOME/.profile")
-    (setq tramp-remote-process-environment process-environment)))
+    (setq tramp-remote-process-environment process-environment))
+  ;; Enable full-featured Dirvish over TRAMP on certain connections
+  ;; https://www.gnu.org/software/tramp/#Improving-performance-of-asynchronous-remote-processes-1.
+  (add-to-list 'tramp-connection-properties
+               (list (regexp-quote "/sshx?:")
+                     "direct-async-process" t))
+  (setq tramp-verbose 0)
+  (setq tramp-chunksize 2000)
+  (setq tramp-use-ssh-controlmaster-options nil))
 
-; sudo-edit
+					; sudo-edit
 (defun sudo-edit (&optional arg)
   (interactive "P")
   (if (or arg (not buffer-file-name))
