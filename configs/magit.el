@@ -8,4 +8,6 @@
 (use-package magit-todos
   :defer t
   :after magit)
+(use-package forge
+  :after magit)
 (global-git-commit-mode 1)

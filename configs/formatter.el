@@ -6,5 +6,4 @@
 	'(isort black))
   (setf (alist-get 'lisp-mode apheleia-mode-alist)
 	'(lisp-indent))
-  (apheleia-global-mode t)
   (setq apheleia-remote-algorithm 'remote))
