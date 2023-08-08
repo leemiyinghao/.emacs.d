@@ -51,7 +51,6 @@
   (add-to-list 'tramp-connection-properties
                (list (regexp-quote "/sshx?:")
                      "direct-async-process" t))
-  (setq tramp-verbose 0)
   (setq tramp-chunksize 2000)
   (setq tramp-use-ssh-controlmaster-options nil))
 
