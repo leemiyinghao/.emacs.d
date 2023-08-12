@@ -28,6 +28,9 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+;; silence compile warning
+(setq native-comp-async-report-warnings-errors t)
+
 ;; load ui stuff
 (load (expand-file-name "theme.el" user-emacs-directory))
 (load (expand-file-name "ui.el" user-emacs-directory))
