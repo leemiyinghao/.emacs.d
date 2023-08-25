@@ -44,7 +44,6 @@
 
 ;; TRAMP remote development
 (use-package tramp
-  :defer t
   :ensure t
   :config
   (setq enable-remote-dir-locals t)
