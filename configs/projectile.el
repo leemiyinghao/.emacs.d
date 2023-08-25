@@ -15,5 +15,6 @@
   (direnv-mode))
 (use-package consult-projectile
   :defer t
+  :after projectile
   :config (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
