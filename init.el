@@ -35,6 +35,10 @@
 (load (expand-file-name "theme.el" user-emacs-directory))
 (load (expand-file-name "ui.el" user-emacs-directory))
 
+(if (display-graphic-p)
+    (load (expand-file-name "gui.el" user-emacs-directory))
+  (load (expand-file-name "terminal.el" user-emacs-directory)))
+
 ;; setup backup directory
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
@@ -43,10 +47,6 @@
 (setq create-lockfiles nil)
 
 (load (expand-file-name "configs/init.el" user-emacs-directory))
-
-(if (display-graphic-p)
-    (load (expand-file-name "gui.el" user-emacs-directory))
-  (load (expand-file-name "terminal.el" user-emacs-directory)))
 
 (when (string= system-type "darwin")
   (load (expand-file-name "macos.el" user-emacs-directory)))

@@ -24,7 +24,7 @@
 (add-to-list 'default-frame-alist '(alpha 95 95))
 
 ;; maximized
-(add-hook 'window-setup-hook 'toggle-frame-maximized t)
+(add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
 
 (use-package all-the-icons
   :defer t)
