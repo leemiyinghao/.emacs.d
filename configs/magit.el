@@ -1,4 +1,8 @@
-(use-package magit :ensure t)
+(use-package magit
+  :ensure t
+  :defer t
+  :config
+  (global-git-commit-mode 1))
 (use-package forge
   :defer t
   :after magit)
@@ -11,4 +15,3 @@
 (use-package forge
   :defer t
   :after magit)
-(global-git-commit-mode 1)
