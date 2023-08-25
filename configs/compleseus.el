@@ -9,13 +9,13 @@
    '(vertico-current ((t (:inherit highlight :underline t :weight semi-bold))))))
 
 (advice-add #'vertico--format-candidate :around
-                                        (lambda (orig cand prefix suffix index _start)
-                                          (setq cand (funcall orig cand prefix suffix index _start))
-                                          (concat
-                                           (if (= vertico--index index)
-                                               (propertize "» " 'face 'vertico-current)
-                                             "  ")
-                                           cand)))
+            (lambda (orig cand prefix suffix index _start)
+              (setq cand (funcall orig cand prefix suffix index _start))
+              (concat
+               (if (= vertico--index index)
+                   (propertize "» " 'face 'vertico-current)
+                 "  ")
+               cand)))
 
 (defun kb/basic-remote-try-completion (string table pred point)
   (and (vertico--remote-p string)
@@ -59,6 +59,7 @@
                  nil
                  (window-parameters (mode-line-format . none)))))
 
+
 ;; embark-consult
 (use-package embark-consult
   :after (embark consult)
@@ -89,7 +90,7 @@
   :init
   (global-corfu-mode)
   (corfu-popupinfo-mode)
-  (setq corfu-auto t)
+  (setq corfu-auto nil)
   (setq corfu-quit-no-match 'separator))
 
 (straight-use-package
@@ -110,11 +111,15 @@
   (corfu-doc-terminal-mode +1))
 
 
-;; (use-package corfu-doc
-;;   :hook
-;;   (corfu-mode . corfu-doc-mode))
+(use-package corfu-candidate-overlay
+  :straight (:type git
+		   :repo "https://code.bsdgeek.org/adam/corfu-candidate-overlay"
+		   :files (:defaults "*.el"))
+  :after corfu
+  :config
+  (corfu-candidate-overlay-mode +1)
+  (global-set-key (kbd "C-<tab>") 'corfu-candidate-overlay-complete-at-point))
 
-;; Add extensions
 (use-package cape
   ;; Bind dedicated completion commands
   ;; Alternative prefix keys: C-c p, M-p, M-+, ...
