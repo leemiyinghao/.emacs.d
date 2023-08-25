@@ -1,1 +1,2 @@
-(use-package vue-mode :ensure t)
+(use-package vue-mode
+  :defer t)

@@ -5,6 +5,7 @@
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 (setq-default line-spacing 2)
+;; (setq default-frame-alist '( (internal-border-width . 15)))
 
 ;; modeline settings
 '(mode-line ((t (:underline nil :overline nil :box (:line-width 8 :color "#353644" :style nil) :foreground "white" :background "#353644"))))
@@ -25,5 +26,5 @@
 ;; maximized
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
-(use-package all-the-icons)
-(use-package nerd-icons)
+(use-package all-the-icons
+  :defer t)

@@ -14,11 +14,14 @@
 (add-hook 'python-mode 'python-hook)
 
 
-(use-package jupyter)
+(use-package jupyter
+  :defer t)
 
-(use-package ein)
+(use-package ein
+  :defer t)
 
 (use-package python-pytest
   :demand t
+  :defer t
   :after python
   :bind (("C-c t" . python-pytest-dispatch)))

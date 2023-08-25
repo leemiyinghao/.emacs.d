@@ -11,6 +11,7 @@
 
 ;; tabnine, enable by M-t
 (use-package tabnine-capf
+  :defer t
   :straight (:host github :repo "50ways2sayhard/tabnine-capf" :files ("*.el" "*.sh"))
   :hook (kill-emacs . tabnine-capf-kill-process)
   :bind ("M-t" . 'toggle-tabnine))
@@ -30,16 +31,20 @@
 
 
 ;; which key
-(use-package which-key :ensure t)
+(use-package which-key
+  :defer t)
 (which-key-mode)
 
 ;; guru-mode
-(use-package guru-mode :ensure t)
-(guru-global-mode +1)
-(setq guru-warn-only t)
+(use-package guru-mode
+  :defer t
+  :config
+  (setq guru-warn-only t)
+  (guru-global-mode +1))
 
 ;; TRAMP remote development
 (use-package tramp
+  :defer t
   :ensure t
   :config
   (setq enable-remote-dir-locals t)
@@ -64,11 +69,12 @@
                                  buffer-file-name))))
 
 ;; ripgrep
-(use-package ripgrep :ensure t)
+(use-package ripgrep
+  :defer t)
 
 ;; multiple-cursors
 (use-package multiple-cursors
-  :ensure t
+  :defer t
   :bind ("C-c m" . 'mc/edit-lines))
 
 
@@ -76,11 +82,16 @@
 (electric-pair-mode 1)
 
 ;; try for trying new packages
-(use-package try :ensure t)
+(use-package try
+  :defer t)
 
 ;; emacs-libvterm
-(use-package vterm :ensure t)
-(use-package multi-vterm)
+(use-package vterm
+  :defer t)
+(use-package multi-vterm
+  :defer t
+  :after vterm)
 
 ;; restart-emacs
-(use-package restart-emacs)
+(use-package restart-emacs
+  :defer t)

@@ -1,5 +1,5 @@
 (use-package apheleia
-  :after python
+  :defer t
   :bind (("C-c l = =" . apheleia-format-buffer))
   :config
   (setf (alist-get 'python-mode apheleia-mode-alist)

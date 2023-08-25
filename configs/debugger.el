@@ -1,1 +1,2 @@
-(use-package realgud)
+(use-package realgud
+  :defer t)

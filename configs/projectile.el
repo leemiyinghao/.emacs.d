@@ -1,4 +1,5 @@
 (use-package projectile
+  :defer t
   :config
   (setq projectile-sort-order 'recently-active)
   (setq projectile-enable-caching t)
@@ -9,8 +10,10 @@
   :init
   (projectile-mode +1))
 (use-package direnv
+  :defer t
   :config
   (direnv-mode))
 (use-package consult-projectile
+  :defer t
   :config (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 

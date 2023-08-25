@@ -6,5 +6,6 @@
 	(python-mode . python-ts-mode)))
 
 (use-package treesit-auto
+  :defer t
   :config
   (global-treesit-auto-mode))
