@@ -26,3 +26,4 @@
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
 (use-package all-the-icons)
+(use-package nerd-icons)

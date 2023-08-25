@@ -9,5 +9,8 @@
   :init
   (projectile-mode +1))
 (use-package direnv
- :config
- (direnv-mode))
+  :config
+  (direnv-mode))
+(use-package consult-projectile
+  :config (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+
