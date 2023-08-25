@@ -19,8 +19,7 @@
   :ensure t
   :config
   (dashboard-setup-startup-hook)
-  (setq dashboard-display-icons-p t)
-  (setq dashboard-icon-type 'nerd-icons)
+  (setq dashboard-startup-banner 'logo)
   (setq dashboard-center-content t)
   (setq dashboard-icon-type 'all-the-icons)
   (setq dashboard-items '((recents  . 5)
