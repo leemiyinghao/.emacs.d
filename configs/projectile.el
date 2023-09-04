@@ -10,7 +10,6 @@
   :init
   (projectile-mode +1))
 (use-package direnv
-  :defer t
   :config
   (direnv-mode))
 (use-package consult-projectile
