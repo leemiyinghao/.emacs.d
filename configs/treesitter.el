@@ -9,3 +9,15 @@
   :defer t
   :config
   (global-treesit-auto-mode))
+
+(use-package combobulate
+  :straight (:host github :repo "mickeynp/combobulate")
+  :bind (("C-M-<prior>" . combobulate-navigate-previous)
+	 ("C-M-<next>" . combobulate-navigate-next))
+  :hook ((python-ts-mode . combobulate-mode)
+         (js-ts-mode . combobulate-mode)
+         (css-ts-mode . combobulate-mode)
+         (yaml-ts-mode . combobulate-mode)
+         (json-ts-mode . combobulate-mode)
+         (typescript-ts-mode . combobulate-mode)
+         (tsx-ts-mode . combobulate-mode)))
