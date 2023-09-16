@@ -28,3 +28,8 @@
 
 (use-package all-the-icons
   :defer t)
+
+(use-package vertico-posframe
+  :after vertico
+  :config (vertico-posframe-mode 1))
+
