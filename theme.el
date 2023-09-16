@@ -4,8 +4,10 @@
 ;; (load-theme 'zenburn)
 
 ;; (load-theme 'modus-vivendi-tinted)
-(use-package nord-theme)
-(load-theme 'nord)
+
+(use-package nord-theme
+  :config (load-theme 'nord t))
+
 ;; (use-package apropospriate-theme
 ;;   :ensure t
 ;;   :config 
