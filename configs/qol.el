@@ -94,3 +94,7 @@
 ;; restart-emacs
 (use-package restart-emacs
   :defer t)
+
+;; centeralize buffer
+(use-package olivetti
+  :bind ("C-c o" . olivetti-mode))
