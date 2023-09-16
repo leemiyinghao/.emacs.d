@@ -5,7 +5,7 @@
 	(setq completion-at-point-functions (remove #'tabnine-completion-at-point completion-at-point-functions))
 	(message "Disabled tabnine-capf."))
     (progn
-      (add-to-list 'completion-at-point-functions #'tabnine-completion-at-point t)
+      (add-to-list 'completion-at-point-functions #'tabnine-completion-at-point)
       (message "Enabled tabnine-capf."))))
 
 

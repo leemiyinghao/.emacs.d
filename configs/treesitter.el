@@ -13,8 +13,10 @@
 (use-package combobulate
   :straight (:host github :repo "mickeynp/combobulate")
   :bind (("C-M-<prior>" . combobulate-navigate-previous)
-	 ("C-M-<next>" . combobulate-navigate-next))
-  :hook ((python-ts-mode . combobulate-mode)
+	 ("C-M-<next>" . combobulate-navigate-next)
+	 :map combobulate-key-map
+	 ("M-<left>" . left-word)
+	 ("M-<right>" . right-word))
          (js-ts-mode . combobulate-mode)
          (css-ts-mode . combobulate-mode)
          (yaml-ts-mode . combobulate-mode)
