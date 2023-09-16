@@ -10,19 +10,6 @@
 ;;   :config
 ;;   (global-treesit-auto-mode))
 
-(use-package combobulate
-  :straight (:host github :repo "mickeynp/combobulate")
-  :bind (("C-M-<prior>" . combobulate-navigate-previous)
-	 ("C-M-<next>" . combobulate-navigate-next)
-	 :map combobulate-key-map
-	 ("M-<left>" . left-word)
-	 ("M-<right>" . right-word))
-         (js-ts-mode . combobulate-mode)
-         (css-ts-mode . combobulate-mode)
-         (yaml-ts-mode . combobulate-mode)
-         (json-ts-mode . combobulate-mode)
-         (typescript-ts-mode . combobulate-mode)
-         (tsx-ts-mode . combobulate-mode)))
 (use-package tree-sitter
   :config (global-tree-sitter-mode))
 (use-package tree-sitter-langs)
