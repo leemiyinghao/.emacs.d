@@ -17,6 +17,10 @@
                  "  ")
                cand)))
 
+(use-package vertico-posframe
+  :after vertico
+  :config (vertico-posframe-mode 1))
+
 (defun kb/basic-remote-try-completion (string table pred point)
   (and (vertico--remote-p string)
        (completion-basic-try-completion string table pred point)))
