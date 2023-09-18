@@ -43,7 +43,8 @@
 (use-package consult
   :bind
   (("C-M-s" . consult-ripgrep)
-   ("C-s" . consult-line)))
+   ("C-s" . consult-line)
+   ("C-c b" . consult-buffer)))
 
 ;; embark
 (use-package embark

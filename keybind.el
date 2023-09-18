@@ -5,4 +5,3 @@
 (setq tab-bar-select-tab-modifiers "super")
 (global-set-key (kbd "C-c l g g") 'xref-find-definitions)
 (global-set-key (kbd "C-c l g r") 'xref-find-references)
-(global-set-key (kbd "C-c b") 'ido-switch-buffer)
