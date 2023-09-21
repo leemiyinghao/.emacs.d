@@ -20,7 +20,8 @@
   :straight (:type git :host github :repo "Exafunction/codeium.el")
   :config 
   (setq use-dialog-box nil) ;; do not use popup boxes
-  (add-to-list 'completion-at-point-functions #'codeium-completion-at-point))
+  (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
+  (codeium-init))
 
 ;; Enable mouse support
 (unless window-system
