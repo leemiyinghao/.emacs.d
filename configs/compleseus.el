@@ -88,11 +88,12 @@
                    :includes (corfu-info corfu-history))
   :config
   (setq corfu-popupinfo-delay 0)
-  :init
-  (global-corfu-mode)
-  (corfu-popupinfo-mode)
+  (setq corfu-preview-current t)
   (setq corfu-auto nil)
-  (setq corfu-quit-no-match 'separator))
+  (setq corfu-quit-no-match 'separator)
+  (corfu-popupinfo-mode)
+  (setq tab-always-indent 'complete)
+  (global-corfu-mode))
 
 (straight-use-package
  '(corfu-terminal
@@ -118,8 +119,9 @@
 		   :files (:defaults "*.el"))
   :after corfu
   :config
-  (corfu-candidate-overlay-mode +1)
-  (global-set-key (kbd "C-<tab>") 'corfu-candidate-overlay-complete-at-point))
+  (corfu-candidate-overlay-mode t)
+  ;; corfu-candidate-overlay-complete-at-point have issue as it call corfu-insert and completion-at-point at the same time, which causing duplicate insertions on candidates.
+  :bind (("M-<return>" . corfu-insert)))
 
 (use-package cape
   ;; Bind dedicated completion commands

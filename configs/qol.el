@@ -16,6 +16,12 @@
   :hook (kill-emacs . tabnine-capf-kill-process)
   :bind ("M-t" . 'toggle-tabnine))
 
+(use-package codeium
+  :straight (:type git :host github :repo "Exafunction/codeium.el")
+  :config 
+  (setq use-dialog-box nil) ;; do not use popup boxes
+  (add-to-list 'completion-at-point-functions #'codeium-completion-at-point))
+
 ;; Enable mouse support
 (unless window-system
   (require 'mouse)
