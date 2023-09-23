@@ -25,3 +25,15 @@
   :defer t
   :after python
   :bind (("C-c t" . python-pytest-dispatch)))
+
+(use-package cov
+  :demand t
+  :defer t
+  :after python
+  :init
+  (setq cov-coverage-mode t)
+  (setq cov-fringe-symbol 'vertical-bar)
+  (custom-set-faces
+   '(cov-coverage-not-run-face ((t (:foreground "#bf616a"))))
+   '(cov-coverage-run-face ((t (:foreground "#3b4252")))))
+  :hook (python-mode . cov-mode))

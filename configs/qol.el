@@ -105,3 +105,7 @@
 ;; centeralize buffer
 (use-package olivetti
   :bind ("C-c o" . olivetti-mode))
+
+;; display help-at-pt
+(help-at-pt-set-timer)
+(setq help-at-pt-display-when-idle t)
