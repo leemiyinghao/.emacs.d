@@ -14,7 +14,8 @@
 	 (org-mode . eglot-ensure)
 	 (rst-mode . eglot-ensure))
   :bind (("C-c l r" . eglot-rename)
-	 ("C-<tab>" . eglot-code-actions))
+	 ("C-<tab>" . eglot-code-actions)
+	 ("C-c e" . flymake-show-buffer-diagnostics))
   :config
   (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
   (add-to-list 'eglot-server-programs '(python-ts-mode . ("pyright-langserver" "--stdio")))

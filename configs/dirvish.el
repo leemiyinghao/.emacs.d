@@ -10,7 +10,7 @@
         '(all-the-icons file-time file-size collapse subtree-state vc-state git-msg))
   ;; (setq dirvish-use-mode-line 'bottom)
   :bind ; Bind `dirvish|dirvish-side|dirvish-dwim' as you see fit
-  (("C-c f" . dirvish-side)
+  (("<f12>" . dirvish-side)
    :map dirvish-mode-map ; Dirvish inherits `dired-mode-map'
    ("a"   . dirvish-quick-access)
    ("f"   . dirvish-file-info-menu)
