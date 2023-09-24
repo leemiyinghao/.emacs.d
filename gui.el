@@ -5,7 +5,8 @@
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 (setq-default line-spacing 2)
-;; (add-to-list 'default-frame-alist '(internal-border-width . 15))
+;; (setq browse-url-browser-function 'eww-browse-url)
+;; (setq browse-url-browser-function 'xwidget-webkit-browse-url)
 
 ;; frame transparent
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
@@ -42,3 +43,4 @@
   ;; Enables ligature checks globally in all buffers. You can also do it
   ;; per mode with `ligature-mode'.
   (global-ligature-mode t))
+(global-hl-line-mode t)
