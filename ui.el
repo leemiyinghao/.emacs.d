@@ -26,13 +26,14 @@
                           (bookmarks . 5)
                           (projects . 5))))
 
-(use-package dimmer
-  :straight (:host github :repo "gonewest818/dimmer.el")
-  :config
-  (setq dimmer-adjustment-mode :foreground)
-  (setq dimmer-fraction 0.61)
-  (dimmer-configure-which-key)
-  (dimmer-configure-magit)
-  (dimmer-configure-posframe)
-  (dimmer-mode t))
+;; (use-package dimmer
+;;   :straight (:host github :repo "gonewest818/dimmer.el")
+;;   :config
+;;   (setq dimmer-adjustment-mode :foreground)
+;;   (setq dimmer-fraction 0.61)
+;;   (dimmer-configure-which-key)
+;;   (dimmer-configure-magit)
+;;   (dimmer-configure-posframe)
+;;   (dimmer-mode t))
 
+(global-hl-line-mode t)
