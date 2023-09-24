@@ -109,3 +109,12 @@
 ;; display help-at-pt
 (help-at-pt-set-timer)
 (setq help-at-pt-display-when-idle t)
+
+;; tty frontend
+(use-package mistty
+  :bind (:map mistty-prompt-map
+	      ("M-<up>" . mistty-send-key)
+	      ("M-<down>" . mistty-send-key)
+	      ("M-<left>" . mistty-send-key)
+	      ("M-<right>" . mistty-send-key))
+  :config (set-face-foreground 'mistty-fringe-face "#8FBCBB"))
