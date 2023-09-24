@@ -118,3 +118,6 @@
 	      ("M-<left>" . mistty-send-key)
 	      ("M-<right>" . mistty-send-key))
   :config (set-face-foreground 'mistty-fringe-face "#8FBCBB"))
+
+;; restful client
+(use-package restclient)
