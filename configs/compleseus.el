@@ -46,6 +46,15 @@
    ("C-s" . consult-line)
    ("C-c b" . consult-buffer)))
 
+;; consult extensions
+(use-package consult-dash
+  :bind (("M-s d" . consult-dash))
+  :config
+  (consult-customize consult-dash :initial (thing-at-point 'symbol)))
+
+(use-package consult-eglot
+  :bind (("M-s l" . consult-eglot-symbols)))
+
 ;; embark
 (use-package embark
   :bind
