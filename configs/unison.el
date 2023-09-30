@@ -1,4 +1,3 @@
-(setq debug-on-error t)
 (defgroup unison nil
   "Unison sync helper."
   :group 'communication
