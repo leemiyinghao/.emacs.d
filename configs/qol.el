@@ -112,3 +112,10 @@
 
 ;; restful client
 (use-package restclient)
+
+;; breadcrumb
+(use-package breadcrumb
+  :straight (:host github :repo "joaotavora/breadcrumb" :files ("*.el"))
+  :config ((breadcrumb-mode)
+	   (custom-set-faces ('(breadcrumb-face ((t (:inherit Default))))))
+	   (custom-set-variables ('(breadcrumb-project-max-length 0.7)))))
