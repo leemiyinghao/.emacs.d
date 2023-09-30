@@ -15,6 +15,7 @@
 (load (expand-file-name "configs/dirvish.el" user-emacs-directory))
 (load (expand-file-name "configs/projectile.el" user-emacs-directory))
 (load (expand-file-name "configs/debugger.el" user-emacs-directory))
+(load (expand-file-name "configs/unison.el" user-emacs-directory))
 
 
 ;; lang misc
