@@ -44,7 +44,8 @@
   :bind
   (("C-M-s" . consult-ripgrep)
    ("C-s" . consult-line)
-   ("C-c b" . consult-buffer)))
+   ("C-c b" . consult-buffer)
+   ("C-c s" . consult-imenu)))
 
 ;; consult extensions
 (use-package consult-dash
