@@ -22,6 +22,9 @@
   (setq use-dialog-box nil) ;; do not use popup boxes
   (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
   (codeium-init))
+  (setq use-dialog-box nil))
+  ;; (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
+  ;; (codeium-init))
 
 ;; Enable mouse support
 (unless window-system
