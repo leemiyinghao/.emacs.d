@@ -8,4 +8,8 @@
 	'(isort black))
   (setf (alist-get 'lisp-mode apheleia-mode-alist)
 	'(lisp-indent))
+  (setf (alist-get 'beautysh apheleia-formatters)
+	'("beautysh" "-"))
+  (setf (alist-get 'sh-mode apheleia-mode-alist)
+	'(beautysh))
   (setq apheleia-remote-algorithm 'remote))
