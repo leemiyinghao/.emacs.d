@@ -13,6 +13,17 @@
   :defer t
   :hook (org-mode . org-auto-tangle-mode))
 
+(use-package org-download
+  :config
+  ;; Drag and drop to Dired
+  (setq org-download-link-format "[[file:%s]]\n"
+	org-download-image-org-width 600
+	org-download-abbreviate-filename-function #'file-relative-name)
+  (add-hook 'dired-mode-hook 'org-download-enable)
+  :bind
+  (:map org-mode-map
+	("C-s-y" . org-download-clipboard)))
+
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)
