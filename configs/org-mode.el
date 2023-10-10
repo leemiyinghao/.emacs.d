@@ -31,6 +31,7 @@
    (emacs-lisp . t)
    (http . t)))
 
+(setq org-startup-with-inline-images t)
 (setq org-support-shift-select t)
 (define-key org-mode-map (kbd "M-<left>") nil)
 (define-key org-mode-map (kbd "M-<up>") nil)
@@ -38,4 +39,5 @@
 (define-key org-mode-map (kbd "M-<down>") nil)
 
 (custom-set-variables
- '(org-export-backends '(ascii beamer html icalendar latex md odt freemind))) 
+ '(org-export-backends '(ascii beamer html icalendar latex md odt))) 
+(setq org-image-actual-width '(300))
