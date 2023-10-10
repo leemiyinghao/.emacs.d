@@ -1,7 +1,10 @@
 (use-package org-modern
+  :after org
+  :hook
+  (org-mode . org-modern-mode)
+  (org-agenda-finalize . org-modern-agenda)
   :config
-  (add-hook 'org-mode-hook #'org-modern-mode)
-  (add-hook 'org-agenda-finalize-hook #'org-modern-agenda))
+  (global-org-modern-mode))
 
 (use-package ob-http)
 
