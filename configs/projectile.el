@@ -5,6 +5,7 @@
   (setq projectile-enable-caching t)
   (setq projectile-file-exists-remote-cache-expire (* 10 60))
   (setq projectile-require-project-root t)
+  (setq projectile-switch-project-action #'projectile-dired)
   :bind
   ("M-p" . projectile-command-map)
   :init

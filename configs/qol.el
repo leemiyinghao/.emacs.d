@@ -108,7 +108,9 @@
 	      ("M-<down>" . mistty-send-key)
 	      ("M-<left>" . mistty-send-key)
 	      ("M-<right>" . mistty-send-key))
-  :config (set-face-foreground 'mistty-fringe-face "#8FBCBB"))
+  :config
+  (set-face-foreground 'mistty-fringe-face "#8FBCBB")
+  (setq mistty-allow-tramp-paths t))
 
 ;; restful client
 (use-package restclient)
