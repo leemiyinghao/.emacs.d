@@ -15,3 +15,6 @@
 (use-package forge
   :defer t
   :after magit)
+(use-package abridge-diff
+  :after magit
+  :init (abridge-diff-mode 1))
