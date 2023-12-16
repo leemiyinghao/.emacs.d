@@ -1,4 +1,5 @@
 (toggle-scroll-bar nil)
+(pixel-scroll-precision-mode)
 (add-to-list 'default-frame-alist
              '(font . "Fira Code 14"))
 

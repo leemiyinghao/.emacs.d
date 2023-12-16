@@ -5,3 +5,4 @@
 ;; mac
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(setq pixel-scroll-precision-use-momentum t)
