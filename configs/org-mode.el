@@ -21,6 +21,13 @@
   (:map org-mode-map
 	("C-s-y" . org-download-clipboard)))
 
+(use-package ox-pandoc)
+
+;; (use-package ox-gfm
+;;   :config
+;;   (eval-after-load "org"
+;;   '(require 'ox-gfm nil t)))
+
 ;; custom css when export
 (defun add-org-mode-default-head-hook (exporter)
   "Insert custom inline css and js"
@@ -70,11 +77,12 @@
 
 (setq org-startup-with-inline-images t)
 (setq org-support-shift-select t)
+(setq org-export-babel-evaluate nil)
 (define-key org-mode-map (kbd "M-<left>") nil)
 (define-key org-mode-map (kbd "M-<up>") nil)
 (define-key org-mode-map (kbd "M-<right>") nil)
 (define-key org-mode-map (kbd "M-<down>") nil)
 
 (custom-set-variables
- '(org-export-backends '(ascii beamer html icalendar latex md odt))) 
+ '(org-export-backends '(ascii beamer html icalendar latex md odt org pandoc))) 
 (setq org-image-actual-width '(300))
