@@ -11,6 +11,7 @@
 ;; frame transparent
 (set-frame-parameter (selected-frame) 'alpha '(95 95))
 (add-to-list 'default-frame-alist '(alpha 95 95))
+(add-to-list 'default-frame-alist '(internal-border-width . 8))
 
 ;; maximized
 (add-hook 'window-setup-hook 'toggle-frame-fullscreen t)
