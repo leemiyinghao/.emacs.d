@@ -48,6 +48,11 @@
 
 (load (expand-file-name "configs/init.el" user-emacs-directory))
 
+(let ((local-configs (expand-file-name "local-config/init.el" user-emacs-directory)))
+  (when (file-exists-p local-configs)
+    (load-file local-configs)))
+
+
 (when (string= system-type "darwin")
   (load (expand-file-name "macos.el" user-emacs-directory)))
 (when (string= system-type "linux")
