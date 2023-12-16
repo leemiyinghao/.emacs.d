@@ -8,6 +8,7 @@
 
 (use-package ob-http)
 
+(use-package ob-async)
 
 (use-package org-download
   :config
