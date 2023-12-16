@@ -120,3 +120,8 @@
   (custom-set-faces '(breadcrumb-face ((t (:foreground "#616e88")))))
   (custom-set-variables '(breadcrumb-project-max-length 0.7))
   (breadcrumb-mode))
+
+(use-package eldoc-box
+  :config (eldoc-box-hover-mode))
+
+(use-package selectric-mode)
