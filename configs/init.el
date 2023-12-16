@@ -18,6 +18,7 @@
 (load (expand-file-name "configs/unison.el" user-emacs-directory))
 (load (expand-file-name "configs/ollama.el" user-emacs-directory))
 (load (expand-file-name "configs/k8s.el" user-emacs-directory))
+(load (expand-file-name "configs/comint.el" user-emacs-directory))
 
 
 ;; lang misc
