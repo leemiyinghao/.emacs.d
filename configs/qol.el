@@ -127,8 +127,3 @@
   :config (eldoc-box-hover-mode))
 
 (use-package selectric-mode)
-
-(use-package consult-jump-project
-  :straight (consult-jump-project :type git :host github :repo "jdtsmith/consult-jump-project")
-  :custom (consult-jump-direct-jump-modes '(dired-mode))
-  :bind ("C-x p j" . consult-jump-project))

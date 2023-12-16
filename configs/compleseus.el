@@ -163,3 +163,17 @@
   :init
   (setq completion-cycle-threshold 3)
   (setq tab-always-indent 'complete))
+
+(use-package consult-jump-project
+  :straight (consult-jump-project :type git :host github :repo "jdtsmith/consult-jump-project")
+  :custom (consult-jump-direct-jump-modes '(dired-mode))
+  :bind ("C-x p j" . consult-jump-project))
+
+(use-package kind-icon
+  :ensure t
+  :after corfu
+  :custom
+  (kind-icon-default-face 'corfu-default)
+  :config
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
