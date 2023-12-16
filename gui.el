@@ -1,5 +1,7 @@
 (toggle-scroll-bar nil)
 (pixel-scroll-precision-mode)
+(define-key pixel-scroll-precision-mode-map (kbd "<prior>") 'xah-backward-block)
+(define-key pixel-scroll-precision-mode-map (kbd "<next>") 'xah-forward-block)
 (add-to-list 'default-frame-alist
              '(font . "Fira Code 14"))
 
