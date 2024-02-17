@@ -127,3 +127,10 @@
   :config (eldoc-box-hover-mode))
 
 (use-package selectric-mode)
+
+;; window-stool, for folding style location indication
+
+;; (use-package window-stool
+;;   :straight (:host github :repo "jaszhe/window-stool" :files ("*.el"))
+;;   :config
+;;   (add-hook 'prog-mode-hook #'window-stool-mode))
