@@ -36,4 +36,6 @@
   (custom-set-faces
    '(cov-coverage-not-run-face ((t (:foreground "#bf616a"))))
    '(cov-coverage-run-face ((t (:foreground "#3b4252")))))
-  :hook (python-mode . cov-mode))
+  :hook
+  (python-mode . cov-mode)
+  (go-mode . cov-mode))

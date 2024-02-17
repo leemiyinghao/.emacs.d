@@ -4,7 +4,6 @@
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
 ;; (setq straight-use-package-by-default t)
 (defvar bootstrap-version)
 (let ((bootstrap-file

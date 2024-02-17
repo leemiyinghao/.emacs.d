@@ -13,6 +13,8 @@
 	 (latex-mode . eglot-ensure)
 	 (markdown-mode . eglot-ensure)
 	 (org-mode . eglot-ensure)
+	 (go-mode . eglot-ensure)
+	 (go-ts-mode . eglot-ensure)
 	 (rst-mode . eglot-ensure))
   :bind (("C-c l r" . eglot-rename)
 	 ("C-<tab>" . eglot-code-actions)
