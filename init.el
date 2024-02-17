@@ -27,7 +27,7 @@
   (package-install 'use-package))
 (require 'use-package)
 (setq use-package-always-ensure t)
-
+(straight-use-package 'org)
 ;; silence compile warning
 (setq native-comp-async-report-warnings-errors t)
 
