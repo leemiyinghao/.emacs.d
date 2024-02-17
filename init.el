@@ -59,3 +59,4 @@
   (load (expand-file-name "linux.el" user-emacs-directory)))
 
 (load (expand-file-name "keybind.el" user-emacs-directory))
+(put 'scroll-left 'disabled nil)
