@@ -2,8 +2,7 @@
 (pixel-scroll-precision-mode)
 (define-key pixel-scroll-precision-mode-map (kbd "<prior>") 'xah-backward-block)
 (define-key pixel-scroll-precision-mode-map (kbd "<next>") 'xah-forward-block)
-(add-to-list 'default-frame-alist
-             '(font . "Fira Code 14"))
+(set-frame-font "Fira Code 14" nil t)
 
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
