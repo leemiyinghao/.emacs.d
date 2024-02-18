@@ -1,7 +1,6 @@
 "lsp"
 
 (use-package eglot
-  :defer t
   :hook ((python-mode . eglot-ensure)
 	 (python-ts-mode . eglot-ensure)
 	 (rust-mode . eglot-ensure)
@@ -24,6 +23,8 @@
   (add-to-list 'eglot-server-programs '(python-ts-mode . ("pyright-langserver" "--stdio")))
   (add-to-list 'eglot-server-programs '(vue-mode . ("vue-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs '(javascript-mode . ("typescript-language-server" "--stdio")))
+  (add-to-list 'eglot-server-programs '(go-ts-mode . ("gopls"  "serve")))
+  (add-to-list 'eglot-server-programs '(go-mode . ("gopls"  "serve")))
   (add-to-list 'eglot-server-programs '('(text-mode bibtex-mode context-mode latex-mode markdown-mode org-mode rst-mode) . ("grammarly-languageserver" "--stdio" :initializationOptions (:clientId "client_BaDkMgx4X19X9UxxYRCXZo"))))
   (add-to-list 'eglot-stay-out-of 'company)
   (setq eldoc-echo-area-use-multiline-p t))
