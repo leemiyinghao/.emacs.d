@@ -134,3 +134,7 @@
 ;;   :straight (:host github :repo "jaszhe/window-stool" :files ("*.el"))
 ;;   :config
 ;;   (add-hook 'prog-mode-hook #'window-stool-mode))
+
+;; WakaTime
+(use-package wakatime-mode
+  :config (global-wakatime-mode))
