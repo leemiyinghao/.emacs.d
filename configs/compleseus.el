@@ -174,6 +174,8 @@
   :after corfu
   :custom
   (kind-icon-default-face 'corfu-default)
+  (kind-icon-default-style 
+   '(:padding 0 :stroke 0 :margin 0 :radius 0 :height 0.5 :scale 1))
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
