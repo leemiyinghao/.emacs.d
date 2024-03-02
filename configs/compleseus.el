@@ -45,7 +45,8 @@
   (("C-M-s" . consult-ripgrep)
    ("C-s" . consult-line)
    ("C-c b" . consult-buffer)
-   ("C-c s" . consult-imenu)))
+   ("C-c s" . consult-imenu)
+   ("C-c e e" . consult-flymake)))
 
 ;; consult extensions
 (use-package consult-dash
