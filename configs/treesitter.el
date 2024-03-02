@@ -2,6 +2,8 @@
       '((yaml-mode . yaml-ts-mode)
 	(bash-mode . bash-ts-mode)
 	(json-mode . json-ts-mode)
+	(javascript-mode . js-ts-mode)
+	(js-mode . js-ts-mode)
 	(css-mode . css-ts-mode)
 	(python-mode . python-ts-mode)
 	(go-mode . go-ts-mode)))
