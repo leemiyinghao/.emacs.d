@@ -180,3 +180,6 @@
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
+(use-package consult-tramp
+  :straight (consult-tramp :type git :host github :repo "Ladicle/consult-tramp"))
+
