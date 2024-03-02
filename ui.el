@@ -2,12 +2,21 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
-(use-package moody
+(use-package nyan-mode
   :config
-  (setq x-underline-at-descent-line t)
-  (moody-replace-mode-line-buffer-identification)
-  (moody-replace-vc-mode)
-  (moody-replace-eldoc-minibuffer-message-function))
+  (nyan-mode))
+
+(use-package spaceline
+  :demand t
+  :init
+  (setq powerline-default-separator 'wave)
+  :config
+  (require 'spaceline-config)
+  (spaceline-spacemacs-theme)
+  (spaceline-toggle-nyan-cat-on)
+  (spaceline-toggle-selection-info-on)
+  (spaceline-toggle-projectile-root-on))
+
 (use-package minions
   :config
   (minions-mode))

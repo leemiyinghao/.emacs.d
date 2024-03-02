@@ -45,6 +45,7 @@
       `((".*" ,temporary-file-directory t)))
 (setq create-lockfiles nil)
 
+(use-package diminish)
 (load (expand-file-name "configs/init.el" user-emacs-directory))
 
 (let ((local-configs (expand-file-name "local-config/init.el" user-emacs-directory)))

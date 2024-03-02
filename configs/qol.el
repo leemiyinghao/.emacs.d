@@ -39,8 +39,9 @@
 
 ;; which key
 (use-package which-key
-  :defer t)
-(which-key-mode)
+  :diminish which-key-mode
+  :config
+  (which-key-mode))
 
 ;; guru-mode
 (use-package guru-mode
@@ -137,4 +138,9 @@
 
 ;; WakaTime
 (use-package wakatime-mode
-  :config (global-wakatime-mode))
+  :config (global-wakatime-mode)
+  :diminish wakatime-mode)
+
+(use-package flymake
+  :hook
+  (prog-mode . flymake-mode))
