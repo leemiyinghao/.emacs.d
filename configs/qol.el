@@ -66,9 +66,6 @@
   (setq tramp-chunksize 2000)
   (setq tramp-use-ssh-controlmaster-options nil))
 
-;; ripgrep
-(use-package ripgrep
-  :defer t)
 
 ;; multiple-cursors
 (use-package multiple-cursors
