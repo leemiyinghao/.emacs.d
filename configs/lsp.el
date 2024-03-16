@@ -15,10 +15,12 @@
 	 (org-mode . eglot-ensure)
 	 (go-mode . eglot-ensure)
 	 (go-ts-mode . eglot-ensure)
+	 (svelte-mode . eglot-ensure)
 	 (rst-mode . eglot-ensure))
   :bind (("C-c l r" . eglot-rename)
 	 ("C-<tab>" . eglot-code-actions))
   :config
+  (add-to-list 'eglot-server-programs '('(text-mode bibtex-mode context-mode latex-mode markdown-mode org-mode rst-mode) . ("grammarly-languageserver" "--stdio" :initializationOptions (:clientId "client_BaDkMgx4X19X9UxxYRCXZo"))))
   (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
   (add-to-list 'eglot-server-programs '(python-ts-mode . ("pyright-langserver" "--stdio")))
   (add-to-list 'eglot-server-programs '(vue-mode . ("vue-language-server" "--stdio")))
@@ -26,7 +28,7 @@
   (add-to-list 'eglot-server-programs '(js-ts-mode . ("typescript-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs '(go-ts-mode . ("gopls"  "serve")))
   (add-to-list 'eglot-server-programs '(go-mode . ("gopls"  "serve")))
-  (add-to-list 'eglot-server-programs '('(text-mode bibtex-mode context-mode latex-mode markdown-mode org-mode rst-mode) . ("grammarly-languageserver" "--stdio" :initializationOptions (:clientId "client_BaDkMgx4X19X9UxxYRCXZo"))))
+  (add-to-list 'eglot-server-programs '(svelte-mode . ("svelteserver" "--stdio")))
   (add-to-list 'eglot-stay-out-of 'company)
   (setq eldoc-echo-area-use-multiline-p t))
 
