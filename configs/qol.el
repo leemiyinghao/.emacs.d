@@ -144,3 +144,10 @@
 (use-package flymake
   :hook
   (prog-mode . flymake-mode))
+
+(use-package deadgrep)
+
+(use-package kotlin-mode)
+
+(provide 'qol)
+;;; qol.el ends here
