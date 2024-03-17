@@ -146,5 +146,11 @@
 
 (use-package kotlin-mode)
 
+(use-package makefile-executor
+  :config
+  (add-hook 'makefile-mode-hook 'makefile-executor-mode))
+
+(use-package git-timemachine)
+
 (provide 'qol)
 ;;; qol.el ends here
