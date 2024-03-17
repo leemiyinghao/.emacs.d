@@ -1,4 +1,5 @@
 (use-package comint-mime
+  :defer t
   :config
   (add-hook 'shell-mode-hook 'comint-mime-setup)
   (add-hook 'inferior-python-mode-hook 'comint-mime-setup)

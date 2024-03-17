@@ -10,4 +10,5 @@
   :hook
   (go-ts-mode . go-mode-dap-hook))
 
-(use-package gorepl-mode)
+(use-package gorepl-mode
+  :defer t)

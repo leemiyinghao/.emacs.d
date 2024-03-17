@@ -1,8 +1,10 @@
 ;; mermaid mode
-(use-package mermaid-mode)
+(use-package mermaid-mode
+  :defer t)
 
 (use-package markdown-mode
   :ensure t
+  :defer t
   :mode ("README\\.md\\'" . gfm-mode)
   :init
   (setq markdown-enable-wiki-links t

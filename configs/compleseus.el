@@ -29,11 +29,13 @@
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
+  :defer t
   :init
   (savehist-mode))
 
 ;; orderless
 (use-package orderless
+  :defer t
   :init
   (setq completion-styles '(orderless basic)
         completion-category-defaults nil
@@ -50,15 +52,18 @@
 
 ;; consult extensions
 (use-package consult-dash
+  :defer t
   :bind (("M-s d" . consult-dash))
   :config
   (consult-customize consult-dash :initial (thing-at-point 'symbol)))
 
 (use-package consult-eglot
+  :defer t
   :bind (("M-s l" . consult-eglot-symbols)))
 
 ;; embark
 (use-package embark
+  :defer t
   :bind
   (("C-." . embark-act)
    ("C-;" . embark-dwim)
@@ -74,6 +79,7 @@
 
 ;; embark-consult
 (use-package embark-consult
+  :defer t
   :after (embark consult)
   :demand t
   :hook
@@ -81,6 +87,7 @@
 
 ;; marginalia
 (use-package marginalia
+  :defer t
   :after vertico
   :ensure t
   :custom
@@ -89,6 +96,7 @@
   (marginalia-mode))
 
 (use-package all-the-icons-completion
+  :defer t
   :after (marginalia all-the-icons)
   :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
   :init
@@ -126,6 +134,7 @@
 
 
 (use-package corfu-candidate-overlay
+  :defer t
   :straight (:type git
 		   :repo "https://code.bsdgeek.org/adam/corfu-candidate-overlay"
 		   :files (:defaults "*.el"))
@@ -166,12 +175,14 @@
   (setq tab-always-indent 'complete))
 
 (use-package consult-jump-project
+  :defer t
   :straight (consult-jump-project :type git :host github :repo "jdtsmith/consult-jump-project")
   :custom (consult-jump-direct-jump-modes '(dired-mode))
   :bind ("C-x p j" . consult-jump-project))
 
 (use-package kind-icon
   :ensure t
+  :defer t
   :after corfu
   :custom
   (kind-icon-default-face 'corfu-default)
@@ -181,5 +192,6 @@
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 (use-package consult-tramp
+  :defer t
   :straight (consult-tramp :type git :host github :repo "Ladicle/consult-tramp"))
 

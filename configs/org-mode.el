@@ -8,15 +8,19 @@
   (global-org-modern-mode))
 
 (use-package org-modern-indent
+  :defer t
   :straight (org-modern-indent :type git :host github :repo "jdtsmith/org-modern-indent")
   :config ; add late to hook
   (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
 
-(use-package ob-http)
+(use-package ob-http
+  :defer t)
 
-(use-package ob-async)
+(use-package ob-async
+  :defer t)
 
 (use-package org-download
+  :defer t
   :config
   ;; Drag and drop to Dired
   (setq org-download-link-format "[[file:%s]]\n"
@@ -27,7 +31,8 @@
   (:map org-mode-map
 	("C-s-y" . org-download-clipboard)))
 
-(use-package ox-pandoc)
+(use-package ox-pandoc
+  :defer t)
 
 ;; (use-package ox-gfm
 ;;   :config

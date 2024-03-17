@@ -93,6 +93,7 @@
 
 ;; centeralize buffer
 (use-package olivetti
+  :defer t
   :bind ("C-c o" . olivetti-mode))
 
 ;; display help-at-pt
@@ -101,6 +102,7 @@
 
 ;; tty frontend
 (use-package mistty
+  :defer t
   :bind (:map mistty-prompt-map
 	      ("M-<up>" . mistty-send-key)
 	      ("M-<down>" . mistty-send-key)
@@ -111,7 +113,8 @@
   (setq mistty-allow-tramp-paths t))
 
 ;; restful client
-(use-package restclient)
+(use-package restclient
+  :defer t)
 
 ;; breadcrumb
 (use-package breadcrumb
@@ -122,16 +125,10 @@
   (breadcrumb-mode))
 
 (use-package eldoc-box
+  :defer t
   :config (eldoc-box-hover-mode))
 
 (use-package selectric-mode)
-
-;; window-stool, for folding style location indication
-
-;; (use-package window-stool
-;;   :straight (:host github :repo "jaszhe/window-stool" :files ("*.el"))
-;;   :config
-;;   (add-hook 'prog-mode-hook #'window-stool-mode))
 
 ;; WakaTime
 (use-package wakatime-mode
@@ -142,15 +139,19 @@
   :hook
   (prog-mode . flymake-mode))
 
-(use-package deadgrep)
+(use-package deadgrep
+  :defer t)
 
-(use-package kotlin-mode)
+(use-package kotlin-mode
+  :defer t)
 
 (use-package makefile-executor
+  :defer t
   :config
   (add-hook 'makefile-mode-hook 'makefile-executor-mode))
 
-(use-package git-timemachine)
+(use-package git-timemachine
+  :defer t)
 
 (provide 'qol)
 ;;; qol.el ends here

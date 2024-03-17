@@ -1,6 +1,7 @@
 "lsp"
 
 (use-package eglot
+  :defer t
   :hook ((python-mode . eglot-ensure)
 	 (python-ts-mode . eglot-ensure)
 	 (rust-mode . eglot-ensure)
