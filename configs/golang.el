@@ -9,3 +9,5 @@
   (require 'dap-dlv-go)
   :hook
   (go-ts-mode . go-mode-dap-hook))
+
+(use-package gorepl-mode)
