@@ -6,3 +6,4 @@
 (use-package kubedoc)
 (use-package kubectx-mode)
 (use-package kubernetes-helm)
+(use-package kubel)
