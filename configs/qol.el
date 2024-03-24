@@ -1,28 +1,3 @@
-(defun toggle-tabnine ()
-  (interactive)
-  (if (member #'tabnine-completion-at-point completion-at-point-functions)
-      (progn
-	(setq completion-at-point-functions (remove #'tabnine-completion-at-point completion-at-point-functions))
-	(message "Disabled tabnine-capf."))
-    (progn
-      (add-to-list 'completion-at-point-functions #'tabnine-completion-at-point)
-      (message "Enabled tabnine-capf."))))
-
-
-;; tabnine, enable by M-t
-(use-package tabnine-capf
-  :defer t
-  :straight (:host github :repo "50ways2sayhard/tabnine-capf" :files ("*.el" "*.sh"))
-  :hook (kill-emacs . tabnine-capf-kill-process)
-  :bind ("M-t" . 'toggle-tabnine))
-
-(use-package codeium
-  :straight (:type git :host github :repo "Exafunction/codeium.el")
-  :config 
-  (setq use-dialog-box nil))
-;; (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
-;; (codeium-init))
-
 ;; Enable mouse support
 (unless window-system
   (require 'mouse)
