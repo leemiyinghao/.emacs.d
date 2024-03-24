@@ -55,9 +55,6 @@
 	  (json-ts-mode . ("vscode-json-language-server" "--stdio"))
 	  (yaml-ts-mode . ("yaml-language-server" "--stdio")))))
 
-(use-package eldoc-box
-  :hook (prog-mode . eldoc-box-hover-mode))
-
 (use-package flymake-diagnostic-at-point
   :after flymake
   :config
