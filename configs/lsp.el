@@ -2,36 +2,61 @@
 
 (use-package eglot
   :defer t
-  :hook ((python-mode . eglot-ensure)
-	 (python-ts-mode . eglot-ensure)
-	 (rust-mode . eglot-ensure)
-	 (vue-mode-reparse . eglot-ensure)
-	 (text-mode . eglot-ensure)
-	 (javascript-mode . eglot-ensure)
-	 (js-ts-mode . eglot-ensure)
-	 (bibtex-mode . eglot-ensure)
-	 (context-mode . eglot-ensure)
-	 (latex-mode . eglot-ensure)
-	 (markdown-mode . eglot-ensure)
-	 (org-mode . eglot-ensure)
-	 (go-mode . eglot-ensure)
-	 (go-ts-mode . eglot-ensure)
-	 (svelte-mode . eglot-ensure)
-	 (rst-mode . eglot-ensure))
+  :hook ((;; util
+	  bash-ts-mode
+	  cmake-ts-mode
+	  ;; backend
+	  python-ts-mode
+	  rust-ts-mode
+	  go-ts-mode
+	  ;; frontend
+	  json-ts-mode
+	  vue-mode
+	  js-ts-mode
+	  typescript-ts-mode
+	  php-mode
+	  ;; misc
+	  text-mode
+	  bibtex-mode
+	  context-mode
+	  latex-mode
+	  markdown-mode
+	  org-mode
+	  yaml-ts-mode
+	  rst-mode)
+	 . eglot-ensure)
+
   :bind (("C-c l r" . eglot-rename)
 	 ("C-<tab>" . eglot-code-actions))
+
   :config
-  (add-to-list 'eglot-server-programs '('(text-mode bibtex-mode context-mode latex-mode markdown-mode org-mode rst-mode) . ("grammarly-languageserver" "--stdio" :initializationOptions (:clientId "client_BaDkMgx4X19X9UxxYRCXZo"))))
-  (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
-  (add-to-list 'eglot-server-programs '(python-ts-mode . ("pyright-langserver" "--stdio")))
-  (add-to-list 'eglot-server-programs '(vue-mode . ("vue-language-server" "--stdio")))
-  (add-to-list 'eglot-server-programs '(javascript-mode . ("typescript-language-server" "--stdio")))
-  (add-to-list 'eglot-server-programs '(js-ts-mode . ("typescript-language-server" "--stdio")))
-  (add-to-list 'eglot-server-programs '(go-ts-mode . ("gopls"  "serve")))
-  (add-to-list 'eglot-server-programs '(go-mode . ("gopls"  "serve")))
-  (add-to-list 'eglot-server-programs '(svelte-mode . ("svelteserver" "--stdio")))
-  (add-to-list 'eglot-stay-out-of 'company)
-  (setq eldoc-echo-area-use-multiline-p t))
+  (mapc (lambda (program) (add-to-list 'eglot-server-programs program))
+	'(;; grammarly for text-main modes.
+	  ('(text-mode
+	     bibtex-mode
+	     context-mode
+	     latex-mode
+	     markdown-mode
+	     org-mode
+	     rst-mode)
+	   .
+	   ("grammarly-languageserver" "--stdio"
+	    :initializationOptions (:clientId "client_BaDkMgx4X19X9UxxYRCXZo")))
+	  ;; language server for programming language
+	  (python-ts-mode . ("pyright-langserver" "--stdio"))
+	  (vue-mode . ("vue-language-server" "--stdio"))
+	  (typescript-ts-mode . ("typescript-language-server" "--stdio"))
+	  (js-ts-mode . ("typescript-language-server" "--stdio"))
+	  (go-ts-mode . ("gopls"  "serve"))
+	  (svelte-mode . ("svelteserver" "--stdio"))
+	  (bash-ts-mode . ("bash-language-server" "start"))
+	  (cmake-ts-mode . ("cmake-language-server"))
+	  (php-mode . ("intelephense" "--stdio"))
+	  (json-ts-mode . ("vscode-json-language-server" "--stdio"))
+	  (yaml-ts-mode . ("yaml-language-server" "--stdio")))))
+
+(use-package eldoc-box
+  :hook (prog-mode . eldoc-box-hover-mode))
 
 (use-package flymake-diagnostic-at-point
   :after flymake
