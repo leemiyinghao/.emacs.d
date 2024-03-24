@@ -66,37 +66,4 @@
 	(rust-mode . rust-ts-mode)
 	(kotlin-mode . kotlin-ts-mode)))
 
-(use-package combobulate
-  :straight (:host github :repo "mickeynp/combobulate")
-  :preface
-  (setq combobulate-key-prefix "C-c o")
-  :hook
-  (((yaml-ts-mode
-     bash-ts-mode
-     cmake-ts-mode
-     json-ts-mode
-     js-json-ts-mode
-     js-ts-mode
-     js2-ts-mode
-     css-ts-mode
-     python-ts-mode
-     yaml-ts-mode
-     go-ts-mode
-     vue-ts-mode
-     c++-ts-mode
-     ruby-ts-mode
-     r-ts-mode
-     makefile-ts-mode
-     dockerfile-ts-mode
-     csharp-ts-mode
-     c-ts-mode
-     java-ts-mode
-     rust-ts-mode
-     kotlin-ts-mode
-     yaml-ts-mode)
-    . combobulate-mode)))
-
-(use-package msgu
-  :straight (:host github :repo "jcs-elpa/msgu"
-                   :files (:defaults "langs/*.el")))
 
