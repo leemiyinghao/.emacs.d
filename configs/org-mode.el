@@ -1,5 +1,4 @@
 (use-package org-modern
-  :after org
   :hook
   (org-mode . org-modern-mode)
   (org-mode . org-indent-mode)
