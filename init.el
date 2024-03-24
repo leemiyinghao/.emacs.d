@@ -30,6 +30,9 @@
 ;; silence compile warning
 (setq native-comp-async-report-warnings-errors t)
 
+;; load utils
+(load (expand-file-name "util.el" user-emacs-directory))
+
 ;; load ui stuff
 (load (expand-file-name "theme.el" user-emacs-directory))
 (load (expand-file-name "ui.el" user-emacs-directory))

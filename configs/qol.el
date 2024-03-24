@@ -124,10 +124,6 @@
   (custom-set-variables '(breadcrumb-project-max-length 0.7))
   (breadcrumb-mode))
 
-(use-package eldoc-box
-  :defer t
-  :config (eldoc-box-hover-mode))
-
 (use-package selectric-mode)
 
 ;; WakaTime

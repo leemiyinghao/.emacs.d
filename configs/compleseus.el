@@ -134,7 +134,6 @@
 
 
 (use-package corfu-candidate-overlay
-  :defer t
   :straight (:type git
 		   :repo "https://code.bsdgeek.org/adam/corfu-candidate-overlay"
 		   :files (:defaults "*.el"))
