@@ -32,6 +32,7 @@
 (use-package kivy-mode :ensure t :defer t)
 (use-package yaml-mode :ensure t :defer t)
 (use-package lua-mode :ensure t :defer t)
+(use-package php-mode :ensure t :defer t)
 
 ;; TRAMP remote PATH config
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)

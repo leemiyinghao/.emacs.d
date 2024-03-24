@@ -10,3 +10,6 @@
 (use-package js-comint
   :defer t
   :config (setq inferior-js-program-command "node"))
+
+(use-package ts-comint
+  :defer t)
