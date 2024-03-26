@@ -124,5 +124,8 @@
 (use-package git-timemachine
   :defer t)
 
+(use-package casual
+  :defer t)
+
 (provide 'qol)
 ;;; qol.el ends here
