@@ -31,7 +31,9 @@
 	("C-s-y" . org-download-clipboard)))
 
 (use-package ox-pandoc
-  :defer t)
+  :defer t
+  :config
+  (setq org-pandoc-options-for-beamer-pdf '((pdf-engine . "xelatex"))))
 
 ;; (use-package ox-gfm
 ;;   :config
