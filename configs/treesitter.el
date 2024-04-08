@@ -54,7 +54,6 @@
 	(python-mode . python-ts-mode)
 	(yaml-mode . yaml-ts-mode)
 	(go-mode . go-ts-mode)
-	(vue-mode . vue-ts-mode)
 	(c++-mode . c++-ts-mode)
 	(ruby-mode . ruby-ts-mode)
 	(r-mode . r-ts-mode)
