@@ -29,16 +29,24 @@
 ;; silence compile warning
 (setq native-comp-async-report-warnings-errors t)
 
+(use-package benchmark-init
+  :ensure t
+  :config
+  ;; To disable collection of benchmark data after init is done.
+  (add-hook 'after-init-hook 'benchmark-init/deactivate))
+
+(add-to-list 'load-path (expand-file-name "utils/" user-emacs-directory))
+
 ;; load utils
-(load (expand-file-name "util.el" user-emacs-directory))
+(require 'util)
 
 ;; load ui stuff
-(load (expand-file-name "theme.el" user-emacs-directory))
-(load (expand-file-name "ui.el" user-emacs-directory))
+(require 'theme)
+(require 'ui)
 
 (if (display-graphic-p)
-    (load (expand-file-name "gui.el" user-emacs-directory))
-  (load (expand-file-name "terminal.el" user-emacs-directory)))
+    (require 'gui)
+  (require 'terminal))
 
 ;; setup backup directory
 (setq backup-directory-alist
@@ -48,7 +56,8 @@
 (setq create-lockfiles nil)
 
 (use-package diminish)
-(load (expand-file-name "configs/init.el" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "configs/" user-emacs-directory))
+(require 'configs-init)
 
 (let ((local-configs (expand-file-name "local-config/init.el" user-emacs-directory)))
   (when (file-exists-p local-configs)
@@ -56,9 +65,10 @@
 
 
 (when (string= system-type "darwin")
-  (load (expand-file-name "macos.el" user-emacs-directory)))
+  (require 'macos))
 (when (string= system-type "linux")
-  (load (expand-file-name "linux.el" user-emacs-directory)))
+  (require 'linux))
 
-(load (expand-file-name "keybind.el" user-emacs-directory))
+(require 'keybind)
 (put 'scroll-left 'disabled nil)
+(put 'erase-buffer 'disabled nil)
