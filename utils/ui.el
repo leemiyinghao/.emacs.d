@@ -23,9 +23,10 @@
 
 ;; prefer horizontal split on new window
 ;; (setq split-width-threshold 1 )
-
+(use-package page-break-lines)
 (use-package dashboard
   :defer t
+  :after projectile
   :hook (after-init . dashboard-setup-startup-hook)
   :config
   (setq dashboard-startup-banner 'logo)

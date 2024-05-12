@@ -1,5 +1,5 @@
 (use-package projectile
-  :defer t
+  ;; :defer t
   :config
   (setq projectile-sort-order 'recently-active)
   (setq projectile-enable-caching t)
