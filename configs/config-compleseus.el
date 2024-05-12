@@ -132,15 +132,15 @@
   (corfu-doc-terminal-mode +1))
 
 
-(use-package corfu-candidate-overlay
-  :straight (:type git
-		   :repo "https://code.bsdgeek.org/adam/corfu-candidate-overlay"
-		   :files (:defaults "*.el"))
-  :after corfu
-  :config
-  (corfu-candidate-overlay-mode t)
-  ;; corfu-candidate-overlay-complete-at-point have issue as it call corfu-insert and completion-at-point at the same time, which causing duplicate insertions on candidates.
-  (global-set-key (kbd "M-<return>") 'corfu-insert))
+;; (use-package corfu-candidate-overlay
+;;   :straight (:type git
+;; 		   :repo "https://code.bsdgeek.org/adam/corfu-candidate-overlay"
+;; 		   :files (:defaults "*.el"))
+;;   :after corfu
+;;   :config
+;;   (corfu-candidate-overlay-mode t)
+;;   ;; corfu-candidate-overlay-complete-at-point have issue as it call corfu-insert and completion-at-point at the same time, which causing duplicate insertions on candidates.
+;;   (global-set-key (kbd "M-<return>") 'corfu-insert))
 
 (use-package cape
   ;; Bind dedicated completion commands

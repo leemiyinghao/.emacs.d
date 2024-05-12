@@ -21,6 +21,7 @@
 (require 'config-k8s)
 (require 'config-comint)
 (require 'config-treesitter)
+(require 'config-copilot)
 
 
 ;; lang misc
