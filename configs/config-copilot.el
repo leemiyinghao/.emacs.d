@@ -4,6 +4,7 @@
   :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
   :hook (prog-mode . copilot-mode)
         (git-commit-mode . copilot-mode)
+        (org-mode . copilot-mode)
   :bind (("M-RET" . copilot-accept-completion)
 	 ("M-<return>" . copilot-accpet-completion))
   ;; suppress warning
