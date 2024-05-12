@@ -53,7 +53,7 @@
 	(css-mode . css-ts-mode)
 	(python-mode . python-ts-mode)
 	(yaml-mode . yaml-ts-mode)
-	(go-mode . go-ts-mode)
+	;; (go-mode . go-ts-mode)
 	(c++-mode . c++-ts-mode)
 	(ruby-mode . ruby-ts-mode)
 	(r-mode . r-ts-mode)
@@ -64,8 +64,6 @@
 	(java-mode . java-ts-mode)
 	(rust-mode . rust-ts-mode)
 	(kotlin-mode . kotlin-ts-mode)))
-
-
 
 (provide 'config-treesitter)
 ;;; config-treesitter.el ends here

@@ -16,8 +16,8 @@
     cmake-mode
     rust-ts-mode
     rust-mode
-    go-ts-mode
-    go-mode
+    ;; go-ts-mode
+    ;; go-mode
     json-ts-mode
     json-mode
     vue-mode
@@ -90,7 +90,9 @@
 (use-package eglot
   :defer t
   :hook ((;; backend
-	  python-ts-mode)
+	  python-ts-mode
+	  go-mode
+	  go-ts-mode)
 	 . eglot-ensure)
 
   :bind (("C-c l r" . eglot-rename)
@@ -99,7 +101,8 @@
   :config
   (mapc (lambda (program) (add-to-list 'eglot-server-programs program))
 	'(;; grammarly for text-main modes.
-	  (python-ts-mode . ("pyright-langserver" "--stdio")))))
+	  (python-ts-mode . ("pyright-langserver" "--stdio"))
+	  ((go-mode go-ts-mode) . ("gopls" "serve")))))
 
 
 (provide 'config-lsp)

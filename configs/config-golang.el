@@ -1,3 +1,5 @@
+(use-package go-mode)
+
 (defun go-mode-dap-hook ()
   (dap-mode t)
   (dap-ui-mode t)
