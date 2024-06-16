@@ -77,10 +77,10 @@
 (use-package mistty
   :defer t
   :bind (:map mistty-prompt-map
-	      ("M-<up>" . mistty-send-key)
-	      ("M-<down>" . mistty-send-key)
-	      ("M-<left>" . mistty-send-key)
-	      ("M-<right>" . mistty-send-key))
+			  ("M-<up>" . mistty-send-key)
+			  ("M-<down>" . mistty-send-key)
+			  ("M-<left>" . mistty-send-key)
+			  ("M-<right>" . mistty-send-key))
   :config
   (set-face-foreground 'mistty-fringe-face "#8FBCBB")
   (setq mistty-allow-tramp-paths t))
