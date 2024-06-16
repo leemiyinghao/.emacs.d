@@ -93,6 +93,8 @@
 (define-key org-mode-map (kbd "M-<up>") nil)
 (define-key org-mode-map (kbd "M-<right>") nil)
 (define-key org-mode-map (kbd "M-<down>") nil)
+(define-key org-mode-map (kbd "s-c") 'org-capture)
+(setq org-return-follows-link t)
 
 (custom-set-variables
  '(org-export-backends '(ascii beamer html icalendar latex md odt org pandoc))) 
@@ -114,7 +116,28 @@
          ;; Dailies
          ("C-c n j" . org-roam-dailies-capture-today))
   :config
-  (org-roam-db-autosync-mode))
+  (org-roam-db-autosync-mode)
+  (setq org-roam-graph-viewer #'browse-url)
+  (setq org-roam-capture-templates
+		'(("d" "default" plain "%?"
+		   :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+							  "#+title: ${title}\n#+roam_alias:\n\n")
+		   :unnarrowed t)
+		  ("i" "issue draft" plain (file "~/.emacs.d/templates/issue.org")
+		   :target (file "issues/%<%Y%m%d%H%M%S>-${slug}.org")
+		   :unnarrowed t)
+		  ("m" "merge request draft" plain (file "~/.emacs.d/templates/merge-request.org")
+		   :target (file "merge-requests/%<%Y%m%d%H%M%S>-${slug}.org")
+		   :unnarrowed t)
+		  ("n" "meeting note" plain (file "~/.emacs.d/templates/meeting-note.org")
+		   :target (file "meeting-notes/%<%Y%m%d%H%M%S>-${slug}.org")
+		   :unnarrowed t)
+		  ("f" "documentation draft" plain (file "~/.emacs.d/templates/document.org")
+		   :target (file "documents/${slug}.org")
+		   :unnarrowed t)
+		  ("t" "todos" plain "**** TODO ${title}\n%?"
+		   :target (file+datetree "todos/current.org" "month")
+		   :unnarrowed t))))
 
 (provide 'config-org-mode)
 ;;; config-org-mode.el ends here

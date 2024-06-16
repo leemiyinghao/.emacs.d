@@ -1,0 +1,10 @@
+#+title: ${title}
+#+author: catLee
+#+date: %t
+#+OPTIONS: ^:nil
+#+roam_alias:
+#+roam_tags: document 
+
+* Prolouge
+
+# Summary of the document, including the reason for writing it and the main points covered.

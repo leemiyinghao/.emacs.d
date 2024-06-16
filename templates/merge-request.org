@@ -1,0 +1,35 @@
+#+title: ${title}
+#+author: catLee
+#+date: %t
+#+OPTIONS: ^:nil
+#+roam_alias:
+#+roam_tags: merge-request 
+
+* Overview
+
+# Briefly describe the issue about ${title}
+
+%?
+
+* Approach
+
+# How did you solve the issue?
+
+* To Test
+
+# How to test the changes?
+
+* Assignee-checklist
+
+- [ ] I've run my code.
+- [ ] I've added tests for my code.
+- [ ] My code or its documentation is easily readable.
+- [ ] I'm fully aware of the goal/requirement of this issue.
+- [ ] I have confidence in my code.
+
+* Reviewer-checklist
+
+- [ ] The code reaches its goal.
+- [ ] The code passed my manual test.
+- [ ] Code quality is acceptable.
+- [ ] Test coverage is acceptable or not required.

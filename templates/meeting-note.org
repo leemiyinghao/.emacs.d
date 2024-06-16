@@ -1,0 +1,23 @@
+#+title: ${title}
+#+author: catLee
+#+date: %t
+#+OPTIONS: ^:nil
+#+roam_alias:
+#+roam_tags: meeting-note
+
+* Participants
+
+- catLee
+- %?
+
+* Agenda
+
+-
+
+* Discussion & Conclusion
+
+- 
+
+* Action Items
+
+- [ ] 
