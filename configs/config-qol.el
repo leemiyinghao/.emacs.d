@@ -18,12 +18,6 @@
   :config
   (which-key-mode))
 
-;; guru-mode
-(use-package guru-mode
-  :config
-  (setq guru-warn-only t)
-  (guru-global-mode +1))
-
 ;; TRAMP remote development
 (use-package tramp
   :config
