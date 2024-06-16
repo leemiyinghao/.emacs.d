@@ -46,8 +46,11 @@
   (("C-M-s" . consult-ripgrep)
    ("C-s" . consult-line)
    ("C-c b" . consult-buffer)
+   ;; generic
    ("C-c s" . consult-imenu)
-   ("C-c e e" . consult-flymake)))
+   ("C-c e e" . consult-flymake)
+  :map org-mode-map
+  ("C-c s" . consult-org-heading)))
 
 ;; consult extensions
 (use-package consult-dash
