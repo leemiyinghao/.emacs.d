@@ -98,5 +98,23 @@
  '(org-export-backends '(ascii beamer html icalendar latex md odt org pandoc))) 
 (setq org-image-actual-width '(300))
 
+(require 'org-tempo)
+
+(use-package org-ql
+  :after org)
+
+(use-package org-roam
+  :custom
+  (org-roam-directory "~/.org/roam/")
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :config
+  (org-roam-db-autosync-mode))
+
 (provide 'config-org-mode)
 ;;; config-org-mode.el ends here
