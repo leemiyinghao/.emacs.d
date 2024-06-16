@@ -1,10 +1,45 @@
-elpa/
+# .gitignore for emacs configuration.
+
+# basics
 *~
 auto-save-list/
-.lsp-session*
-eln-cache/
 eshell/
 transient/
 custom.el
 history
 local-config/
+recentf
+.cache
+bookmarks
+**/.DS_Store
+tramp
+.mc-lists.el
+url
+
+# lsp-related
+lsp-cache/
+.lsp-session*
+
+# packages
+straight/
+elpa/
+eln-cache/
+
+# org-modes
+org-roam.db
+.org-id-locations
+
+# projectile
+projectile.cache
+projectile-bookmarks.eld
+projects
+
+# dirvish
+dirvish/
+
+# tree-sitter
+tree-sitter/
+
+# dap
+dape-breakpoints
+.dap-breakpoints
