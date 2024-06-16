@@ -34,17 +34,20 @@
     yaml-mode
     swift-mode
     ansible)
+   ;; python-ts-mode
+   ;; python-mode)
    .
    lsp-deferred)
   :bind
-  ("C-c l r" . lsp-rename)
-  ("C-<tab>" . lsp-execute-code-action)
+  (:map lsp-mode-map
+		("C-c l r" . lsp-rename)
+		("C-<tab>" . lsp-execute-code-action))
   :config
   (setq lsp-headerline-breadcrumb-enable nil)
   (setq lsp-file-watch-threshold 4096)
   ;; servers
-  ;; (lsp-ensure-server 'pyright)
-  ;; (lsp-ensure-server 'ruff-lsp)
+  (lsp-ensure-server 'pyright)
+  (lsp-ensure-server 'ruff-lsp)
   (lsp-ensure-server 'gopls)
   (lsp-ensure-server 'rust-analyzer)
   (lsp-ensure-server 'css-ls)
@@ -67,15 +70,8 @@
 (use-package lsp-grammarly
   :after lsp-mode
   :hook (text-mode . (lambda ()
-		       (require 'lsp-grammarly)
-		       (lsp-deferred))))
-
-;; ;; backend
-;; (use-package lsp-pyright
-;;   :after lsp-mode
-;;   :hook ((python-mode python-ts-mode) . (lambda ()
-;; 					  (require 'lsp-pyright)
-;; 					  (lsp))))
+					   (require 'lsp-grammarly)
+					   (lsp-deferred))))
 
 ;; frontend
 (use-package lsp-sourcekit
@@ -90,19 +86,20 @@
 (use-package eglot
   :defer t
   :hook ((;; backend
-	  python-ts-mode
-	  go-mode
-	  go-ts-mode)
-	 . eglot-ensure)
+		  python-ts-mode
+		  go-mode
+		  go-ts-mode)
+		 . eglot-ensure)
 
-  :bind (("C-c l r" . eglot-rename)
-	 ("C-<tab>" . eglot-code-actions))
+  :bind (:map eglot-mode-map
+			  ("C-c l r" . eglot-rename)
+			  ("C-<tab>" . eglot-code-actions))
 
   :config
   (mapc (lambda (program) (add-to-list 'eglot-server-programs program))
-	'(;; grammarly for text-main modes.
-	  (python-ts-mode . ("pyright-langserver" "--stdio"))
-	  ((go-mode go-ts-mode) . ("gopls" "serve")))))
+		'(;; grammarly for text-main modes.
+		  (python-ts-mode . ("pyright-langserver" "--stdio"))
+		  ((go-mode go-ts-mode) . ("gopls" "serve")))))
 
 
 (provide 'config-lsp)
