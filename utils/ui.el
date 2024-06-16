@@ -25,13 +25,13 @@
 ;; (setq split-width-threshold 1 )
 (use-package page-break-lines)
 (use-package dashboard
-  :defer t
   :after projectile
   :hook (after-init . dashboard-setup-startup-hook)
   :config
   (setq dashboard-startup-banner 'logo)
   (setq dashboard-center-content t)
   (setq dashboard-icon-type 'all-the-icons)
+  (setq dashboard-projects-backend 'projectile)
   (setq dashboard-items '((recents  . 5)
                           (bookmarks . 5)
                           (projects . 5))))
