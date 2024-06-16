@@ -122,5 +122,25 @@
 (use-package casual
   :defer t)
 
+(use-package cov
+  :demand t
+  :defer t
+  :after (python projectile)
+  :init
+  (setq cov-coverage-mode t)
+  (setq cov-fringe-symbol 'vertical-bar)
+  (custom-set-faces
+   '(cov-coverage-not-run-face ((t (:foreground "#bf616a"))))
+   '(cov-coverage-run-face ((t (:foreground "#3b4252"))))
+   '(cov-none-face ((t (:foreground "#d08770")))))
+
+  :config
+  (add-to-list 'cov-lcov-patterns (lambda (path file) (concat (projectile-project-root) "lcov.info")))
+  :hook
+  (python-mode . cov-mode)
+  (python-ts-mode . cov-mode)
+  (go-mode . cov-mode)
+  (go-ts-mode . cov-mode))
+
 (provide 'config-qol)
 ;;; config-qol.el ends here
