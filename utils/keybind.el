@@ -1,10 +1,13 @@
-(global-set-key (kbd "s-{") 'tab-bar-switch-to-prev-tab)
-(global-set-key (kbd "s-}") 'tab-bar-switch-to-next-tab)
-(global-set-key (kbd "s-t") 'tab-bar-new-tab)
-(global-set-key (kbd "s-w") 'tab-bar-close-tab)
-(setq tab-bar-select-tab-modifiers "super")
+;; keybind.el --- Keybindings lexical binding -*- lexical-binding: t; -*-
+
 (global-set-key (kbd "C-c l g g") 'xref-find-definitions)
 (global-set-key (kbd "C-c l g r") 'xref-find-references)
+
+;; use Super-{<up>, <down>, <left>, <right>} to move between windows
+(global-set-key (kbd "s-<up>") 'windmove-up)
+(global-set-key (kbd "s-<down>") 'windmove-down)
+(global-set-key (kbd "s-<left>") 'windmove-left)
+(global-set-key (kbd "s-<right>") 'windmove-right)
 
 (provide 'keybind)
 ;;; keybind.el ends here
