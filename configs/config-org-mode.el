@@ -118,6 +118,7 @@
   :config
   (org-roam-db-autosync-mode)
   (setq org-roam-graph-viewer #'browse-url)
+  (setq org-agenda-files (directory-files-recursively "~/.org/roam/todos/" "\\.org$"))
   (setq org-roam-capture-templates
 		'(("d" "default" plain "%?"
 		   :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
@@ -136,7 +137,7 @@
 		   :target (file "documents/${slug}.org")
 		   :unnarrowed t)
 		  ("t" "todos" plain "**** TODO ${title}\n%?"
-		   :target (file+datetree "todos/current.org" "month")
+		   :target (file+datetree "todos/%<%Y%m>.org" "week")
 		   :unnarrowed t))))
 
 (provide 'config-org-mode)
