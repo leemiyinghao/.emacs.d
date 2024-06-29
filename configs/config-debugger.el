@@ -15,7 +15,7 @@
   (dape-breakpoint-global-mode)
   (add-hook 'dape-compile-compile-hooks 'kill-buffer)
 
-  (setq dape-cwd-fn 'projectile-project-root))
+  (setq dape-cwd-fn 'project-root))
 
 (provide 'config-debugger)
 ;;; config-debugger.el ends here

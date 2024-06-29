@@ -119,7 +119,7 @@
 (use-package cov
   :demand t
   :defer t
-  :after (python projectile)
+  :after python
   :init
   (setq cov-coverage-mode t)
   (setq cov-fringe-symbol 'vertical-bar)
@@ -129,7 +129,7 @@
    '(cov-none-face ((t (:foreground "#d08770")))))
 
   :config
-  (add-to-list 'cov-lcov-patterns (lambda (path file) (concat (projectile-project-root) "lcov.info")))
+  (add-to-list 'cov-lcov-patterns (lambda (path file) (concat (project-root) "lcov.info")))
   :hook
   (python-mode . cov-mode)
   (python-ts-mode . cov-mode)
@@ -151,8 +151,6 @@
   :bind
   ("C-<tab>" . treemacs)
   ("M-<tab>" . lsp-treemacs-symbols))
-(use-package treemacs-projectile
-  :after treemacs projectile)
 (use-package treemacs-magit
   :after treemacs magit)
 
