@@ -36,7 +36,5 @@
                           (projects . 5)
 						  (agenda . 5))))
 
-(global-hl-line-mode t)
-
 (provide 'ui)
 ;;; ui.el ends here

@@ -50,5 +50,8 @@
 (use-package eldoc-box
   :hook (prog-mode . eldoc-box-hover-mode))
 
+(global-hl-line-mode t)
+
+
 (provide 'gui)
 ;;; gui.el ends here
