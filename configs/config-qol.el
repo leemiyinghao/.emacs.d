@@ -136,27 +136,9 @@
   (go-mode . cov-mode)
   (go-ts-mode . cov-mode))
 
-(use-package treemacs
-  :defer t
-  :config
-  (setq treemacs-width 30)
-  (setq treemacs-show-hidden-files t)
-  (setq treemacs-show-cursor t)
-  (setq treemacs-show-cursor-in-non-empty-branches t)
-  (setq treemacs-silent-refresh t)
-  (setq treemacs-silent-filewatch t)
-  (setq treemacs-silent-refresh t)
-  (setq treemacs-silent-filewatch t)
-  (treemacs-load-all-the-icons-with-workaround-font "Hermit")
-  :bind
-  ("C-<tab>" . treemacs)
-  ("M-<tab>" . lsp-treemacs-symbols))
-(use-package treemacs-magit
-  :after treemacs magit)
-
 (use-package direnv
- :config
- (direnv-mode))
+  :config
+  (direnv-mode))
 
 (use-package nushell-mode
   :defer t)
