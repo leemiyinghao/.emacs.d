@@ -80,14 +80,34 @@
   (setq lsp-file-watch-threshold 4096)
   ;; servers
   (lsp-ensure-server 'pyright)
-  (lsp-ensure-server 'ruff-lsp)
   (lsp-ensure-server 'gopls)
   (lsp-ensure-server 'rust-analyzer)
   (lsp-ensure-server 'css-ls)
   (lsp-ensure-server 'html-ls)
   (lsp-ensure-server 'svelte-ls)
   (lsp-ensure-server 'vue-semantic-server)
-  (lsp-ensure-server 'ansible-ls))
+  (lsp-ensure-server 'ansible-ls)
+  :custom
+  (lsp-completion-provider :none)       ; Using Corfu as the provider
+  (lsp-diagnostics-provider :flymake)   ; Using flymake as the provider
+  (lsp-session-file (locate-user-emacs-file ".lsp-session"))
+  (lsp-log-io nil)                      ; IMPORTANT! Use only for debugging! Drastically affects performance
+  (lsp-keep-workspace-alive nil)        ; Close LSP server if all project buffers are closed
+  (lsp-idle-delay 0.5)                  ; Debounce timer for `after-change-function'
+  ;; core
+  (lsp-enable-xref t)                   ; Use xref to find references
+  (lsp-auto-configure t)                ; Used to decide between current active servers
+  (lsp-eldoc-enable-hover t)            ; Display signature information in the echo area
+  (lsp-enable-dap-auto-configure t)     ; Debug support
+  (lsp-enable-file-watchers nil)
+  (lsp-enable-folding nil)              ; I disable folding since I use origami
+  (lsp-enable-imenu t)
+  (lsp-enable-indentation nil)          ; I use prettier
+  (lsp-enable-on-type-formatting nil)   ; Prettier handles this
+  (lsp-enable-suggest-server-download t) ; Useful prompt to download LSP providers
+  (lsp-enable-symbol-highlighting t)     ; Shows usages of symbol at point in the current buffer
+  (lsp-enable-text-document-color nil)   ; This is Treesitter's job
+  )
 (use-package lsp-ui
   :after lsp-mode
   :config
