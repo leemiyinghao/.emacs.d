@@ -71,5 +71,9 @@
   :straight (:host github :repo "abougouffa/cognitive-complexity")
   :hook (prog-mode . (lambda () (cognitive-complexity-mode 1))))
 
+(use-package treesitter-context
+  :straight (:host github :repo "zbelial/treesitter-context.el")
+  :bind (("C-'" . treesitter-context-fold-toggle)))
+
 (provide 'config-treesitter)
 ;;; config-treesitter.el ends here
