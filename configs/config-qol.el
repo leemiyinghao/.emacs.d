@@ -129,7 +129,7 @@
    '(cov-none-face ((t (:foreground "#d08770")))))
 
   :config
-  (add-to-list 'cov-lcov-patterns (lambda (path file) (concat (project-root) "lcov.info")))
+  (add-to-list 'cov-lcov-patterns (lambda (path file) (concat (car(cdr(cdr(project-current)))) "lcov.info")))
   :hook
   (python-mode . cov-mode)
   (python-ts-mode . cov-mode)
