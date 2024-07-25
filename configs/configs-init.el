@@ -13,7 +13,6 @@
 (require 'config-org-mode)
 (require 'config-markdown)
 (require 'config-frontend)
-(require 'config-dirvish)
 (require 'config-debugger)
 (require 'config-unison)
 (require 'config-ollama)
