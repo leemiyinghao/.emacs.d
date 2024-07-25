@@ -67,6 +67,9 @@
 		(rust-mode . rust-ts-mode)
 		(kotlin-mode . kotlin-ts-mode)))
 
+(use-package cognitive-complexity
+  :straight (:host github :repo "abougouffa/cognitive-complexity")
+  :hook (prog-mode . (lambda () (cognitive-complexity-mode 1))))
 
 (provide 'config-treesitter)
 ;;; config-treesitter.el ends here
