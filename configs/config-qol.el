@@ -154,5 +154,16 @@
 (use-package treemacs-magit
   :after treemacs magit)
 
+(use-package direnv
+ :config
+ (direnv-mode))
+
+(use-package nushell-mode
+  :defer t)
+
+(use-package nushell-ts-mode
+  :defer t
+  :after nushell-mode)
+
 (provide 'config-qol)
 ;;; config-qol.el ends here
