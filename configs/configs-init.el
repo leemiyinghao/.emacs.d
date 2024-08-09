@@ -20,6 +20,7 @@
 (require 'config-comint)
 (require 'config-treesitter)
 (require 'config-copilot)
+(require 'config-spell)
 
 
 ;; lang misc
