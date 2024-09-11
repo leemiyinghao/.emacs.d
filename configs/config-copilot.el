@@ -5,7 +5,8 @@
   :hook ((prog-mode . copilot-mode)
          (git-commit-mode . copilot-mode)
          (org-mode . copilot-mode)
-		 (yaml-mode . copilot-mode))
+		 (yaml-mode . copilot-mode)
+		 (yaml-ts-mode . copilot-mode))
   :bind (("M-RET" . copilot-accept-completion)
 	 (:map org-mode-map
 	       ("M-RET" . copilot-accept-completion)))
