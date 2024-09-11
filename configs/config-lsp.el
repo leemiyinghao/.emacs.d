@@ -118,14 +118,6 @@
 (use-package consult-lsp
   :after lsp-mode)
 
-;; special lsp languages
-;; spellcheck
-(use-package lsp-grammarly
-  :after lsp-mode
-  :hook (text-mode . (lambda ()
-					   (require 'lsp-grammarly)
-					   (lsp-deferred))))
-
 ;; frontend
 (use-package lsp-sourcekit
   :after lsp-mode

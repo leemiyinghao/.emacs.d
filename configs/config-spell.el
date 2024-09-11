@@ -17,10 +17,6 @@
   :after flyspell
   :bind (("C-c e f" . consult-flyspell)))
 
-(use-package flyspell-correct
-  :after flyspell
-  :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
-
 (provide 'config-spell)
 ;;; config-spell.el ends here
 ;;; typo
