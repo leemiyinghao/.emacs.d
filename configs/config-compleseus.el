@@ -172,12 +172,6 @@
 (setq completion-cycle-threshold 3)
 (setq tab-always-indent 'complete)
 
-(use-package consult-jump-project
-  :defer t
-  :straight (consult-jump-project :type git :host github :repo "jdtsmith/consult-jump-project")
-  :custom (consult-jump-direct-jump-modes '(dired-mode))
-  :bind ("C-x p j" . consult-jump-project))
-
 (use-package kind-icon
   :ensure t
   :defer t
