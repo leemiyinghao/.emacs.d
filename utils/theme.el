@@ -1,5 +1,5 @@
 (use-package nord-theme
-  :straight (:host github :repo "leemiyinghao/nord-emacs"
+  :ensure (:host github :repo "leemiyinghao/nord-emacs"
 				   :branch "master")
 :config (load-theme 'nord t))
 

@@ -25,7 +25,7 @@
 
 ;; ligature setting for Fira Code
 (use-package ligature
-  :straight (:host github :repo "mickeynp/ligature.el")
+  :ensure (:host github :repo "mickeynp/ligature.el")
   :config
   ;; Enable the "www" ligature in every possible major mode
   (ligature-set-ligatures 't '("www"))

@@ -8,7 +8,7 @@
 
 (use-package org-modern-indent
   :defer t
-  :straight (org-modern-indent :type git :host github :repo "jdtsmith/org-modern-indent")
+  :ensure (org-modern-indent :type git :host github :repo "jdtsmith/org-modern-indent")
   :config ; add late to hook
   (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
 

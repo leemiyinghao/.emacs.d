@@ -48,8 +48,8 @@
    ;; generic
    ("C-c s" . consult-imenu)
    ("C-c e e" . consult-flymake)
-  :map org-mode-map
-  ("C-c s" . consult-org-heading)))
+   :map org-mode-map
+   ("C-c s" . consult-org-heading)))
 
 ;; consult extensions
 (use-package consult-dash
@@ -104,8 +104,8 @@
   (all-the-icons-completion-mode))
 
 (use-package corfu
-  :straight (corfu :files (:defaults "extensions/*")
-                   :includes (corfu-info corfu-history))
+  :ensure (corfu :files (:defaults "extensions/*")
+                 :includes (corfu-info corfu-history))
   :config
   (setq corfu-popupinfo-delay 0)
   (setq corfu-preview-current t)
@@ -116,33 +116,21 @@
   :init
   (global-corfu-mode t))
 
-(straight-use-package
- '(corfu-terminal
-   :type git
-   :repo "https://codeberg.org/akib/emacs-corfu-terminal.git"))
+(use-package
+  :ensure (:type git :repo "https://codeberg.org/akib/emacs-corfu-terminal.git"))
 
 (unless (display-graphic-p)
   (corfu-terminal-mode +1))
 
-(straight-use-package
- '(corfu-doc-terminal
-   :type git
-   :repo "https://codeberg.org/akib/emacs-corfu-doc-terminal.git"))
+(use-package
+  :ensure (:type git
+				 :repo "https://codeberg.org/akib/emacs-corfu-doc-terminal.git"))
 
 
 (unless (display-graphic-p)
   (corfu-doc-terminal-mode +1))
 
 
-;; (use-package corfu-candidate-overlay
-;;   :straight (:type git
-;; 		   :repo "https://code.bsdgeek.org/adam/corfu-candidate-overlay"
-;; 		   :files (:defaults "*.el"))
-;;   :after corfu
-;;   :config
-;;   (corfu-candidate-overlay-mode t)
-;;   ;; corfu-candidate-overlay-complete-at-point have issue as it call corfu-insert and completion-at-point at the same time, which causing duplicate insertions on candidates.
-;;   (global-set-key (kbd "M-<return>") 'corfu-insert))
 
 (use-package cape
   ;; Bind dedicated completion commands
@@ -185,7 +173,7 @@
 
 (use-package consult-tramp
   :defer t
-  :straight (consult-tramp :type git :host github :repo "Ladicle/consult-tramp"))
+  :ensure (:host github :repo "Ladicle/consult-tramp"))
 
 (provide 'config-compleseus)
 ;;; config-compleseus.el ends here

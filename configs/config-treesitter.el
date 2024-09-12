@@ -38,9 +38,9 @@
 (treesit-setup-install-grammars)
 (use-package scala-ts-mode)
 (use-package makefile-ts-mode
-  :straight (:host github :repo "nverno/makefile-ts-mode"))
+  :ensure (:host github :repo "nverno/makefile-ts-mode"))
 (use-package r-ts-mode
-  :straight (:host github :repo "nverno/r-ts-mode"))
+  :ensure (:host github :repo "nverno/r-ts-mode"))
 (use-package kotlin-ts-mode)
 (setq major-mode-remap-alist
       '((yaml-mode . yaml-ts-mode)
@@ -68,11 +68,11 @@
 		(kotlin-mode . kotlin-ts-mode)))
 
 (use-package cognitive-complexity
-  :straight (:host github :repo "abougouffa/cognitive-complexity")
+  :ensure (:host github :repo "abougouffa/cognitive-complexity")
   :hook (prog-mode . (lambda () (cognitive-complexity-mode 1))))
 
 (use-package treesitter-context
-  :straight (:host github :repo "zbelial/treesitter-context.el")
+  :ensure (:host github :repo "zbelial/treesitter-context.el")
   :bind (("C-'" . treesitter-context-fold-toggle)))
 
 (provide 'config-treesitter)

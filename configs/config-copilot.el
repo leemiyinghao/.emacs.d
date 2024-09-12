@@ -1,7 +1,7 @@
 "config-copilot"
 
 (use-package copilot
-  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
+  :ensure (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
   :hook ((prog-mode . copilot-mode)
          (git-commit-mode . copilot-mode)
          (org-mode . copilot-mode)

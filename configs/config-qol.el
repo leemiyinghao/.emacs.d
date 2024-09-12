@@ -81,7 +81,7 @@
 
 ;; breadcrumb
 (use-package breadcrumb
-  :straight (:host github :repo "joaotavora/breadcrumb" :files ("*.el"))
+  :ensure (:host github :repo "joaotavora/breadcrumb" :files ("*.el"))
   :config
   (custom-set-faces '(breadcrumb-face ((t (:foreground "#616e88")))))
   (custom-set-variables '(breadcrumb-project-max-length 0.7))
