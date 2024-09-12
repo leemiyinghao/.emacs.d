@@ -58,6 +58,8 @@
 
 (add-to-list 'load-path (expand-file-name "utils/" user-emacs-directory))
 
+(add-hook 'elpaca-after-init-hook (lambda () (load custom-file 'noerror)))
+
 ;; load utils
 (require 'util)
 
@@ -95,4 +97,3 @@
 (require 'keybind)
 (put 'scroll-left 'disabled nil)
 (put 'erase-buffer 'disabled nil)
-(add-hook 'elpaca-after-init-hook (lambda () ((load custom-file 'noerror))))

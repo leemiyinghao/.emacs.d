@@ -24,8 +24,7 @@
 ;; (setq split-width-threshold 1 )
 (use-package page-break-lines)
 (use-package dashboard
-  :hook ((after-init . dashboard-setup-startup-hook)
-		 (elpaca-after-init-hook . dashboard-setup-startup-hook))
+  :hook (elpaca-after-init-hook . dashboard-setup-startup-hook)
   :config
   (setq dashboard-startup-banner 'logo)
   (setq dashboard-center-content t)

@@ -116,13 +116,13 @@
   :init
   (global-corfu-mode t))
 
-(use-package emacs-corfu-terminal
+(use-package corfu-terminal
   :ensure (:repo "https://codeberg.org/akib/emacs-corfu-terminal.git"))
 
 (unless (display-graphic-p)
   (corfu-terminal-mode +1))
 
-(use-package emacs-corfu-doc-terminal
+(use-package corfu-doc-terminal
   :ensure (:repo "https://codeberg.org/akib/emacs-corfu-doc-terminal.git"))
 
 
