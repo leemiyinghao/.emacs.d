@@ -12,8 +12,8 @@
   :config ; add late to hook
   (add-hook 'org-mode-hook #'org-modern-indent-mode 90))
 
-(use-package ob-http
-  :defer t)
+;; (use-package ob-http
+;;   :defer t)
 
 (use-package ob-async
   :defer t)
@@ -83,8 +83,7 @@
  'org-babel-load-languages
  '((python . t)
    (shell . t)
-   (emacs-lisp . t)
-   (http . t)))
+   (emacs-lisp . t)))
 
 (setq org-startup-with-inline-images t)
 (setq org-support-shift-select t)

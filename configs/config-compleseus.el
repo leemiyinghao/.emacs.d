@@ -29,10 +29,7 @@
              '(basic-remote           ; Name of `completion-style'
                kb/basic-remote-try-completion kb/basic-remote-all-completions nil))
 
-;; Persist history over Emacs restarts. Vertico sorts by history position.
-(use-package savehist
-  :init
-  (savehist-mode))
+(savehist-mode 1)
 
 ;; orderless
 (use-package orderless
@@ -172,10 +169,8 @@
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-elisp-block))
 
-(use-package emacs
-  :init
-  (setq completion-cycle-threshold 3)
-  (setq tab-always-indent 'complete))
+(setq completion-cycle-threshold 3)
+(setq tab-always-indent 'complete)
 
 (use-package consult-jump-project
   :defer t

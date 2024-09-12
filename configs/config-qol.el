@@ -113,9 +113,6 @@
 (use-package git-timemachine
   :defer t)
 
-(use-package casual
-  :defer t)
-
 (use-package cov
   :demand t
   :defer t

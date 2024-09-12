@@ -23,6 +23,7 @@ lsp-cache/
 # packages
 straight/
 elpa/
+elpaca/
 eln-cache/
 
 # org-modes

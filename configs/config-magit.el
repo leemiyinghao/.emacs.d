@@ -1,6 +1,8 @@
+(use-package transient)
 (use-package magit
   :ensure t
   :defer t
+  :elpaca nil
   :config
   (global-git-commit-mode 1))
 (use-package forge
