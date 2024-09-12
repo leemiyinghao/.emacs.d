@@ -84,11 +84,6 @@
 (add-to-list 'load-path (expand-file-name "configs/" user-emacs-directory))
 (require 'configs-init)
 
-(let ((local-configs (expand-file-name "local-config/init.el" user-emacs-directory)))
-  (when (file-exists-p local-configs)
-    (load-file local-configs)))
-
-
 (when (string= system-type "darwin")
   (require 'macos))
 (when (string= system-type "linux")
@@ -97,3 +92,8 @@
 (require 'keybind)
 (put 'scroll-left 'disabled nil)
 (put 'erase-buffer 'disabled nil)
+
+(let ((local-configs (expand-file-name "local-config/init.el" user-emacs-directory)))
+  (when (file-exists-p local-configs)
+    (load-file local-configs)))
+

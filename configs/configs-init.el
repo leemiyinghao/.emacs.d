@@ -21,6 +21,7 @@
 (require 'config-treesitter)
 (require 'config-copilot)
 (require 'config-spell)
+(require 'config-ai)
 
 
 ;; lang misc
