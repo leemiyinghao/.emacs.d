@@ -55,13 +55,6 @@
   ;; Enable use-package :ensure support for Elpaca.
   (elpaca-use-package-mode))
 
-(add-hook 'elpaca-after-init-hook (lambda () (load custom-file 'noerror)))
-
-(use-package benchmark-init
-  :ensure t
-  :config
-  ;; To disable collection of benchmark data after init is done.
-  (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
 (add-to-list 'load-path (expand-file-name "utils/" user-emacs-directory))
 
@@ -102,3 +95,4 @@
 (require 'keybind)
 (put 'scroll-left 'disabled nil)
 (put 'erase-buffer 'disabled nil)
+(add-hook 'elpaca-after-init-hook (lambda () ((load custom-file 'noerror))))
