@@ -116,6 +116,9 @@
   :init
   (global-corfu-mode t))
 
+(use-package corfu-doc
+  :ensure (:host github :repo "galeo/corfu-doc"))
+
 (use-package corfu-terminal
   :ensure (:repo "https://codeberg.org/akib/emacs-corfu-terminal.git"))
 
