@@ -41,6 +41,7 @@
 
 ;; consult
 (use-package consult
+  :after org
   :bind
   (("C-M-s" . consult-ripgrep)
    ("C-s" . consult-line)
