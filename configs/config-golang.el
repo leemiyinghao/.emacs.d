@@ -1,5 +1,7 @@
 (use-package go-mode)
 
+(setq go-ts-mode-indent-offset 4)
+
 (defun go-mode-dap-hook ()
   (dap-mode t)
   (dap-ui-mode t)

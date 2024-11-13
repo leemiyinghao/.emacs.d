@@ -12,6 +12,10 @@
   (setq mouse-sel-mode t))
 
 
+;; set tab-width to 4
+(setq-default tab-width 4)
+(setq tab-width 4)
+
 ;; which key
 (use-package which-key
   :diminish which-key-mode
