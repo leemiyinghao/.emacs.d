@@ -44,3 +44,5 @@ tree-sitter/
 # dap
 dape-breakpoints
 .dap-breakpoints
+.aider*
+.env
