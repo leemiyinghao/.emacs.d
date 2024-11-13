@@ -17,11 +17,11 @@
 (use-package aider
   :ensure (:host github :repo "tninja/aider.el" :files ("aider.el"))
   :config
-  (setq aider-args '("--model" "ollama/llama3.1:8b"))
-  (setenv "OLLAMA_API_BASE" "https://ollama.ryzen.catlee.se")
-  ;; Optional: Set a key binding for the transient menu
   (global-set-key (kbd "C-c a") 'aider-transient-menu))
 
+(use-package diminish)
+(diminish 'gptel-mode)
+(diminish 'magit-status-mode)
 
 (provide 'config-ai)
 ;;; config-ai.el ends here
