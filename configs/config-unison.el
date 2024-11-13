@@ -11,7 +11,7 @@
 (defun unison-call-sync (profile-name)
   (message "Syncing %s..." profile-name)
   (with-temp-buffer
-    (if (eq (call-process "/Users/catlee/.local/bin/unison" nil (current-buffer) t profile-name) 0)
+    (if (eq (call-process "unison" nil (current-buffer) t profile-name) 0)
 	(progn (message "Unison: files have been sync for %s." profile-name))
     (let ((error-buffer (get-buffer-create "*unison errors*")))
       (progn
