@@ -1,7 +1,6 @@
 ;;; config-ai.el --- AI related packages -*- lexical-binding: t -*-
-;;; Commentary:
-;;; Code:
-(use-package gptel)
+(use-package gptel
+  :config (setq gptel-model my-llm-model))
 
 (use-package elysium
   :ensure (:host github :repo "lanceberge/elysium"))
@@ -17,11 +16,9 @@
 (use-package aider
   :ensure (:host github :repo "tninja/aider.el" :files ("aider.el"))
   :config
+  (setq aider-args (list "--no-auto-commits" "--model" (concat "ollama/" my-llm-model)))
+  (setenv "OLLAMA_API_BASE" (concat "https://" my-llm-host))
   (global-set-key (kbd "C-c a") 'aider-transient-menu))
-
-(use-package diminish)
-(diminish 'gptel-mode)
-(diminish 'magit-status-mode)
 
 (provide 'config-ai)
 ;;; config-ai.el ends here
