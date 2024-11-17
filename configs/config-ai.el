@@ -16,7 +16,9 @@
 (use-package aider
   :ensure (:host github :repo "tninja/aider.el" :files ("aider.el"))
   :config
-  (setq aider-args (list "--no-auto-commits" "--model" (concat "ollama/" my-llm-model)))
+  (setq aider-args (list
+					"--no-auto-commits"
+					"--model" (concat "ollama/" my-llm-model)))
   (setenv "OLLAMA_API_BASE" (concat "https://" my-llm-host))
   (global-set-key (kbd "C-c a") 'aider-transient-menu))
 
