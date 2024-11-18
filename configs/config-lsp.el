@@ -46,10 +46,6 @@
     sh-mode
     cmake-ts-mode
     cmake-mode
-    rust-ts-mode
-    rust-mode
-    ;; go-ts-mode
-    ;; go-mode
     json-ts-mode
     json-mode
     vue-mode
