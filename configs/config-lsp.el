@@ -128,6 +128,8 @@
   :defer t
   :hook ((;; backend
 		  python-ts-mode
+		  rust-mode
+		  rust-ts-mode
 		  go-mode
 		  go-ts-mode)
 		 . eglot-ensure)
