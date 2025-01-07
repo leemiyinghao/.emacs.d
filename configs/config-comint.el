@@ -1,3 +1,7 @@
+(use-package mathjax
+  :defer t
+  :ensure nil)
+
 (use-package comint-mime
   :defer t
   :config
