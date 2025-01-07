@@ -49,6 +49,7 @@
    ;; generic
    ("C-c s" . consult-imenu)
    ("C-c e e" . consult-flymake)
+   ("C-x p f" . consult-fd)
    :map org-mode-map
    ("C-c s" . consult-org-heading)))
 
