@@ -18,8 +18,7 @@
   :config
   (setq aider-args (list
 					"--no-auto-commits"
-					"--model" (concat "ollama/" my-llm-model)))
-  (setenv "OLLAMA_API_BASE" (concat "https://" my-llm-host))
+					"--model" aider-model))
   (global-set-key (kbd "C-c a") 'aider-transient-menu))
 
 (provide 'config-ai)
