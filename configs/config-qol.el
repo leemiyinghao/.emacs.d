@@ -151,5 +151,11 @@
   :defer t
   :after nushell-mode)
 
+(use-package casual
+  :defer t
+  :config ((require 'casual-dired))
+  :bind (:map dired-mode-map
+			  ("C-o" . casual-dired-tmenu)))
+
 (provide 'config-qol)
 ;;; config-qol.el ends here
