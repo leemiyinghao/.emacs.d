@@ -29,7 +29,8 @@
 			 (ruby . ("https://github.com/tree-sitter/tree-sitter-ruby"))
 			 (cpp . ("https://github.com/tree-sitter/tree-sitter-cpp"))
 			 (vue . ("https://github.com/tree-sitter-grammars/tree-sitter-vue"))
-			 (kotlin . ("https://github.com/fwcd/tree-sitter-kotlin"))))
+			 (kotlin . ("https://github.com/fwcd/tree-sitter-kotlin"))
+			 (graphql . ("https://github.com/bkegley/tree-sitter-graphql"))))
     (add-to-list 'treesit-language-source-alist grammar)
     (unless (treesit-language-available-p (car grammar))
       (message "installing %s" (car grammar))
@@ -42,6 +43,8 @@
 (use-package r-ts-mode
   :ensure (:host github :repo "nverno/r-ts-mode"))
 (use-package kotlin-ts-mode)
+(use-package graphql-ts-mode)
+
 (setq major-mode-remap-alist
       '((yaml-mode . yaml-ts-mode)
 		(bash-mode . bash-ts-mode)
@@ -65,7 +68,8 @@
 		(c-mode . c-ts-mode)
 		(java-mode . java-ts-mode)
 		(rust-mode . rust-ts-mode)
-		(kotlin-mode . kotlin-ts-mode)))
+		(kotlin-mode . kotlin-ts-mode)
+		(graphql-mode . graphql-ts-mode)))
 
 (use-package cognitive-complexity
   :ensure (:host github :repo "abougouffa/cognitive-complexity")

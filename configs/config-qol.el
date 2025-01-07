@@ -109,6 +109,9 @@
 (use-package kotlin-mode
   :defer t)
 
+(use-package graphql-mode
+  :mode "\\.\\(gql\\|graphqls\\)\\'")
+
 (use-package makefile-executor
   :defer t
   :hook

@@ -61,7 +61,9 @@
     yaml-ts-mode
     yaml-mode
     swift-mode
-    ansible)
+    ansible
+	graphql-mode
+	graphql-ts-mode)
    ;; python-ts-mode
    ;; python-mode)
    .
@@ -142,7 +144,9 @@
   (mapc (lambda (program) (add-to-list 'eglot-server-programs program))
 		'(;; grammarly for text-main modes.
 		  (python-ts-mode . ("pyright-langserver" "--stdio"))
-		  ((go-mode go-ts-mode) . ("gopls" "serve")))))
+		  ((go-mode go-ts-mode) . ("gopls" "serve"))
+		  ((rust-ts-mode rust-mode) .
+           ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))))
 
 
 (provide 'config-lsp)
