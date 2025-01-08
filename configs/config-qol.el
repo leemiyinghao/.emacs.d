@@ -16,6 +16,9 @@
 (setq-default tab-width 4)
 (setq tab-width 4)
 
+;; enable auto revert mode
+(global-auto-revert-mode t)
+
 ;; which key
 (use-package which-key
   :diminish which-key-mode
