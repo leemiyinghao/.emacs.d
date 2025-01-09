@@ -1,7 +1,6 @@
 ;;; config-spell.el --- Spell checking -*- lexical-binding: t; -*-
 
 (add-hook 'text-mode-hook 'flyspell-mode)
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
 (setq ispell-program-name "aspell"
 	  ispell-extra-args '("--sug-mode=ultra"
 						  "--lang=en_US"
