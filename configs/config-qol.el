@@ -156,6 +156,7 @@
 
 (use-package casual
   :defer t
+  :ensure (:host github :repo "kickingvegas/casual" :files ("lisp/*.el"))
   :config ((require 'casual-dired))
   :bind (:map dired-mode-map
 			  ("C-o" . casual-dired-tmenu)))
