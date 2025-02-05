@@ -30,7 +30,9 @@
   :config
   (setq aider-args (list
 					"--no-auto-commits"
-					"--model" aider-model))
+					"--architect"
+					"--model" aider-model
+					"--editor-model" aider-editor-model))
   (global-set-key (kbd "C-c a") 'aider-transient-menu))
 
 (provide 'config-ai)
