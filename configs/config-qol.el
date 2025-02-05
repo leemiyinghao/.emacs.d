@@ -161,5 +161,9 @@
   :bind (:map dired-mode-map
 			  ("C-o" . casual-dired-tmenu)))
 
+(use-package hl-todo
+  :config
+  (global-hl-todo-mode))
+
 (provide 'config-qol)
 ;;; config-qol.el ends here
