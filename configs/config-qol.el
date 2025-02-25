@@ -154,6 +154,10 @@
   :defer t
   :after nushell-mode)
 
+(use-package protobuf-mode
+  :defer t
+  :mode "\\.proto\\'")
+
 (use-package casual
   :defer t
   :ensure (:host github :repo "kickingvegas/casual" :files ("lisp/*.el"))
@@ -164,6 +168,10 @@
 (use-package hl-todo
   :config
   (global-hl-todo-mode))
+
+(use-package hcl-mode
+  :mode "\\.hcl\\'"
+  :defer t)
 
 (provide 'config-qol)
 ;;; config-qol.el ends here
