@@ -43,7 +43,8 @@
 (use-package r-ts-mode
   :ensure (:host github :repo "nverno/r-ts-mode"))
 (use-package kotlin-ts-mode)
-(use-package graphql-ts-mode)
+(use-package graphql-ts-mode
+  :elpaca nil)
 
 (setq major-mode-remap-alist
       '((yaml-mode . yaml-ts-mode)

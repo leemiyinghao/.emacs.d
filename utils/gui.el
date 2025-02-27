@@ -20,6 +20,7 @@
 
 (use-package vertico-posframe
   :after vertico
+  :ensure (:host github :repo "/vertico-posframe")
   :config (vertico-posframe-mode 1))
 
 

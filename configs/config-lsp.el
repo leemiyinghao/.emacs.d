@@ -7,8 +7,11 @@
   :config
   (setq flymake-diagnostic-at-point-display-diagnostic-function 'flymake-diagnostic-at-point-display-minibuffer))
 
+(use-package spinner
+  :ensure (:host github :repo "Malabarba/spinner.el"))
+
 (use-package lsp-mode
-  :defer t
+  :ensure t
   :preface
   (defun lsp-booster--advice-json-parse (old-fn &rest args)
     "Try to parse bytecode instead of json."
@@ -82,6 +85,9 @@
   (lsp-ensure-server 'rust-analyzer)
   (lsp-ensure-server 'css-ls)
   (lsp-ensure-server 'html-ls)
+  ;; for nextjs with typescript
+  (lsp-ensure-server 'typescript-language-server)
+  (lsp-ensure-server 'json-ls)
   (lsp-ensure-server 'svelte-ls)
   (lsp-ensure-server 'vue-semantic-server)
   (lsp-ensure-server 'ansible-ls)

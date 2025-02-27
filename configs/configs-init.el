@@ -22,6 +22,7 @@
 (require 'config-copilot)
 (require 'config-spell)
 (require 'config-ai)
+(require 'config-web)
 
 
 ;; lang misc

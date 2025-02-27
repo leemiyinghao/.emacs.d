@@ -118,6 +118,9 @@
   :init
   (global-corfu-mode t))
 
+(use-package popon
+  :ensure (:type git :repo "https://codeberg.org/akib/emacs-popon.git"))
+
 (use-package corfu-doc
   :ensure (:host github :repo "galeo/corfu-doc"))
 
@@ -165,6 +168,7 @@
 (setq tab-always-indent 'complete)
 
 (use-package kind-icon
+  :elpaca nil
   :ensure t
   :defer t
   :after corfu

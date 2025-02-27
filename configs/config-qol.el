@@ -27,6 +27,7 @@
 
 ;; TRAMP remote development
 (use-package tramp
+  :elpaca nil
   :config
   (setq enable-remote-dir-locals t)
   (let ((process-environment tramp-remote-process-environment))

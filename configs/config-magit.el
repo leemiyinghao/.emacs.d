@@ -1,6 +1,6 @@
 (use-package transient)
 (use-package magit
-  :ensure nil
+  :ensure (:host github :repo "magit/magit")
   :defer t
   :config
   (global-git-commit-mode 1))

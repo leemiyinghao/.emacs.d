@@ -3,6 +3,7 @@
   :ensure nil)
 
 (use-package comint-mime
+  :elpaca nil
   :defer t
   :config
   (add-hook 'shell-mode-hook 'comint-mime-setup)

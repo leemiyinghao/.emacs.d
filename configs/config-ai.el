@@ -3,7 +3,13 @@
 (use-package elysium
   :ensure (:host github :repo "lanceberge/elysium"))
 
+(use-package plz-event-source
+  :ensure (:host github :repo "r0man/plz-event-source"))
+(use-package plz-media-type
+  :ensure (:host github :repo "r0man/plz-media-type"))
+
 (use-package llm
+  :ensure (:host github :repo "ahyatt/llm")
   :init
   (require 'llm-openai)
   (setq llm-openrouter-provider
@@ -30,9 +36,7 @@
   :config
   (setq aider-args (list
 					"--no-auto-commits"
-					"--architect"
-					"--model" aider-model
-					"--editor-model" aider-editor-model))
+					"--model" aider-model))
   (global-set-key (kbd "C-c a") 'aider-transient-menu))
 
 (provide 'config-ai)
