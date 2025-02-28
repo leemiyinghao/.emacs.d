@@ -54,8 +54,6 @@
     vue-mode
     js-ts-mode
     javascript-mode
-    typescript-ts-mode
-    typescript-mode
     html-mode
     svelte-mode
     php-mode
@@ -66,16 +64,20 @@
     swift-mode
     ansible
 	graphql-mode
-	graphql-ts-mode)
-   ;; python-ts-mode
-   ;; python-mode)
+	graphql-ts-mode
+	typescript-mode
+	typescript-ts-mode
+	tsx-mode
+	tsx-ts-mode)
    .
    lsp-deferred)
   (lsp-mode . lsp-enable-which-key-integration)
+
   :bind
   (:map lsp-mode-map
 		("C-c l r" . lsp-rename)
 		("C-<tab>" . lsp-execute-code-action))
+
   :config
   (setq lsp-headerline-breadcrumb-enable nil)
   (setq lsp-file-watch-threshold 4096)
@@ -85,12 +87,13 @@
   (lsp-ensure-server 'rust-analyzer)
   (lsp-ensure-server 'css-ls)
   (lsp-ensure-server 'html-ls)
-  ;; for nextjs with typescript
   (lsp-ensure-server 'typescript-language-server)
   (lsp-ensure-server 'json-ls)
   (lsp-ensure-server 'svelte-ls)
+  (lsp-ensure-server 'deno-ls)
   (lsp-ensure-server 'vue-semantic-server)
   (lsp-ensure-server 'ansible-ls)
+
   :custom
   (lsp-completion-provider :none)       ; Using Corfu as the provider
   (lsp-diagnostics-provider :flymake)   ; Using flymake as the provider
@@ -127,6 +130,13 @@
   :after lsp-mode
   :config
   (setq lsp-sourcekit-executable (string-trim (shell-command-to-string "xcrun --find sourcekit-lsp"))))
+
+(setq lsp-tailwindcss-add-on-mode t)
+(use-package lsp-tailwindcss
+  :after lsp-mode
+  :init
+  (setq lsp-tailwindcss-skip-config-check t))
+
 
 ;; misc
 
