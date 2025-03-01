@@ -93,6 +93,7 @@
   (lsp-ensure-server 'deno-ls)
   (lsp-ensure-server 'vue-semantic-server)
   (lsp-ensure-server 'ansible-ls)
+  (lsp-ensure-server 'vtsls)
 
   :custom
   (lsp-completion-provider :none)       ; Using Corfu as the provider
@@ -137,6 +138,16 @@
   :init
   (setq lsp-tailwindcss-skip-config-check t))
 
+(use-package lsp-vtsls
+  :after lsp-mode
+  :ensure (:host github :repo "sdvcrx/lsp-vtsls")
+  :config
+  (setq
+   ;; show all LSP doc on minibuffer
+   lsp-eldoc-render-all t
+   ;; https://github.com/yioneko/vtsls#bad-performance-of-completion
+   lsp-vtsls-server-side-fuzzy-match t
+   lsp-vtsls-entries-limit 10))
 
 ;; misc
 
