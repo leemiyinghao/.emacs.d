@@ -114,7 +114,8 @@
   :defer t)
 
 (use-package graphql-mode
-  :mode "\\.\\(gql\\|graphqls\\)\\'")
+  :ensure t
+  :mode "\\.\\(gql\\|graphql\\|graphqls\\)\\'")
 
 (use-package makefile-executor
   :defer t
@@ -142,7 +143,9 @@
   (python-mode . cov-mode)
   (python-ts-mode . cov-mode)
   (go-mode . cov-mode)
-  (go-ts-mode . cov-mode))
+  (go-ts-mode . cov-mode)
+  (typescript-ts-mode . cov-mode)
+  (tsx-ts-mode . cov-mode))
 
 (use-package direnv
   :config
