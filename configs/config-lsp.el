@@ -52,8 +52,6 @@
     json-ts-mode
     json-mode
     vue-mode
-    js-ts-mode
-    javascript-mode
     html-mode
     svelte-mode
     php-mode
@@ -64,11 +62,7 @@
     swift-mode
     ansible
 	graphql-mode
-	graphql-ts-mode
-	typescript-mode
-	typescript-ts-mode
-	tsx-mode
-	tsx-ts-mode)
+	graphql-ts-mode)
    .
    lsp-deferred)
   (lsp-mode . lsp-enable-which-key-integration)
@@ -99,7 +93,6 @@
   (lsp-completion-provider :none)       ; Using Corfu as the provider
   (lsp-diagnostics-provider :flymake)   ; Using flymake as the provider
   (lsp-session-file (locate-user-emacs-file ".lsp-session"))
-  (lsp-log-io nil)                      ; IMPORTANT! Use only for debugging! Drastically affects performance
   (lsp-keep-workspace-alive nil)        ; Close LSP server if all project buffers are closed
   (lsp-idle-delay 0.5)                  ; Debounce timer for `after-change-function'
   ;; core
@@ -116,12 +109,6 @@
   (lsp-enable-symbol-highlighting t)     ; Shows usages of symbol at point in the current buffer
   (lsp-enable-text-document-color nil)   ; This is Treesitter's job
   )
-(use-package lsp-ui
-  :after lsp-mode
-  :config
-  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-  (setq lsp-completion-provider :none))
 
 (use-package consult-lsp
   :after lsp-mode)
@@ -160,7 +147,11 @@
 		  rust-mode
 		  rust-ts-mode
 		  go-mode
-		  go-ts-mode)
+		  go-ts-mode
+		  typescript-ts-mode
+		  tsx-ts-mode
+		  js-ts-mode
+		  json-ts-mode)
 		 . eglot-ensure)
 
   :bind (:map eglot-mode-map
@@ -169,11 +160,11 @@
 
   :config
   (mapc (lambda (program) (add-to-list 'eglot-server-programs program))
-		'(;; grammarly for text-main modes.
-		  (python-ts-mode . ("pyright-langserver" "--stdio"))
+		'((python-ts-mode . ("pyright-langserver" "--stdio"))
 		  ((go-mode go-ts-mode) . ("gopls" "serve"))
 		  ((rust-ts-mode rust-mode) .
-           ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))))
+           ("rust-analyzer" :initializationOptions (:check (:command "clippy"))))
+		  ((typescript-ts-mode tsx-ts-mode js-ts-mode json-ts-mode) . ("typescript-language-server" "--stdio")))))
 
 
 (provide 'config-lsp)
