@@ -2,9 +2,9 @@
   :bind (("C-c l = =" . apheleia-format-buffer))
   :config
   (setf (alist-get 'python-mode apheleia-mode-alist)
-		'(isort black))
+		'(ruff-isort ruff))
   (setf (alist-get 'python-ts-mode apheleia-mode-alist)
-		'(isort black))
+		'(ruff-isort ruff))
   (setf (alist-get 'lisp-mode apheleia-mode-alist)
 		'(lisp-indent))
   (setf (alist-get 'beautysh apheleia-formatters)
