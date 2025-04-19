@@ -177,5 +177,16 @@
   :mode "\\.hcl\\'"
   :defer t)
 
+;; alt/option move line
+(use-package move-text
+  :defer t
+  :bind
+  ("M-<up>" . 'move-text-up)
+  ("M-<down>" . 'move-text-down))
+
+;; bind find-file-at-point to C-c f
+(bind-key "C-c f" 'find-file-at-point)
+
+
 (provide 'config-qol)
 ;;; config-qol.el ends here
