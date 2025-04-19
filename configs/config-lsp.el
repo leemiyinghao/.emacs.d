@@ -13,29 +13,38 @@
 (use-package lsp-mode
   :ensure t
   :preface
-  (defun lsp-booster--advice-json-parse (old-fn &rest args)
-    "Try to parse bytecode instead of json."
-    (or
-     (when (equal (following-char) ?#)
 
+  (defun lsp-booster--advice-json-parse (old-fn &rest args)
+	"Try to parse bytecode instead of json."
+	(or
+	 (when (equal (following-char) ?#)
        (let ((bytecode (read (current-buffer))))
-         (when (byte-code-function-p bytecode)
+		 (when (byte-code-function-p bytecode)
            (funcall bytecode))))
-     (apply old-fn args)))
+	 (apply old-fn args)))
+  (advice-add (if (progn (require 'json)
+						 (fboundp 'json-parse-buffer))
+                  'json-parse-buffer
+				'json-read)
+              :around
+              #'lsp-booster--advice-json-parse)
+
   (defun lsp-booster--advice-final-command (old-fn cmd &optional test?)
-    "Prepend emacs-lsp-booster command to lsp CMD."
-    (let ((orig-result (funcall old-fn cmd test?)))
+	"Prepend emacs-lsp-booster command to lsp CMD."
+	(let ((orig-result (funcall old-fn cmd test?)))
       (if (and (not test?)                             ;; for check lsp-server-present?
                (not (file-remote-p default-directory)) ;; see lsp-resolve-final-command, it would add extra shell wrapper
                lsp-use-plists
                (not (functionp 'json-rpc-connection))  ;; native json-rpc
                (executable-find "emacs-lsp-booster"))
           (progn
-            (message "Using emacs-lsp-booster for %s!" orig-result)
-            (cons "emacs-lsp-booster" orig-result))
-        orig-result)))
+			(when-let ((command-from-exec-path (executable-find (car orig-result))))  ;; resolve command from exec-path (in case not found in $PATH)
+              (setcar orig-result command-from-exec-path))
+			(message "Using emacs-lsp-booster for %s!" orig-result)
+			(cons "emacs-lsp-booster" orig-result))
+		orig-result)))
+
   :init
-  (setq lsp-use-plists t)
   ;; Initiate https://github.com/blahgeek/emacs-lsp-booster for performance
   (advice-add (if (progn (require 'json)
                          (fboundp 'json-parse-buffer))
@@ -44,6 +53,7 @@
               :around
               #'lsp-booster--advice-json-parse)
   (advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
+
   :hook
   ((bash-ts-mode
     sh-mode
@@ -62,7 +72,11 @@
     swift-mode
     ansible
 	graphql-mode
-	graphql-ts-mode)
+	graphql-ts-mode
+	typescript-ts-mode
+	tsx-ts-mode
+	js-ts-mode
+	json-ts-mode)
    .
    lsp-deferred)
   (lsp-mode . lsp-enable-which-key-integration)
@@ -70,6 +84,7 @@
   :bind
   (:map lsp-mode-map
 		("C-c l r" . lsp-rename)
+		("C-c l g r" . lsp-find-references)
 		("C-<tab>" . lsp-execute-code-action))
 
   :config
@@ -133,8 +148,7 @@
    ;; show all LSP doc on minibuffer
    lsp-eldoc-render-all t
    ;; https://github.com/yioneko/vtsls#bad-performance-of-completion
-   lsp-vtsls-server-side-fuzzy-match t
-   lsp-vtsls-entries-limit 10))
+   lsp-vtsls-server-side-fuzzy-match t))
 
 ;; misc
 
@@ -147,11 +161,7 @@
 		  rust-mode
 		  rust-ts-mode
 		  go-mode
-		  go-ts-mode
-		  typescript-ts-mode
-		  tsx-ts-mode
-		  js-ts-mode
-		  json-ts-mode)
+		  go-ts-mode)
 		 . eglot-ensure)
 
   :bind (:map eglot-mode-map
@@ -161,11 +171,16 @@
   :config
   (mapc (lambda (program) (add-to-list 'eglot-server-programs program))
 		'((python-ts-mode . ("pyright-langserver" "--stdio"))
+		;; '((python-ts-mode . ("/Users/leemiyinghao/.pyenv/shims/pyright-langserver" "--stdio"))
 		  ((go-mode go-ts-mode) . ("gopls" "serve"))
 		  ((rust-ts-mode rust-mode) .
            ("rust-analyzer" :initializationOptions (:check (:command "clippy"))))
 		  ((typescript-ts-mode tsx-ts-mode js-ts-mode json-ts-mode) . ("typescript-language-server" "--stdio")))))
 
+(use-package eglot-booster
+  :ensure (:host github :repo "jdtsmith/eglot-booster")
+  :after eglot
+  :config	(eglot-booster-mode))
 
 (provide 'config-lsp)
 ;;; config-lsp.el ends here
