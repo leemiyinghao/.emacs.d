@@ -16,8 +16,8 @@
 		(make-llm-openai-compatible
 		 :url "https://openrouter.ai/api/v1/"
 		 :key (getenv "OPENROUTER_API_KEY")
-		 :chat-model "anthropic/claude-3.5-haiku"
-		 :embedding-model "anthropic/claude-3.5-haiku"))
+		 :chat-model "google/gemini-2.0-flash-001"
+		 :embedding-model "google/gemini-2.0-flash-001"))
   :custom
   (llm-warn-on-nonfree nil))
 
