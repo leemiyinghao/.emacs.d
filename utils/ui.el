@@ -35,6 +35,7 @@
                           (bookmarks . 5)
                           (projects . 5)
 						  (agenda . 5))))
-
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
 (provide 'ui)
 ;;; ui.el ends here
