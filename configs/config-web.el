@@ -17,7 +17,7 @@
 			  (append electric-pair-pairs '((?` . ?`)
 											(?' . ?')
 											(?{ . ?})
-											(?[ . ?])))))
+											(?\[ . ?\])))))
 
 (add-hook 'javascript-ts-mode-hook #'config-javascript--setup)
 (add-hook 'html-mode-hook #'config-html--setup)

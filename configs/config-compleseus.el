@@ -1,4 +1,4 @@
-;;; config-compleseus.el --- -*- lexical-binding: t -*-
+;;; config-compleseus.el
 
 (use-package vertico
   :init
@@ -125,17 +125,18 @@
   :ensure (:host github :repo "galeo/corfu-doc"))
 
 (use-package corfu-terminal
-  :ensure (:repo "https://codeberg.org/akib/emacs-corfu-terminal.git"))
+  :ensure (:repo "https://codeberg.org/akib/emacs-corfu-terminal.git")
+  :config(unless (display-graphic-p)
+		   (corfu-terminal-mode +1)))
 
-(unless (display-graphic-p)
-  (corfu-terminal-mode +1))
 
 (use-package corfu-doc-terminal
-  :ensure (:repo "https://codeberg.org/akib/emacs-corfu-doc-terminal.git"))
+  :ensure (:repo "https://codeberg.org/akib/emacs-corfu-doc-terminal.git")
+  :config (unless (display-graphic-p)
+			(corfu-doc-terminal-mode +1)))
 
 
-(unless (display-graphic-p)
-  (corfu-doc-terminal-mode +1))
+
 
 
 
