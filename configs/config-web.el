@@ -81,7 +81,8 @@
     (jtsx-bind-keys-to-mode-map jtsx-tsx-mode-map))
 
   (add-hook 'jtsx-jsx-mode-hook 'jtsx-bind-keys-to-jtsx-jsx-mode-map)
-  (add-hook 'jtsx-tsx-mode-hook 'jtsx-bind-keys-to-jtsx-tsx-mode-map))
+  (add-hook 'jtsx-tsx-mode-hook 'jtsx-bind-keys-to-jtsx-tsx-mode-map)
+  (setq-local lsp-enabled-clients '(vtsls)))
 
 (provide 'config-web)
 
