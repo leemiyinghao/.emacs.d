@@ -44,7 +44,8 @@
   :ensure (:host github :repo "nverno/r-ts-mode"))
 (use-package kotlin-ts-mode)
 (use-package graphql-ts-mode
-  :elpaca nil)
+  :mode ("\\.graphql\\'" "\\.gql\\'" "\\.graphqls\\'")
+  :ensure (:host github :repo "bkegley/tree-sitter-graphql"))
 
 (setq major-mode-remap-alist
       '((yaml-mode . yaml-ts-mode)
@@ -72,8 +73,7 @@
 		(c-mode . c-ts-mode)
 		(java-mode . java-ts-mode)
 		(rust-mode . rust-ts-mode)
-		(kotlin-mode . kotlin-ts-mode)
-		(graphql-mode . graphql-ts-mode)))
+		(kotlin-mode . kotlin-ts-mode)))
 
 (use-package cognitive-complexity
   :ensure (:host github :repo "abougouffa/cognitive-complexity")
