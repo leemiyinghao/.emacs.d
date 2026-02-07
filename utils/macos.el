@@ -1,5 +1,6 @@
 (setq dired-use-ls-dired nil)
 (setq ls-lisp-use-insert-directory-program nil)
+(setq ns-use-native-fullscreen nil)
 (require 'ls-lisp)
 (setq insert-directory-program "gls")
 ;; mac
