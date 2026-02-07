@@ -29,6 +29,8 @@
 		'(prettier-graphql))
   (setf (alist-get 'prettier apheleia-formatters)
 		'("apheleia-npx" "prettier" "--stdin-filepath" filepath))
+  (setf (alist-get 'rustfmt apheleia-formatters)
+		'("rustfmt" "--quiet" "--edition" "2024" "--emit" "stdout"))
   (setq apheleia-remote-algorithm 'remote))
 
 (provide 'config-formatter)
