@@ -43,9 +43,7 @@
 (use-package r-ts-mode
   :ensure (:host github :repo "nverno/r-ts-mode"))
 (use-package kotlin-ts-mode)
-(use-package graphql-ts-mode
-  :mode ("\\.graphql\\'" "\\.gql\\'" "\\.graphqls\\'")
-  :ensure (:host github :repo "bkegley/tree-sitter-graphql"))
+(use-package graphql-ts-mode)
 
 (setq major-mode-remap-alist
       '((yaml-mode . yaml-ts-mode)
