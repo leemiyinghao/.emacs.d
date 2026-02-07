@@ -142,6 +142,8 @@
   :hook
   (python-mode . cov-mode)
   (python-ts-mode . cov-mode)
+  (rust-mode . cov-mode)
+  (rust-ts-mode . cov-mode)
   (go-mode . cov-mode)
   (go-ts-mode . cov-mode)
   (typescript-ts-mode . cov-mode)
@@ -161,6 +163,11 @@
 (use-package protobuf-mode
   :defer t
   :mode "\\.proto\\'")
+
+(use-package csv-mode
+  :elpaca (:host github :repo "emacsmirror/csv-mode")
+  :config
+  (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode)))
 
 (use-package casual
   :defer t
@@ -186,6 +193,21 @@
 
 ;; bind find-file-at-point to C-c f
 (bind-key "C-c f" 'find-file-at-point)
+
+;; dired extensions
+(use-package dired-subtree
+  :ensure (:host github :repo "Fuco1/dired-hacks" :files ("dired-subtree.el"))
+  :bind
+  (:map dired-mode-map
+		;; Toggle dired-subtree with tab
+		("<tab>" . dired-subtree-toggle)))
+
+(use-package dired-collapse
+  :ensure (:host github :repo "Fuco1/dired-hacks" :files ("dired-collapse.el"))
+  :bind
+  (:map dired-mode-map
+		;; Toggle dired-collapse-mode
+		("C-c C-c" . dired-collapse-mode)))
 
 
 (provide 'config-qol)
