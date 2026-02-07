@@ -12,11 +12,11 @@
   (message "Syncing %s..." profile-name)
   (with-temp-buffer
     (if (eq (call-process "unison" nil (current-buffer) t profile-name) 0)
-	(progn (message "Unison: files have been sync for %s." profile-name))
-    (let ((error-buffer (get-buffer-create "*unison errors*")))
-      (progn
-	(insert-into-buffer error-buffer)
-	(display-buffer error-buffer))))))
+		(progn (message "Unison: files have been sync for %s." profile-name))
+      (let ((error-buffer (get-buffer-create "*unison errors*")))
+		(progn
+		  (insert-into-buffer error-buffer)
+		  (message "Unison: errors occurred during sync for %s. Check *unison errors*" profile-name))))))
 
 
 (defun unison-sync ()
