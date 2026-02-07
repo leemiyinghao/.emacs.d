@@ -32,7 +32,7 @@
   (magit-gptcommit-status-buffer-setup))
 
 (use-package aider
-  :ensure (:host github :repo "tninja/aider.el" :files ("aider.el" "aider-core.el" "aider-file.el" "aider-code-change.el" "aider-discussion.el" "aider-prompt-mode.el"))
+  :ensure (:host github :repo "tninja/aider.el" files ("*.el"))
   :config
   (setq aider-args (list
 					"--no-auto-commits"
