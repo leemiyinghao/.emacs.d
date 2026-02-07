@@ -1,11 +1,13 @@
+;;; lsp.el --- LSP configuration -*- lexical-binding: t -*-
 "lsp"
-
-(use-package flymake-diagnostic-at-point
+;;; Commentary:
+;; LSP configuration. Using lsp-mode as the main client, and eglot as a fallback.
+;;; Code:
+(use-package flymake-posframe
   :defer t
+  :ensure (:host github :repo "Ladicle/flymake-posframe" files ("flymake-posframe.el"))
   :after flymake
-  :hook (flymake-mode . flymake-diagnostic-at-point-mode)
-  :config
-  (setq flymake-diagnostic-at-point-display-diagnostic-function 'flymake-diagnostic-at-point-display-minibuffer))
+  :hook (flymake-mode . flymake-posframe-mode))
 
 (use-package spinner
   :ensure (:host github :repo "Malabarba/spinner.el"))
