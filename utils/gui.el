@@ -20,7 +20,7 @@
 
 (use-package vertico-posframe
   :after vertico
-  :ensure (:host github :repo "/vertico-posframe")
+  :ensure (:host github :repo "tumashu/vertico-posframe")
   :config (vertico-posframe-mode 1))
 
 
