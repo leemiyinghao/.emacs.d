@@ -16,8 +16,8 @@
 		(make-llm-openai-compatible
 		 :url "https://openrouter.ai/api/v1/"
 		 :key (getenv "OPENROUTER_API_KEY")
-		 :chat-model "google/gemini-2.0-flash-001"
-		 :embedding-model "google/gemini-2.0-flash-001"))
+		 :chat-model "google/gemini-3.5-flash"
+		 :embedding-model "google/gemini-3.5-flash"))
   :custom
   (llm-warn-on-nonfree nil))
 
@@ -31,13 +31,14 @@
   :config
   (magit-gptcommit-status-buffer-setup))
 
-(use-package aider
-  :ensure (:host github :repo "tninja/aider.el" files ("*.el"))
+(use-package aidermacs
+  :ensure (:host github :repo "MatthewZMD/aidermacs" :files ("*.el"))
   :config
-  (setq aider-args (list
-					"--no-auto-commits"
-					"--model" aider-model))
-  (global-set-key (kbd "C-c a") 'aider-transient-menu))
+  (setq aidermacs-args (list
+                        "--no-auto-commits"
+                        "--model" aider-model))
+  (setq aidermacs-show-diff-after-change nil)
+  (global-set-key (kbd "C-c a") 'aidermacs-transient-menu))
 
 
 (provide 'config-ai)
