@@ -24,12 +24,6 @@
 		 (when (byte-code-function-p bytecode)
            (funcall bytecode))))
 	 (apply old-fn args)))
-  (advice-add (if (progn (require 'json)
-						 (fboundp 'json-parse-buffer))
-                  'json-parse-buffer
-				'json-read)
-              :around
-              #'lsp-booster--advice-json-parse)
 
   (defun lsp-booster--advice-final-command (old-fn cmd &optional test?)
 	"Prepend emacs-lsp-booster command to lsp CMD."
@@ -92,6 +86,21 @@
   :config
   (setq lsp-headerline-breadcrumb-enable nil)
   (setq lsp-file-watch-threshold 4096)
+  (setq read-process-output-max (* 1024 1024)) ; 1MB
+  (setq gc-cons-threshold (* 100 1024 1024))
+  (setq lsp-log-io nil)
+  (setq lsp-enable-symbol-highlighting nil)
+  (setq lsp-vtsls-settings
+		'(:typescript (:tsserver (:maxTsServerMemory 8192))
+					  :javascript (:tsserver (:maxTsServerMemory 8192))))
+  
+  (setq lsp-file-watch-ignored-directories
+		'("[/\\\\]\\.git\\'"
+          "[/\\\\]node_modules\\'"
+          "[/\\\\]dist\\'"
+          "[/\\\\]build\\'"
+          "[/\\\\]\\.next\\'"
+          "[/\\\\]coverage\\'"))
   ;; servers
   (lsp-ensure-server 'pyright)
   (lsp-ensure-server 'gopls)
@@ -101,7 +110,6 @@
   (lsp-ensure-server 'typescript-language-server)
   (lsp-ensure-server 'json-ls)
   (lsp-ensure-server 'svelte-ls)
-  (lsp-ensure-server 'deno-ls)
   (lsp-ensure-server 'vue-semantic-server)
   (lsp-ensure-server 'ansible-ls)
   (lsp-ensure-server 'vtsls)
@@ -173,7 +181,7 @@
   :config
   (mapc (lambda (program) (add-to-list 'eglot-server-programs program))
 		'((python-ts-mode . ("pyright-langserver" "--stdio"))
-		;; '((python-ts-mode . ("/Users/leemiyinghao/.pyenv/shims/pyright-langserver" "--stdio"))
+		  ;; '((python-ts-mode . ("/Users/leemiyinghao/.pyenv/shims/pyright-langserver" "--stdio"))
 		  ((go-mode go-ts-mode) . ("gopls" "serve"))
 		  ((rust-ts-mode rust-mode) .
            ("rust-analyzer" :initializationOptions (:check (:command "clippy"))))
