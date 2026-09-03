@@ -1,7 +1,7 @@
 ; dape for debugging
 
 ;; (use-package dape
-;;   :elpaca nil
+;;   :ensure nil
 ;;   :preface
 ;;   (setq dape-key-prefix "\C-x\C-a")
 

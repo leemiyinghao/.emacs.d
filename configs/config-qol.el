@@ -33,7 +33,7 @@
 
 ;; TRAMP remote development
 (use-package tramp
-  :elpaca nil
+  :ensure nil
   :config
   (setq enable-remote-dir-locals t)
   (let ((process-environment tramp-remote-process-environment))
@@ -171,7 +171,7 @@
   :mode "\\.proto\\'")
 
 (use-package csv-mode
-  :elpaca (:host github :repo "emacsmirror/csv-mode")
+  :ensure (:host github :repo "emacsmirror/csv-mode")
   :config
   (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode)))
 

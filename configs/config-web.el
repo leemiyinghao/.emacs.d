@@ -22,22 +22,46 @@
 (add-hook 'javascript-ts-mode-hook #'config-javascript--setup)
 (add-hook 'html-mode-hook #'config-html--setup)
 
-(defun flymake-eslint-enable-current-project ()
-  "Enable flymake-eslint with current project eslint binary, if available."
-  (interactive)
+(require 'project)
+(require 'subr-x)
 
-  (let* ((pj-root (project-root (project-current)))
-		 (looking-for-binary (concat pj-root "node_modules/.bin/eslint")))
-	(when (and pj-root (file-exists-p looking-for-binary)))
-	(setq-local flymake-eslint-project-root pj-root)
-	(setq-local flymake-eslint-executable-name looking-for-binary))
-  (flymake-eslint-enable))
+(defun flymake-jsts--project-binary (linter binary)
+  "Return the best available path for BINARY for LINTER."
+  (or (and (file-name-absolute-p binary)
+           (file-executable-p binary)
+           binary)
+      (when-let* ((root (flymake-jsts/get-process-cwd linter (current-buffer)))
+                  (local-binary (expand-file-name
+                                 (format "node_modules/.bin/%s" binary)
+                                 root)))
+        (when (file-executable-p local-binary)
+          local-binary))
+      (executable-find binary)))
 
-(use-package flymake-eslint
-  :ensure t
+(defun flymake-jsts--enable-linter-if-available (linter enable-fn)
+  "Enable LINTER with ENABLE-FN when its binary is available."
+  (when-let* ((binary-name (cdr (assq linter flymake-jsts-executable-name-alist)))
+              (binary-path (flymake-jsts--project-binary linter binary-name)))
+    (unless (local-variable-p 'flymake-jsts-executable-name-alist)
+      (setq-local flymake-jsts-executable-name-alist
+                  (copy-tree flymake-jsts-executable-name-alist)))
+    (message "flymake-jsts: enabling %s with %s" linter binary-path)
+    (setf (alist-get linter flymake-jsts-executable-name-alist) binary-path)
+    (funcall enable-fn)
+    t))
+
+(defun flymake-jsts-enable ()
+  "Enable one available flymake-jsts linter for the current buffer."
+  (unless (or (flymake-jsts--enable-linter-if-available 'oxlint #'flymake-jsts-oxlint-enable)
+              (flymake-jsts--enable-linter-if-available 'eslint #'flymake-jsts-eslint-enable))
+    (message "flymake-jsts: no available oxlint/eslint binary found")))
+
+(use-package flymake-jsts
+  :straight '(flymake-jsts :type git :host github :repo "orzechowskid/flymake-jsts" :branch "main")
   :config
-  (add-hook 'typescript-ts-mode-hook #'flymake-eslint-enable-current-project)
-  (add-hook 'tsx-ts-mode-hook #'flymake-eslint-enable-current-project))
+  (add-hook 'typescript-ts-mode-hook #'flymake-jsts-enable)
+  (add-hook 'tsx-ts-mode-hook #'flymake-jsts-enable))
+
 
 (use-package jtsx
   :ensure t

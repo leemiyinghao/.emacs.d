@@ -87,7 +87,6 @@
   (setq lsp-headerline-breadcrumb-enable nil)
   (setq lsp-file-watch-threshold 4096)
   (setq read-process-output-max (* 1024 1024)) ; 1MB
-  (setq gc-cons-threshold (* 100 1024 1024))
   (setq lsp-log-io nil)
   (setq lsp-enable-symbol-highlighting nil)
   (setq lsp-vtsls-settings

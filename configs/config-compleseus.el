@@ -169,8 +169,7 @@
 (setq tab-always-indent 'complete)
 
 (use-package kind-icon
-  :elpaca nil
-  :ensure t
+  :ensure (:host github :repo "jdtsmith/kind-icon")
   :defer t
   :after corfu
   :custom
