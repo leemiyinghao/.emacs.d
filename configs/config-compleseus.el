@@ -29,6 +29,11 @@
              '(basic-remote           ; Name of `completion-style'
                kb/basic-remote-try-completion kb/basic-remote-all-completions nil))
 
+(setq history-length 100
+      savehist-file (expand-file-name "history-lean" user-emacs-directory))
+(setq savehist-ignored-variables
+      '(aidermacs--read-string-history aider-read-string-history))
+
 (savehist-mode 1)
 
 ;; orderless

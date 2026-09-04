@@ -6,7 +6,7 @@ auto-save-list/
 eshell/
 transient/
 custom.el
-history
+history*
 local-config/
 recentf
 .cache
