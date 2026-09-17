@@ -23,8 +23,15 @@
 ;; prefer horizontal split on new window
 ;; (setq split-width-threshold 1 )
 (use-package page-break-lines)
+(defun kb/remember-current-project ()
+  "Remember the project containing the visited file."
+  (let ((project (project-current)))
+    (when project
+      (project-remember-project project))))
+
 (use-package dashboard
-  :hook (elpaca-after-init-hook . dashboard-setup-startup-hook)
+  :hook ((elpaca-after-init-hook . dashboard-setup-startup-hook)
+         (find-file . kb/remember-current-project))
   :config
   (setq dashboard-startup-banner 'logo)
   (setq dashboard-center-content t)

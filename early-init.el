@@ -1,4 +1,13 @@
 (setenv "LSP_USE_PLISTS" "true")
+(when (eq system-type 'darwin)
+  (setenv "SDKROOT"
+          (car (process-lines "xcrun" "--sdk" "macosx" "--show-sdk-path")))
+  (let ((gcc-runtime
+         (car (file-expand-wildcards
+               "/opt/homebrew/lib/gcc/current/gcc/*/*"))))
+    (when gcc-runtime
+      (setq native-comp-driver-options
+            (list "-Wl,-w" (concat "-L" gcc-runtime))))))
 (setq package-enable-at-startup nil)
 (setq read-process-output-max (* 10 1024 1024)) ;; 10mb
 (setq gc-cons-threshold 200000000)

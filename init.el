@@ -50,6 +50,7 @@
     (load "./elpaca-autoloads")))
 (add-hook 'after-init-hook #'elpaca-process-queues)
 (elpaca `(,@elpaca-order))
+(setf (plist-get elpaca-order-defaults :depth) 1)
 
 ;; Install use-package support
 (elpaca elpaca-use-package

@@ -11,7 +11,10 @@
 	 (:map org-mode-map
 	       ("M-RET" . copilot-accept-completion)))
   ;; suppress warning
-  :config (setq copilot-indent-offset-warning-disable t))
+  :config
+  (setq copilot-indent-offset-warning-disable t)
+  (keymap-unset copilot-completion-map "<tab>")
+  (keymap-unset copilot-completion-map "TAB"))
 
 (provide 'config-copilot)
 ;;; config-copilot.el ends here

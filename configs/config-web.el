@@ -57,7 +57,7 @@
     (message "flymake-jsts: no available oxlint/eslint binary found")))
 
 (use-package flymake-jsts
-  :straight '(flymake-jsts :type git :host github :repo "orzechowskid/flymake-jsts" :branch "main")
+  :ensure (:host github :repo "orzechowskid/flymake-jsts" :branch "main")
   :config
   (add-hook 'typescript-ts-mode-hook #'flymake-jsts-enable)
   (add-hook 'tsx-ts-mode-hook #'flymake-jsts-enable))
