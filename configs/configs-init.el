@@ -42,8 +42,5 @@
 ;; TRAMP remote PATH config
 (setq enable-remote-dir-locals t)
 
-;; TRAMP patch for magit, see https://github.com/magit/magit/issues/4720
-(require 'config-tramp-patch)
-
 (provide 'configs-init)
 ;;; init.el ends here

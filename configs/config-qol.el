@@ -44,8 +44,8 @@
   (add-to-list 'tramp-connection-properties
                (list (regexp-quote "/sshx?:")
                      "direct-async-process" t))
-  (setq tramp-chunksize 2000)
-  (setq tramp-use-ssh-controlmaster-options nil))
+  ;; SSH config owns connection sharing, including ProxyCommand hosts.
+  (setq tramp-use-connection-share nil))
 
 
 ;; multiple-cursors
@@ -132,6 +132,11 @@
   :defer t)
 
 (use-package cov
+  :preface
+  (defun kb/cov-mode-local ()
+    "Enable coverage only for local files."
+    (unless (file-remote-p default-directory)
+      (cov-mode 1)))
   :demand t
   :defer t
   :after python
@@ -146,14 +151,14 @@
   :config
   (add-to-list 'cov-lcov-patterns (lambda (path file) (concat (car(cdr(cdr(project-current)))) "lcov.info")))
   :hook
-  (python-mode . cov-mode)
-  (python-ts-mode . cov-mode)
-  (rust-mode . cov-mode)
-  (rust-ts-mode . cov-mode)
-  (go-mode . cov-mode)
-  (go-ts-mode . cov-mode)
-  (typescript-ts-mode . cov-mode)
-  (tsx-ts-mode . cov-mode))
+  (python-mode . kb/cov-mode-local)
+  (python-ts-mode . kb/cov-mode-local)
+  (rust-mode . kb/cov-mode-local)
+  (rust-ts-mode . kb/cov-mode-local)
+  (go-mode . kb/cov-mode-local)
+  (go-ts-mode . kb/cov-mode-local)
+  (typescript-ts-mode . kb/cov-mode-local)
+  (tsx-ts-mode . kb/cov-mode-local))
 
 (use-package direnv
   :config
