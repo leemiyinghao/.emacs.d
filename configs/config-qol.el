@@ -39,13 +39,21 @@
   (let ((process-environment tramp-remote-process-environment))
     (setenv "ENV" "$HOME/.profile")
     (setq tramp-remote-process-environment process-environment))
-  ;; Enable full-featured Dirvish over TRAMP on certain connections
-  ;; https://www.gnu.org/software/tramp/#Improving-performance-of-asynchronous-remote-processes-1.
-  (add-to-list 'tramp-connection-properties
-               (list (regexp-quote "/sshx?:")
-                     "direct-async-process" t))
+  (connection-local-set-profile-variables
+   'my/tramp-direct-async '((tramp-direct-async-process . t)))
+  (connection-local-set-profiles
+   '(:application tramp :protocol "ssh") 'my/tramp-direct-async)
   ;; SSH config owns connection sharing, including ProxyCommand hosts.
   (setq tramp-use-connection-share nil))
+
+(use-package tramp-rpc
+  :ensure (:host github :repo "ArthurHeymans/emacs-tramp-rpc"
+                 :ref "v0.15.0" :files ("lisp/*.el"))
+  :after tramp
+  :init
+  (setq tramp-rpc-deploy-git-build-policy 'release)
+  :config
+  (setq tramp-default-method "rpc"))
 
 
 ;; multiple-cursors
@@ -133,7 +141,7 @@
 
 (use-package cov
   :preface
-  (defun kb/cov-mode-local ()
+  (defun my/cov-mode-local ()
     "Enable coverage only for local files."
     (unless (file-remote-p default-directory)
       (cov-mode 1)))
@@ -151,14 +159,14 @@
   :config
   (add-to-list 'cov-lcov-patterns (lambda (path file) (concat (car(cdr(cdr(project-current)))) "lcov.info")))
   :hook
-  (python-mode . kb/cov-mode-local)
-  (python-ts-mode . kb/cov-mode-local)
-  (rust-mode . kb/cov-mode-local)
-  (rust-ts-mode . kb/cov-mode-local)
-  (go-mode . kb/cov-mode-local)
-  (go-ts-mode . kb/cov-mode-local)
-  (typescript-ts-mode . kb/cov-mode-local)
-  (tsx-ts-mode . kb/cov-mode-local))
+  (python-mode . my/cov-mode-local)
+  (python-ts-mode . my/cov-mode-local)
+  (rust-mode . my/cov-mode-local)
+  (rust-ts-mode . my/cov-mode-local)
+  (go-mode . my/cov-mode-local)
+  (go-ts-mode . my/cov-mode-local)
+  (typescript-ts-mode . my/cov-mode-local)
+  (tsx-ts-mode . my/cov-mode-local))
 
 (use-package direnv
   :config

@@ -23,7 +23,7 @@
 ;; prefer horizontal split on new window
 ;; (setq split-width-threshold 1 )
 (use-package page-break-lines)
-(defun kb/remember-current-project ()
+(defun my/remember-current-project ()
   "Remember the project containing the visited file."
   (let ((project (project-current)))
     (when project
@@ -31,8 +31,11 @@
 
 (use-package dashboard
   :hook ((elpaca-after-init-hook . dashboard-setup-startup-hook)
-         (find-file . kb/remember-current-project))
+         (find-file . my/remember-current-project))
   :config
+  (require 'dashboard-remotes)
+  (add-to-list 'dashboard-item-generators '(remotes . my/dashboard-insert-remotes))
+  (add-to-list 'dashboard-item-shortcuts '(remotes . "h"))
   (setq dashboard-startup-banner 'logo)
   (setq dashboard-center-content t)
   (setq dashboard-set-file-icons t)
@@ -40,6 +43,7 @@
   (setq dashboard-projects-backend 'project-el)
   (setq dashboard-items '((recents  . 5)
                           (bookmarks . 5)
+                          (remotes . 5)
                           (projects . 5)
 						  (agenda . 5))))
 (setq inhibit-splash-screen t)

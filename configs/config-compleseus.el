@@ -19,15 +19,15 @@
                  "  ")
                cand)))
 
-(defun kb/basic-remote-try-completion (string table pred point)
+(defun my/basic-remote-try-completion (string table pred point)
   (and (vertico--remote-p string)
        (completion-basic-try-completion string table pred point)))
-(defun kb/basic-remote-all-completions (string table pred point)
+(defun my/basic-remote-all-completions (string table pred point)
   (and (vertico--remote-p string)
        (completion-basic-all-completions string table pred point)))
 (add-to-list 'completion-styles-alist
              '(basic-remote           ; Name of `completion-style'
-               kb/basic-remote-try-completion kb/basic-remote-all-completions nil))
+               my/basic-remote-try-completion my/basic-remote-all-completions nil))
 
 (setq history-length 100
       savehist-file (expand-file-name "history-lean" user-emacs-directory))

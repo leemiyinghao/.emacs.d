@@ -16,6 +16,26 @@
   :ensure t
   :preface
 
+  (defun my/lsp-remote-server-present-p (original command)
+    "Check absolute server executables on the host running COMMAND."
+    (let ((remote (file-remote-p default-directory))
+          (program (car command)))
+      (if (and remote (file-name-absolute-p program))
+          (and (file-executable-p (concat remote program)) program)
+        (funcall original command))))
+
+  (defun my/lsp-remote-package-path (original &rest args)
+    "Resolve managed language servers in the remote host's Emacs cache."
+    (let ((lsp-server-install-dir
+           (if (file-remote-p default-directory)
+               (expand-file-name
+                (concat (file-remote-p default-directory) "~/.emacs.d/.cache/lsp/"))
+             lsp-server-install-dir)))
+      (let ((path (apply original args)))
+        (if (and path (file-remote-p default-directory))
+            (file-local-name path)
+          path))))
+
   (defun lsp-booster--advice-json-parse (old-fn &rest args)
 	"Try to parse bytecode instead of json."
 	(or
@@ -27,7 +47,10 @@
 
   (defun lsp-booster--advice-final-command (old-fn cmd &optional test?)
 	"Prepend emacs-lsp-booster command to lsp CMD."
-	(let ((orig-result (funcall old-fn cmd test?)))
+    ;; RPC starts processes directly, so skip TRAMP's terminal shell wrapper.
+	(let ((orig-result (funcall old-fn cmd
+                                    (or test? (equal (file-remote-p default-directory 'method)
+                                                      "rpc")))))
       (if (and (not test?)                             ;; for check lsp-server-present?
                (not (file-remote-p default-directory)) ;; see lsp-resolve-final-command, it would add extra shell wrapper
                lsp-use-plists
@@ -41,6 +64,8 @@
 		orig-result)))
 
   :init
+  (advice-add 'lsp-server-present? :around #'my/lsp-remote-server-present-p)
+  (advice-add 'lsp-package-path :around #'my/lsp-remote-package-path)
   ;; Initiate https://github.com/blahgeek/emacs-lsp-booster for performance
   (advice-add (if (progn (require 'json)
                          (fboundp 'json-parse-buffer))
@@ -115,7 +140,7 @@
   (lsp-completion-provider :none)       ; Using Corfu as the provider
   (lsp-diagnostics-provider :flymake)   ; Using flymake as the provider
   (lsp-session-file (locate-user-emacs-file ".lsp-session"))
-  (lsp-keep-workspace-alive nil)        ; Close LSP server if all project buffers are closed
+  (lsp-keep-workspace-alive t)          ; Reuse servers when project files are reopened
   (lsp-idle-delay 0.5)                  ; Debounce timer for `after-change-function'
   ;; core
   (lsp-enable-xref t)                   ; Use xref to find references
@@ -134,6 +159,20 @@
 
 (use-package consult-lsp
   :after lsp-mode)
+
+(use-package lsp-eslint
+  :ensure nil
+  :after lsp-mode
+  :preface
+  (defun my/lsp-eslint-server-command (original)
+    "Use the remote ESLint language server when visiting TRAMP files."
+    (if (file-remote-p default-directory)
+        ;; Expand HOME on the remote host, not in the local Emacs.
+        '("sh" "-c"
+          "exec \"$HOME/.emacs.d/.cache/lsp/npm/vscode-langservers-extracted/bin/vscode-eslint-language-server\" --stdio")
+      (funcall original)))
+  :config
+  (advice-add 'lsp-eslint-server-command :around #'my/lsp-eslint-server-command))
 
 ;; frontend
 (use-package lsp-sourcekit
