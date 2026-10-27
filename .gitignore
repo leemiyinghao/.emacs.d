@@ -46,3 +46,4 @@ dape-breakpoints
 .dap-breakpoints
 .aider*
 .env
+/ellama-sessions/

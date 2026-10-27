@@ -61,8 +61,6 @@
     html-mode
     svelte-mode
     php-mode
-    kotlin-ts-mode
-    kotlin-mode
     yaml-ts-mode
     yaml-mode
     swift-mode
@@ -165,10 +163,33 @@
 
 (use-package eglot
   :defer t
+  :preface
+  (defvar-local config-lsp-kotlin-project-root nil
+    "Kotlin Eglot root, absolute or relative to the normal project root.
+Set this in directory-local variables for projects needing an override.
+Nil preserves normal project detection.")
+  (put 'config-lsp-kotlin-project-root 'safe-local-variable #'stringp)
+
+  (defun config-lsp-kotlin-project-find (directory)
+    "Apply a directory-local Kotlin Eglot root override for DIRECTORY."
+    (when (and (bound-and-true-p eglot-lsp-context)
+               (memq major-mode '(kotlin-mode kotlin-ts-mode))
+               (stringp config-lsp-kotlin-project-root))
+      (let* ((project (let ((eglot-lsp-context nil))
+                        (project-current nil directory)))
+             (root (file-name-as-directory
+                    (expand-file-name config-lsp-kotlin-project-root
+                                      (if project (project-root project) directory)))))
+        (when (file-directory-p root)
+          (cons 'transient root)))))
+  :custom
+  (eglot-connect-timeout 300)
   :hook ((;; backend
 		  python-ts-mode
 		  rust-mode
 		  rust-ts-mode
+		  kotlin-ts-mode
+		  kotlin-mode
 		  go-mode
 		  go-ts-mode)
 		 . eglot-ensure)
@@ -178,12 +199,14 @@
 			  ("C-<tab>" . eglot-code-actions))
 
   :config
+  (add-hook 'project-find-functions #'config-lsp-kotlin-project-find)
   (mapc (lambda (program) (add-to-list 'eglot-server-programs program))
 		'((python-ts-mode . ("pyright-langserver" "--stdio"))
 		  ;; '((python-ts-mode . ("/Users/leemiyinghao/.pyenv/shims/pyright-langserver" "--stdio"))
 		  ((go-mode go-ts-mode) . ("gopls" "serve"))
 		  ((rust-ts-mode rust-mode) .
            ("rust-analyzer" :initializationOptions (:check (:command "clippy"))))
+		  ((kotlin-ts-mode kotlin-mode) . ("kotlin-lsp" "--stdio"))
 		  ((typescript-ts-mode tsx-ts-mode js-ts-mode json-ts-mode) . ("typescript-language-server" "--stdio")))))
 
 (use-package eglot-booster
